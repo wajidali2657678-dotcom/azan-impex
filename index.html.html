@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azan Impex — Custom Sublimation Apparel, Export Ready</title>
+<meta name="description" content="Azan Impex is a registered sublimation apparel manufacturer and exporter. Custom jerseys, activewear, and team uniforms — designed, printed, and shipped worldwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a1420;
+    --ink2:#0f1e2e;
+    --paper:#eef3f6;
+    --cyan:#00c2d6;
+    --magenta:#ff2f92;
+    --amber:#ffb703;
+    --muted:#7d93a8;
+    --line:rgba(238,243,246,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink); color:var(--paper);
+    font-family:'Work Sans', sans-serif; font-weight:400;
+    line-height:1.6; overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Anton', sans-serif; font-weight:400;
+    text-transform:uppercase; letter-spacing:0.5px; line-height:0.95;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:'Work Sans',sans-serif; font-weight:700; font-size:12px;
+    letter-spacing:3px; text-transform:uppercase; color:var(--cyan);
+    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  .eyebrow::before{content:''; width:22px; height:2px; background:var(--cyan);}
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 28px; background:rgba(10,20,32,0.72); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{font-family:'Anton'; font-size:20px; letter-spacing:1px;}
+  .logo span{color:var(--magenta);}
+  nav .links{display:flex; gap:30px; font-size:13px; font-weight:600; letter-spacing:.5px; text-transform:uppercase;}
+  nav .links a{opacity:.8; transition:.2s;}
+  nav .links a:hover{opacity:1; color:var(--cyan);}
+  .nav-cta{
+    background:var(--paper); color:var(--ink); padding:10px 20px; border-radius:2px;
+    font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+  }
+  @media (max-width:760px){ nav .links{display:none;} }
+
+  /* HERO */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:center;
+    padding:120px 0 60px; overflow:hidden;
+  }
+  .bleed{
+    position:absolute; inset:-20%; z-index:0; opacity:.55;
+    background:
+      radial-gradient(circle at 15% 25%, var(--cyan) 0%, transparent 38%),
+      radial-gradient(circle at 80% 20%, var(--magenta) 0%, transparent 40%),
+      radial-gradient(circle at 55% 80%, var(--amber) 0%, transparent 35%);
+    filter: blur(60px);
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    0%{ transform: translate(0,0) scale(1); }
+    100%{ transform: translate(-3%,3%) scale(1.08); }
+  }
+  .hero-grid{position:relative; z-index:2; display:grid; grid-template-columns:1.3fr 1fr; gap:50px; align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(48px,8vw,96px); color:var(--paper);}
+  .hero h1 .accent{
+    background:linear-gradient(90deg,var(--cyan),var(--magenta));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.sub{margin-top:22px; max-width:520px; color:var(--muted); font-size:17px;}
+  .cta-row{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+  .btn{
+    padding:15px 28px; font-weight:700; font-size:13px; letter-spacing:1px;
+    text-transform:uppercase; border-radius:2px; display:inline-block;
+    transition:.2s;
+  }
+  .btn-primary{background:var(--paper); color:var(--ink);}
+  .btn-primary:hover{background:var(--cyan); transform:translateY(-2px);}
+  .btn-outline{border:1px solid var(--line); color:var(--paper);}
+  .btn-outline:hover{border-color:var(--cyan); color:var(--cyan);}
+
+  .jersey-card{
+    position:relative; aspect-ratio:3/4; border-radius:6px;
+    background:linear-gradient(160deg,#12233a,#0a1420);
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .jersey-svg{position:absolute; inset:0; width:100%; height:100%; z-index:1;}
+  .jersey-num{
+    font-family:'Anton'; font-size:120px; color:transparent;
+    -webkit-text-stroke:2px rgba(238,243,246,0.18);
+    position:relative; z-index:1;
+  }
+  .jersey-card::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(120deg, transparent 30%, rgba(0,194,214,0.25) 45%, rgba(255,47,146,0.25) 55%, transparent 70%);
+    background-size:250% 250%; background-position:0% 0%;
+    animation: sheen 6s linear infinite;
+  }
+  @keyframes sheen{ 0%{background-position:0% 0%;} 100%{background-position:100% 100%;} }
+  .jersey-tag{
+    position:absolute; bottom:18px; left:18px; right:18px;
+    font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);
+    display:flex; justify-content:space-between; z-index:2;
+  }
+
+  /* SECTION GENERIC */
+  section{padding:110px 0; position:relative; border-top:1px solid var(--line);}
+  .section-head{max-width:640px; margin-bottom:60px;}
+  .section-head h2{font-size:clamp(30px,5vw,52px);}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start;}
+  @media (max-width:900px){ .about-grid{grid-template-columns:1fr;} }
+  .about-grid p{color:var(--muted); font-size:16px; margin-bottom:16px;}
+  .founder{
+    margin-top:28px; padding-top:20px; border-top:1px solid var(--line);
+    font-size:14px; color:var(--paper);
+  }
+  .founder b{font-family:'Anton'; font-weight:400; letter-spacing:.5px; color:var(--amber);}
+
+  /* PROCESS */
+  .process-list{display:flex; flex-direction:column;}
+  .process-item{
+    display:grid; grid-template-columns:90px 1fr; gap:24px;
+    padding:28px 0; border-bottom:1px solid var(--line); align-items:baseline;
+  }
+  .process-item:first-child{border-top:1px solid var(--line);}
+  .process-num{font-family:'Anton'; font-size:34px; color:var(--muted); opacity:.5;}
+  .process-item h3{font-size:22px; margin-bottom:6px; color:var(--paper);}
+  .process-item p{color:var(--muted); font-size:15px; max-width:560px;}
+  .process-item:hover .process-num{color:var(--cyan); opacity:1; transition:.25s;}
+
+  /* PRODUCTS */
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--line);}
+  @media (max-width:900px){ .product-grid{grid-template-columns:repeat(2,1fr);} }
+  .product-card{
+    background:var(--ink); padding:34px 26px; min-height:220px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    transition:.25s;
+  }
+  .product-card:hover{background:var(--ink2);}
+  .product-icon{width:44px; height:44px; margin-bottom:auto;}
+  .product-card .tag{font-size:11px; letter-spacing:2px; color:var(--magenta); text-transform:uppercase; margin-top:20px;}
+  .product-card h3{font-size:24px; margin-top:14px;}
+  .product-card p{color:var(--muted); font-size:13.5px; margin-top:10px;}
+
+  /* FEATURED SHOWCASE */
+  .featured-showcase{
+    margin-top:44px; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    background:linear-gradient(150deg, rgba(0,194,214,0.05), rgba(255,47,146,0.04));
+  }
+  .fs-inner{display:grid; grid-template-columns:180px 1fr auto; gap:28px; align-items:center; padding:30px 32px; transition:opacity .35s ease;}
+  @media (max-width:760px){ .fs-inner{grid-template-columns:1fr; text-align:center;} }
+  .fs-inner.fading{opacity:0;}
+  .fs-icon{width:100px; height:100px; margin:0 auto;}
+  .fs-tag{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--cyan);}
+  .fs-name{font-family:'Anton'; font-size:26px; margin-top:8px; letter-spacing:.5px;}
+  .fs-specs{color:var(--muted); font-size:13.5px; margin-top:8px;}
+  .fs-specs b{color:var(--amber); font-weight:600;}
+  .fs-dots{display:flex; gap:6px; justify-content:center; padding:0 0 18px;}
+  .fs-dot{width:7px; height:7px; border-radius:50%; background:var(--line); cursor:pointer; transition:.2s;}
+  .fs-dot.active{background:var(--cyan); width:20px; border-radius:4px;}
+
+  /* SHIRT GRID */
+  .shirt-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); margin-top:26px; border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  @media (max-width:900px){ .shirt-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .shirt-grid{grid-template-columns:1fr;} }
+  .shirt-card{
+    background:var(--ink); padding:28px 24px; cursor:pointer; transition:.2s;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .shirt-card:hover{background:var(--ink2);}
+  .shirt-card .s-icon{width:40px; height:40px;}
+  .shirt-card .s-tag{font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:var(--magenta);}
+  .shirt-card h3{font-size:19px; text-transform:none; font-family:'Work Sans'; font-weight:700; margin-top:2px;}
+  .shirt-card .s-gsm{font-size:12.5px; color:var(--cyan); font-weight:600;}
+  .shirt-card .s-fabric{font-size:12.5px; color:var(--muted);}
+  .shirt-card .s-view{margin-top:auto; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--paper); opacity:.6;}
+
+  /* MODAL */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(4,7,11,0.82); backdrop-filter:blur(4px);
+    display:none; align-items:center; justify-content:center; z-index:100; padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{
+    background:var(--ink2); border:1px solid var(--line); border-radius:12px;
+    max-width:480px; width:100%; padding:36px; position:relative;
+  }
+  .modal-close{position:absolute; top:16px; right:18px; cursor:pointer; color:var(--muted); font-size:20px; line-height:1;}
+  .modal-close:hover{color:var(--paper);}
+  .modal-box .m-tag{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--magenta);}
+  .modal-box h3{font-size:26px; margin-top:10px;}
+  .modal-specs{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0;}
+  .modal-specs div{border:1px solid var(--line); border-radius:6px; padding:12px 14px;}
+  .modal-specs .k{font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--cyan); margin-bottom:4px;}
+  .modal-specs .v{font-size:14px; color:var(--paper); font-weight:600;}
+  .modal-box p.desc{color:var(--muted); font-size:14px; margin-bottom:22px;}
+
+  /* CONFIGURATOR */
+  .configurator{border:1px solid var(--line); border-radius:10px; padding:34px; background:var(--ink2);}
+  .cfg-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media (max-width:800px){ .cfg-grid{grid-template-columns:1fr 1fr;} }
+  .configurator select, .configurator input{
+    width:100%; background:var(--ink); border:1px solid var(--line); color:var(--paper);
+    padding:13px 14px; font-family:'Work Sans'; font-size:13.5px; border-radius:3px;
+  }
+  .configurator select:focus, .configurator input:focus{ outline:2px solid var(--cyan); border-color:transparent; }
+  .configurator .field label{display:block; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .color-swatches{display:flex; gap:10px; flex-wrap:wrap;}
+  .swatch{
+    width:34px; height:34px; border-radius:50%; cursor:pointer; border:2px solid transparent;
+    transition:.15s; position:relative;
+  }
+  .swatch.selected{border-color:var(--cyan); transform:scale(1.12);}
+  .swatch[data-custom="1"]{
+    background:conic-gradient(from 0deg, var(--cyan), var(--magenta), var(--amber), var(--cyan));
+  }
+  .gsm-readout{
+    margin-top:22px; padding:16px 18px; border:1px dashed var(--line); border-radius:6px;
+    font-size:13.5px; color:var(--muted);
+  }
+  .gsm-readout b{color:var(--amber); font-size:15px;}
+
+  /* CART */
+  .cart-box{
+    margin-top:28px; padding:22px 24px; border:1px solid var(--cyan); border-radius:8px;
+    background:rgba(0,194,214,0.05);
+  }
+  .cart-line{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    padding:10px 0; border-bottom:1px solid var(--line); font-size:13px; color:var(--paper);
+  }
+  .cart-line:last-of-type{border-bottom:none;}
+  .cart-remove{color:var(--magenta); cursor:pointer; font-size:16px; flex-shrink:0;}
+  .cart-remove:hover{color:#ff4d5e;}
+
+  /* COLORWAY SHOWCASE (reuses .featured-showcase container) */
+  .colorway-dot{width:22px; height:22px; border-radius:50%; display:inline-block; border:2px solid var(--line);}
+  .fs-photo{width:140px; height:140px; object-fit:cover; border-radius:8px; border:1px solid var(--line); cursor:pointer; transition:.2s;}
+  .fs-photo:hover{border-color:var(--cyan); transform:scale(1.03);}
+
+  /* IMAGE LIGHTBOX */
+  .lightbox-overlay{
+    position:fixed; inset:0; background:rgba(4,7,11,0.9); backdrop-filter:blur(6px);
+    display:none; align-items:center; justify-content:center; z-index:200; padding:24px;
+  }
+  .lightbox-overlay.open{display:flex;}
+  .lightbox-overlay img{max-width:min(600px,92vw); max-height:85vh; border-radius:10px; border:1px solid var(--line); object-fit:contain;}
+  .lightbox-close{position:absolute; top:22px; right:26px; color:var(--paper); font-size:28px; cursor:pointer; line-height:1;}
+  .lightbox-close:hover{color:var(--cyan);}
+
+  /* ADMIN */
+  #admin-panel{padding:60px 0;}
+  .admin-table{width:100%; border-collapse:collapse; font-size:12.5px; min-width:900px;}
+  .admin-table th{text-align:left; padding:10px 12px; color:var(--cyan); border-bottom:1px solid var(--line); font-size:10.5px; letter-spacing:1px; text-transform:uppercase;}
+  .admin-table td{padding:10px 12px; border-bottom:1px solid var(--line); color:var(--paper); vertical-align:top;}
+  .admin-table select{background:var(--ink2); color:var(--paper); border:1px solid var(--line); padding:6px 8px; font-family:inherit; font-size:12px; border-radius:4px;}
+  .ticket-badge{font-family:'Anton'; color:var(--amber); letter-spacing:.5px;}
+
+  /* WHY */
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);}
+  @media (max-width:760px){ .why-grid{grid-template-columns:1fr;} }
+  .why-card{background:var(--ink); padding:36px 30px;}
+  .why-card .dot{width:10px; height:10px; border-radius:50%; margin-bottom:20px;}
+  .why-card h3{font-size:19px; text-transform:none; font-family:'Work Sans'; font-weight:700;}
+  .why-card p{color:var(--muted); font-size:14px; margin-top:10px;}
+
+  /* REVIEWS */
+  .review-box{
+    border:1px solid var(--line); border-radius:8px; padding:44px;
+    background:linear-gradient(160deg, rgba(0,194,214,0.06), rgba(255,47,146,0.04));
+    text-align:center;
+  }
+  .review-box h2{font-size:clamp(26px,4vw,38px); max-width:640px; margin:0 auto 16px;}
+  .review-box p{color:var(--muted); max-width:520px; margin:0 auto 30px;}
+  .stars{color:var(--amber); font-size:22px; letter-spacing:4px; margin-bottom:18px;}
+
+  /* CONTACT */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;} }
+  .field{margin-bottom:18px;}
+  .field label{display:block; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .field input, .field textarea{
+    width:100%; background:var(--ink2); border:1px solid var(--line); color:var(--paper);
+    padding:14px 16px; font-family:'Work Sans'; font-size:14px; border-radius:3px; resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{outline:2px solid var(--cyan); border-color:transparent;}
+  .contact-info-item{display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--line);}
+  .contact-info-item .k{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); width:110px; flex-shrink:0;}
+  .contact-info-item .v{color:var(--muted); font-size:14px;}
+  .note{
+    margin-top:20px; font-size:12.5px; color:var(--muted); border-left:2px solid var(--amber); padding-left:14px;
+  }
+
+  footer{
+    padding:40px 0; border-top:1px solid var(--line); text-align:center; color:var(--muted); font-size:13px;
+  }
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .bleed, .jersey-card::after{animation:none;}
+    .reveal{transition:none; opacity:1; transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">AZAN <span>IMPEX</span></div>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#products">Colorways</a>
+    <a href="#configurator">Build Order</a>
+    <a href="#how-to-order">How To Order</a>
+    <a href="#articles">Articles</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Request Quote</a>
+</nav>
+
+<section class="hero">
+  <div class="bleed"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Registered Apparel Exporter</div>
+      <h1>Any color you<br>can imagine.<br><span class="accent">Printed into the fabric itself.</span></h1>
+      <p class="sub">Most printing sits on top of a shirt and eventually cracks off. Sublimation doesn't — the color becomes part of the fiber. Azan Impex runs on exact fabric science: real GSM, real weave, zero guesswork, so what you design is exactly what ships.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Request a Quote</a>
+        <a href="#products" class="btn btn-outline">View Product Range</a>
+      </div>
+    </div>
+    <div class="jersey-card">
+      <svg class="jersey-svg" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="jGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00c2d6"/>
+            <stop offset="50%" stop-color="#ff2f92"/>
+            <stop offset="100%" stop-color="#ffb703"/>
+          </linearGradient>
+        </defs>
+        <path d="M62 22 L28 48 L44 80 L62 66 V216 H138 V66 L156 80 L172 48 L138 22 L114 40 H86 Z"
+              fill="url(#jGrad)" opacity="0.14" stroke="url(#jGrad)" stroke-width="3" stroke-linejoin="round"/>
+      </svg>
+      <div class="jersey-num">07</div>
+      <div class="jersey-tag"><span>Custom Colorway</span><span>Export Ready</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid reveal">
+    <div>
+      <div class="eyebrow">About the Company</div>
+      <h2>Built on the factory floor,<br>not a brand deck.</h2>
+      <div style="margin-top:26px; display:flex; flex-wrap:wrap; gap:10px;">
+        <span style="border:1px solid var(--line); padding:8px 14px; border-radius:20px; font-size:11.5px; letter-spacing:1px; text-transform:uppercase; color:var(--cyan);">FBR Registered</span>
+        <span style="border:1px solid var(--line); padding:8px 14px; border-radius:20px; font-size:11.5px; letter-spacing:1px; text-transform:uppercase; color:var(--amber);">Income Tax: Active</span>
+        <span style="border:1px solid var(--line); padding:8px 14px; border-radius:20px; font-size:11.5px; letter-spacing:1px; text-transform:uppercase; color:var(--magenta);">Importer / Exporter</span>
+      </div>
+    </div>
+    <div>
+      <p>Azan Impex is a registered apparel manufacturing and export business specializing in dye-sublimation printing — the process that bonds color directly into fabric fibers, so designs never crack, peel, or fade in the wash.</p>
+      <p>We work directly with buyers to turn a design file into a finished, export-packed garment: custom teamwear, activewear, and branded apparel produced to the specifications international markets ask for.</p>
+      <div class="founder">Founded &amp; registered by <b>Muhammad Wajid</b> · Sialkot, Pakistan</div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How an Order Moves</div>
+      <h2>From design file to shipping container.</h2>
+    </div>
+    <div class="process-list reveal">
+      <div class="process-item">
+        <div class="process-num">01</div>
+        <div><h3>Design &amp; Approval</h3><p>Send your artwork or work with us on a custom design. You approve colors and layout before anything is printed.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">02</div>
+        <div><h3>Dye-Sublimation Printing</h3><p>Designs are heat-transferred directly into the fabric fibers for permanent, colorfast results — no cracking or peeling.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">03</div>
+        <div><h3>Cut &amp; Sew</h3><p>Panels are cut to your size spec and sewn to garment-grade construction standards.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">04</div>
+        <div><h3>Quality Check</h3><p>Every batch is inspected for color accuracy, stitching, and sizing before packing.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">05</div>
+        <div><h3>Export &amp; Delivery</h3><p>Packed and shipped to your address, wholesale or bulk order.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" style="padding-bottom:70px;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Same Garment. Different Reality.</div>
+      <h2>One jersey. Every color it comes in.</h2>
+      <p style="color:var(--muted); margin-top:14px; font-size:14.5px;">This is the part most factories can't show you — the same garment, run in different colors, with the exact fabric and GSM behind each one still intact.</p>
+    </div>
+
+    <div id="featuredShowcase" class="featured-showcase reveal"></div>
+  </div>
+</section>
+
+<section id="configurator">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Design It Live</div>
+      <h2>Type. Fabric. GSM. No back-and-forth emails.</h2>
+      <p style="color:var(--muted); margin-top:14px; font-size:14.5px;">This is our actual production fabric chart — the same one our cutting floor works from. Pick a garment type and the sizes adjust to its real standard; pick a fabric and its exact GSM appears instantly, not "approximately."</p>
+    </div>
+
+    <div class="configurator reveal">
+      <div class="cfg-grid">
+        <div class="field">
+          <label>Garment Type</label>
+          <select id="cfgType"></select>
+        </div>
+        <div class="field">
+          <label>Fabric</label>
+          <select id="cfgFabric"></select>
+        </div>
+        <div class="field">
+          <label>Size</label>
+          <select id="cfgSize"></select>
+        </div>
+        <div class="field">
+          <label>Quantity</label>
+          <input type="number" id="cfgQty" min="1" placeholder="e.g. 50">
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:6px;">
+        <label>Color</label>
+        <div id="cfgColorSwatches" class="color-swatches"></div>
+      </div>
+
+      <div id="cfgGsmReadout" class="gsm-readout">Select a fabric to see its exact GSM.</div>
+
+      <a class="btn btn-primary" style="margin-top:20px; display:inline-block; cursor:pointer;" onclick="addToCart()">+ Add This Item To My Order</a>
+
+      <div id="cartBox" class="cart-box" style="display:none;"></div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why Azan Impex</div>
+      <h2>Direct from the factory, not a middleman.</h2>
+    </div>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <div class="dot" style="background:var(--cyan);"></div>
+      <h3>Factory-direct pricing</h3>
+      <p>No reseller markup — you work with the manufacturer.</p>
+    </div>
+    <div class="why-card">
+      <div class="dot" style="background:var(--magenta);"></div>
+      <h3>Full color customization</h3>
+      <p>Any design, any colorway — sublimation allows unlimited color detail.</p>
+    </div>
+    <div class="why-card">
+      <div class="dot" style="background:var(--amber);"></div>
+      <h3>Export-ready packing</h3>
+      <p>Prepared and documented for international shipping.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap reveal">
+    <div class="review-box">
+      <div class="stars">★★★★★</div>
+      <h2>Worked with us? Tell the next buyer what to expect.</h2>
+      <p>Azan Impex is growing on the strength of buyer feedback. If you've placed an order, a short review helps the next customer trust the process.</p>
+      <a href="#contact" class="btn btn-primary">Leave a Review</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid reveal">
+    <div>
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Request a quote.</h2>
+      <p style="color:var(--muted); margin-top:16px; max-width:440px;">Tell us what you need — product type, quantity, and design — and we'll follow up with pricing and lead time.</p>
+
+      <div style="margin-top:36px;">
+        <div class="contact-info-item"><div class="k">Company</div><div class="v">Azan Impex — Registered Apparel Exporter</div></div>
+        <div class="contact-info-item"><div class="k">Contact</div><div class="v">Muhammad Wajid</div></div>
+        <div class="contact-info-item"><div class="k">Email</div><div class="v">wajidali2657678@gmail.com</div></div>
+        <div class="contact-info-item"><div class="k">Phone / WhatsApp</div><div class="v">0325-0043448</div></div>
+      </div>
+      <div class="note">Every order is emailed to wajidali2657678@gmail.com AND logged as a row in your private Google Sheet — see setup steps below the form.</div>
+    </div>
+    <form id="orderForm">
+      <div class="field"><label>Name</label><input type="text" name="Name" required placeholder="Your name"></div>
+      <div class="field"><label>Email</label><input type="email" name="Email" required placeholder="you@company.com"></div>
+      <div class="field"><label>Phone / WhatsApp</label><input type="text" name="Phone" placeholder="e.g. +92 3xx xxxxxxx"></div>
+      <div id="configSummaryBox" class="field" style="display:none;">
+        <label>Your Configuration</label>
+        <div style="background:var(--ink2); border:1px solid var(--line); border-radius:3px; padding:14px 16px; font-size:13.5px; color:var(--cyan);" id="configSummaryText"></div>
+      </div>
+      <div class="field"><label>Custom Requisition / Design Details</label><textarea name="Message" id="messageField" rows="4" placeholder="Describe your design idea, custom fabric/GSM needs, or any special requirement — or use 'Build Your Order' above to select type, fabric, size &amp; color first"></textarea></div>
+      <input type="hidden" name="Product_Quantity" id="combinedProductField">
+      <input type="hidden" name="Type" id="fldType">
+      <input type="hidden" name="Fabric" id="fldFabric">
+      <input type="hidden" name="GSM" id="fldGSM">
+      <input type="hidden" name="Color" id="fldColor">
+      <input type="hidden" name="Size" id="fldSize">
+      <input type="hidden" name="Qty" id="fldQty">
+      <button type="submit" class="btn btn-primary" style="border:none; cursor:pointer;">Send Request</button>
+      <p id="formStatus" style="margin-top:14px; color:var(--cyan); font-size:12px;"></p>
+    </form>
+  </div>
+</section>
+
+<section id="how-to-order">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How To Order</div>
+      <h2>Placing an order, step by step.</h2>
+    </div>
+    <div class="process-list reveal">
+      <div class="process-item">
+        <div class="process-num">01</div>
+        <div><h3>Submit Your Request</h3><p>Fill the order form above or message directly on WhatsApp (0325-0043448) with your product, quantity, and design idea.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">02</div>
+        <div><h3>Receive a Quote</h3><p>Azan Impex reviews your request and replies with pricing, minimum quantity, and estimated lead time.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">03</div>
+        <div><h3>Confirm Design &amp; Advance</h3><p>Once you approve the design and colors, a confirmation and advance payment is arranged to start production.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">04</div>
+        <div><h3>Production &amp; Updates</h3><p>Your order moves through printing, cutting, sewing, and quality check — with progress updates on request.</p></div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">05</div>
+        <div><h3>Shipping &amp; Delivery</h3><p>Finished goods are packed and shipped to your address, with tracking details shared once dispatched.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="articles">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">From The Factory</div>
+      <h2>Notes on sublimation printing.</h2>
+    </div>
+    <div class="why-grid reveal" id="articlesGrid">
+      <div class="why-card">
+        <div class="dot" style="background:var(--cyan);"></div>
+        <h3>What makes sublimation different?</h3>
+        <p>Unlike screen printing, sublimation turns dye into a gas that bonds directly into the fabric fibers — so the design becomes part of the fabric itself, not a layer sitting on top. That's why it doesn't crack or peel with washing.</p>
+      </div>
+      <div class="why-card">
+        <div class="dot" style="background:var(--magenta);"></div>
+        <h3>Why polyester works best</h3>
+        <p>Sublimation dye bonds most effectively with polyester and polyester-blend fabrics, which is why most sports jerseys and performance wear use it — it holds vivid color while staying lightweight and breathable.</p>
+      </div>
+      <div class="why-card">
+        <div class="dot" style="background:var(--amber);"></div>
+        <h3>Planning your first order</h3>
+        <p>Most buyers start with a clear design file and a target quantity. Sharing both upfront — along with size breakdown — helps get an accurate quote faster.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="admin-panel" style="display:none; border-top:2px solid var(--amber);">
+  <div class="wrap">
+    <div class="eyebrow">Private — Order Management</div>
+    <h2 style="font-size:clamp(24px,4vw,34px);">Orders Dashboard</h2>
+    <div id="adminLoginBox" style="max-width:360px; margin-top:24px;">
+      <div class="field"><label>Admin Key</label><input type="password" id="adminKeyInput" placeholder="Enter your admin key"></div>
+      <a class="btn btn-primary" style="cursor:pointer;" onclick="loadOrders()">View Orders</a>
+      <p id="adminMsg" style="margin-top:12px; font-size:12.5px; color:var(--muted);"></p>
+    </div>
+    <div id="adminFilterBox" style="display:none; margin-top:20px; max-width:260px;">
+      <div class="field"><label>Filter By Status</label>
+        <select id="statusFilter" onchange="applyStatusFilter()">
+          <option value="all">All Orders</option>
+          <option value="running">Running (not yet delivered)</option>
+          <option value="finished">Finished (delivered)</option>
+        </select>
+      </div>
+    </div>
+    <div id="adminOrdersTable" style="margin-top:30px; overflow-x:auto;"></div>
+  </div>
+</section>
+
+<div id="imageLightbox" class="lightbox-overlay" onclick="if(event.target===this) closeImageLightbox()">
+  <span class="lightbox-close" onclick="closeImageLightbox()">✕</span>
+  <img id="lightboxImg" src="" alt="Product photo">
+</div>
+
+<footer>
+  <div class="wrap">Azan Impex — Registered Apparel Export Business · Founded by Muhammad Wajid</div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  els.forEach(el=>obs.observe(el));
+
+  // ---------- Real Production Data ----------
+  // Fabric name -> exact GSM (from production fabric chart; deprecated "DO NOT USE" fabrics excluded)
+  const FABRICS = [
+    {name:'5-HOLE MESH', gsm:100},
+    {name:'DAZZLE MESH', gsm:170},
+    {name:'FRENCH RIB', gsm:300},
+    {name:'HEAVY JERSEY', gsm:280},
+    {name:'JERSEY', gsm:290},
+    {name:'KOREAN SHESHA', gsm:60},
+    {name:'LT-280', gsm:280},
+    {name:'MICRO DOT', gsm:145},
+    {name:'MICRO INTERLOCK', gsm:140},
+    {name:'MICRO JACQUARD MESH', gsm:145},
+    {name:'MICRO MESH DULL', gsm:115},
+    {name:'MICRO PQ CRICKET (CARD 369)', gsm:170},
+    {name:'MICRO SPEEDO RAISED CRICKET CARD 368', gsm:220},
+    {name:'MICRO SPEEDO WITHOUT RAISED CRICKET CARD 371', gsm:240},
+    {name:'MICRO SPEEDO WITHOUT RAISED JOHN CARD 196', gsm:310},
+    {name:'NEO PRENE', gsm:450},
+    {name:'NORWALK INNER TIGHT CARD 362', gsm:175},
+    {name:'PIN HOLE MESH OAKLAND HEAVY', gsm:140},
+    {name:'POLYESTER TRICOT - LYCRA', gsm:200},
+    {name:'POLYNIX TWILL', gsm:200},
+    {name:'PROTECH', gsm:250},
+    {name:'Q SAN JOSE CARD 351', gsm:120},
+    {name:'SPANDEX TASLAN RIP STOP', gsm:200},
+    {name:'THT-951', gsm:260},
+    {name:'THT-952', gsm:310},
+    {name:'WS 1808022 FABRIC CRICKET CARD 370', gsm:145},
+  ];
+
+  // Garment type -> size category
+  const TYPES = [
+    {name:'BASKETBALL SHORT', cat:'bottom'}, {name:'BASKETBALL VEST', cat:'top'},
+    {name:'BIBS', cat:'bottom'}, {name:'BONNIE HAT', cat:'headwear'},
+    {name:'FOOTBALL SHORT', cat:'bottom'}, {name:'HAT', cat:'headwear'},
+    {name:'HOODIE', cat:'top'}, {name:'JACKET', cat:'top'}, {name:'JERSEY', cat:'top'},
+    {name:'LOGO', cat:'accessory'}, {name:'MID LAYER', cat:'top'}, {name:'NETBALL SHIRT', cat:'top'},
+    {name:'PANT', cat:'bottom'}, {name:'POLO', cat:'top'}, {name:'REVERSIBLE HAT', cat:'headwear'},
+    {name:'RUGBY SHIRT', cat:'top'}, {name:'RUGBY SHORT', cat:'bottom'}, {name:'SHIRT', cat:'top'},
+    {name:'SHORT', cat:'bottom'}, {name:'SINGLET', cat:'top'}, {name:'SWIMMING TRUNK', cat:'bottom'},
+    {name:'TRACK TOP', cat:'top'}, {name:'TROUSER', cat:'bottom'}, {name:'TRUNK', cat:'bottom'},
+    {name:'VEST', cat:'top'},
+  ];
+
+  // World-standard size sets per garment category
+  const SIZE_SETS = {
+    top: ['S','M','L','XL','XXL','3XL'],
+    bottom: ['S','M','L','XL','XXL','3XL'],
+    headwear: ['One Size','S/M','L/XL'],
+    accessory: ['N/A'],
+  };
+
+  const COLORS = [
+    {name:'Red', hex:'#d21f3c'}, {name:'Royal Blue', hex:'#1e4fd8'}, {name:'Black', hex:'#101318'},
+    {name:'White', hex:'#f4f6f8'}, {name:'Green', hex:'#1f8a4c'}, {name:'Yellow', hex:'#ffce1f'},
+    {name:'Orange', hex:'#ff7a1f'}, {name:'Navy', hex:'#152452'}, {name:'Maroon', hex:'#7a1f2b'},
+    {name:'Sky Blue', hex:'#3fb6ff'},
+  ];
+
+  // Real colorways across multiple garment types — fabric picked to match how each garment
+  // is actually made (Pique for polos, heavier weight for hoodies, lightweight mesh for vests, etc).
+  // These are DEFAULTS shown until your "Products" sheet tab has rows — once it does, those replace this list automatically.
+  const DEFAULT_PRODUCTS = [
+    { color:'Red', hex:'#d21f3c', type:'JERSEY', fabric:'MICRO INTERLOCK', gsm:140, image:'' },
+    { color:'Royal Blue', hex:'#1e4fd8', type:'JERSEY', fabric:'MICRO INTERLOCK', gsm:140, image:'' },
+    { color:'Black', hex:'#101318', type:'JERSEY', fabric:'MICRO INTERLOCK', gsm:140, image:'' },
+    { color:'Red', hex:'#d21f3c', type:'SHORT', fabric:'MICRO INTERLOCK', gsm:140, image:'' },
+    { color:'Black', hex:'#101318', type:'SHORT', fabric:'MICRO INTERLOCK', gsm:140, image:'' },
+    { color:'Navy', hex:'#152452', type:'SHORT', fabric:'MICRO INTERLOCK', gsm:140, image:'' },
+    { color:'Black', hex:'#101318', type:'HOODIE', fabric:'HEAVY JERSEY', gsm:280, image:'' },
+    { color:'Navy', hex:'#152452', type:'HOODIE', fabric:'HEAVY JERSEY', gsm:280, image:'' },
+    { color:'White', hex:'#f4f6f8', type:'POLO', fabric:'MICRO PQ CRICKET (CARD 369)', gsm:170, image:'' },
+    { color:'Sky Blue', hex:'#3fb6ff', type:'POLO', fabric:'MICRO PQ CRICKET (CARD 369)', gsm:170, image:'' },
+    { color:'Royal Blue', hex:'#1e4fd8', type:'TRACK TOP', fabric:'POLYNIX TWILL', gsm:200, image:'' },
+    { color:'Black', hex:'#101318', type:'TRACK TOP', fabric:'POLYNIX TWILL', gsm:200, image:'' },
+    { color:'Green', hex:'#1f8a4c', type:'VEST', fabric:'5-HOLE MESH', gsm:100, image:'' },
+    { color:'Black', hex:'#101318', type:'JACKET', fabric:'PROTECH', gsm:250, image:'' },
+  ];
+  let PRODUCTS = DEFAULT_PRODUCTS.slice();
+
+  // ---------- Colorway Showcase ----------
+  let fsIndex = 0, fsTimer = null;
+  function sizesForType(typeName){
+    const t = TYPES.find(x=>x.name===typeName);
+    const cat = t ? t.cat : 'top';
+    const set = SIZE_SETS[cat];
+    return set[0] + '–' + set[set.length-1];
+  }
+  function displayTypeName(type){
+    const map = {
+      JERSEY:'Match Jersey', SHORT:'Team Short', HOODIE:'Pullover Hoodie',
+      POLO:'Team Polo', 'TRACK TOP':'Track Top', VEST:'Performance Vest', JACKET:'Team Jacket'
+    };
+    return map[type] || type;
+  }
+  function renderFeatured(){
+    const el = document.getElementById('featuredShowcase');
+    if(!PRODUCTS.length){ el.innerHTML = ''; return; }
+    const c = PRODUCTS[fsIndex % PRODUCTS.length];
+    const visual = c.image
+      ? `<img src="${c.image}" class="fs-photo" alt="${c.type} ${c.color}" onclick="openImageLightbox('${c.image}')">`
+      : `<span class="colorway-dot" style="width:90px;height:90px;background:${c.hex||'#888'};"></span>`;
+    el.innerHTML = `
+      <div class="fs-inner" id="fsInner">
+        ${visual}
+        <div>
+          <div class="fs-tag">${c.type} · ${c.color} Colorway</div>
+          <div class="fs-name">Sublimation ${displayTypeName(c.type)} — ${c.color}</div>
+          <div class="fs-specs"><b>${c.fabric}</b> · ${c.gsm} GSM · Sizes ${sizesForType(c.type)}</div>
+        </div>
+        <a class="btn btn-outline" style="padding:12px 22px; font-size:11px;" onclick="useColorwayInConfigurator(${fsIndex % PRODUCTS.length})">Configure This →</a>
+      </div>
+      <div class="fs-dots">
+        ${PRODUCTS.map((_,i)=>`<span class="fs-dot ${i===(fsIndex % PRODUCTS.length)?'active':''}" onclick="setFeatured(${i})"></span>`).join('')}
+      </div>`;
+  }
+  function setFeatured(i){
+    const inner = document.getElementById('fsInner');
+    if(inner) inner.classList.add('fading');
+    setTimeout(()=>{ fsIndex = i; renderFeatured(); }, 200);
+  }
+  function cycleFeatured(){ setFeatured((fsIndex+1) % PRODUCTS.length); }
+
+  function useColorwayInConfigurator(i){
+    const c = PRODUCTS[i];
+    document.getElementById('configurator').scrollIntoView({behavior:'smooth'});
+    setTimeout(()=>{
+      document.getElementById('cfgType').value = c.type;
+      onTypeChange();
+      document.getElementById('cfgFabric').value = c.fabric;
+      onFabricChange();
+      selectSwatchByName(c.color);
+    }, 400);
+  }
+
+  // Pull your own products from the "Products" tab of your Google Sheet (columns: Type, Fabric, GSM, Color, Hex, ImageURL).
+  // Add a row any time — the site picks it up on next load. Paste real photo links in ImageURL for real product photography.
+  async function fetchProducts(){
+    if(!GOOGLE_SHEET_WEBHOOK_URL || GOOGLE_SHEET_WEBHOOK_URL === "GOOGLE_SHEET_WEBHOOK_URL") return;
+    try{
+      const res = await fetch(GOOGLE_SHEET_WEBHOOK_URL + '?action=products');
+      const data = await res.json();
+      if(Array.isArray(data) && data.length){
+        PRODUCTS = data.map(r=>({
+          type:r.Type||'JERSEY', fabric:r.Fabric||'MICRO INTERLOCK', gsm:r.GSM||'', color:r.Color||'Custom',
+          hex:r.Hex||'#888888', image:r.ImageURL||''
+        }));
+        fsIndex = 0;
+        renderFeatured();
+      }
+    }catch(err){ /* keep showing defaults if the sheet isn't reachable */ }
+  }
+
+  // ---------- Configurator ----------
+  function populateConfigurator(){
+    const typeSel = document.getElementById('cfgType');
+    typeSel.innerHTML = TYPES.map(t=>`<option value="${t.name}">${t.name}</option>`).join('');
+
+    const fabricSel = document.getElementById('cfgFabric');
+    fabricSel.innerHTML = FABRICS.map(f=>`<option value="${f.name}">${f.name} (${f.gsm} GSM)</option>`).join('');
+
+    const swatchEl = document.getElementById('cfgColorSwatches');
+    swatchEl.innerHTML = COLORS.map(c=>`<span class="swatch" style="background:${c.hex};" title="${c.name}" data-name="${c.name}" onclick="selectSwatch(this)"></span>`).join('')
+      + `<span class="swatch" data-custom="1" title="Custom Color" onclick="selectSwatch(this)"></span>`;
+
+    onTypeChange();
+    onFabricChange();
+  }
+
+  function onTypeChange(){
+    const type = document.getElementById('cfgType').value;
+    const t = TYPES.find(x=>x.name===type);
+    const sizeSel = document.getElementById('cfgSize');
+    const sizes = SIZE_SETS[t ? t.cat : 'top'];
+    sizeSel.innerHTML = sizes.map(s=>`<option value="${s}">${s}</option>`).join('');
+  }
+  document.addEventListener('change', function(e){ if(e.target.id === 'cfgType') onTypeChange(); });
+
+  function onFabricChange(){
+    const name = document.getElementById('cfgFabric').value;
+    const f = FABRICS.find(x=>x.name===name);
+    const readout = document.getElementById('cfgGsmReadout');
+    if(f) readout.innerHTML = `<b>${f.gsm} GSM</b> — exact fabric weight for ${f.name}.`;
+  }
+  document.addEventListener('change', function(e){ if(e.target.id === 'cfgFabric') onFabricChange(); });
+
+  let selectedColor = '';
+  function selectSwatch(el){
+    document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedColor = el.dataset.custom ? 'Custom (see message)' : el.dataset.name;
+  }
+  function selectSwatchByName(name){
+    const el = Array.from(document.querySelectorAll('.swatch')).find(s=>s.dataset.name===name);
+    if(el) selectSwatch(el);
+  }
+
+  // ---------- Multi-item cart: customer can add several garments (types/fabrics/colors/sizes) to one order ----------
+  let cart = [];
+
+  function addToCart(){
+    const type = document.getElementById('cfgType').value;
+    const fabric = document.getElementById('cfgFabric').value;
+    const f = FABRICS.find(x=>x.name===fabric);
+    const gsm = f ? f.gsm : '';
+    const size = document.getElementById('cfgSize').value;
+    const qty = document.getElementById('cfgQty').value;
+    const color = selectedColor || 'Not selected';
+
+    cart.push({ type, fabric, gsm, size, qty, color });
+    renderCart();
+
+    // Reset quantity + color for the next item; type/fabric/size stay so similar items are quick to add
+    document.getElementById('cfgQty').value = '';
+    document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('selected'));
+    selectedColor = '';
+
+    document.getElementById('cfgGsmReadout').innerHTML =
+      `<b>Added to your order (${cart.length} item${cart.length>1?'s':''} so far).</b> Change type/fabric/size/color to add a different item, or review your order below.`;
+  }
+
+  function removeFromCart(i){
+    cart.splice(i,1);
+    renderCart();
+  }
+
+  function renderCart(){
+    const box = document.getElementById('cartBox');
+    if(!cart.length){ box.style.display = 'none'; box.innerHTML=''; return; }
+    box.style.display = 'block';
+    const totalQty = cart.reduce((s,c)=> s + (parseInt(c.qty)||0), 0);
+    box.innerHTML = `
+      <div class="eyebrow" style="margin-bottom:6px;">Your Order — ${cart.length} item${cart.length>1?'s':''}${totalQty?' · '+totalQty+' pcs total':''}</div>
+      ${cart.map((c,i)=>`
+        <div class="cart-line">
+          <span>${i+1}. ${c.type} — ${c.fabric} (${c.gsm} GSM) — ${c.color} — Size ${c.size}${c.qty?' — Qty '+c.qty:''}</span>
+          <span class="cart-remove" onclick="removeFromCart(${i})">✕</span>
+        </div>`).join('')}
+      <a class="btn btn-primary" style="margin-top:16px; cursor:pointer;" onclick="reviewCartOrder()">Review &amp; Send This Order →</a>`;
+  }
+
+  function reviewCartOrder(){
+    if(!cart.length) return;
+    const summary = cart.map((c,i)=>`${i+1}. ${c.type} — ${c.fabric} (${c.gsm} GSM) — Color: ${c.color} — Size: ${c.size}${c.qty?' — Qty: '+c.qty:''}`).join('\n');
+    const totalQty = cart.reduce((s,c)=> s + (parseInt(c.qty)||0), 0);
+    const multi = cart.length > 1;
+
+    document.getElementById('combinedProductField').value = summary;
+    document.getElementById('fldType').value = multi ? `Multiple (${cart.length} items)` : cart[0].type;
+    document.getElementById('fldFabric').value = multi ? 'Multiple — see breakdown' : cart[0].fabric;
+    document.getElementById('fldGSM').value = multi ? 'Multiple' : cart[0].gsm;
+    document.getElementById('fldColor').value = multi ? 'Multiple — see breakdown' : cart[0].color;
+    document.getElementById('fldSize').value = multi ? 'Multiple — see breakdown' : cart[0].size;
+    document.getElementById('fldQty').value = totalQty || (multi ? '' : cart[0].qty);
+
+    document.getElementById('configSummaryText').textContent = summary;
+    document.getElementById('configSummaryBox').style.display = 'block';
+    document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+  }
+
+  // ---------- Articles (dynamic, from "Articles" sheet tab: columns Title, Body) ----------
+  async function fetchArticles(){
+    if(!GOOGLE_SHEET_WEBHOOK_URL || GOOGLE_SHEET_WEBHOOK_URL === "GOOGLE_SHEET_WEBHOOK_URL") return;
+    try{
+      const res = await fetch(GOOGLE_SHEET_WEBHOOK_URL + '?action=articles');
+      const data = await res.json();
+      if(Array.isArray(data) && data.length){
+        const dots = ['cyan','magenta','amber'];
+        document.getElementById('articlesGrid').innerHTML = data.map((a,i)=>`
+          <div class="why-card">
+            <div class="dot" style="background:var(--${dots[i%3]});"></div>
+            <h3>${a.Title||''}</h3>
+            <p>${a.Body||''}</p>
+          </div>`).join('');
+      }
+    }catch(err){ /* keep showing default articles if the sheet isn't reachable */ }
+  }
+
+  function openImageLightbox(url){
+    document.getElementById('lightboxImg').src = url;
+    document.getElementById('imageLightbox').classList.add('open');
+  }
+  function closeImageLightbox(){
+    document.getElementById('imageLightbox').classList.remove('open');
+  }
+
+  renderFeatured();
+  populateConfigurator();
+  fsTimer = setInterval(cycleFeatured, 4500);
+</script>
+
+<script>
+  // Follow the "One-Time Setup" steps on the page, then paste your Apps Script
+  // Web App URL below in place of GOOGLE_SHEET_WEBHOOK_URL.
+  const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwavCJhUBCAtNR8wLkA10YXnbU26_OWcKK6cXuvD5OYQDN8SXoTrhBy4U5XCRYX0c2inA/exec";
+  const BUSINESS_EMAIL = "wajidali2657678@gmail.com";
+
+  fetchProducts();
+  fetchArticles();
+
+  const orderForm = document.getElementById('orderForm');
+  if(orderForm){
+    orderForm.addEventListener('submit', async function(e){
+      e.preventDefault();
+      const statusEl = document.getElementById('formStatus');
+      statusEl.textContent = 'Sending...';
+      const formData = new FormData(orderForm);
+      const baseFields = {
+        Name: formData.get('Name') || '',
+        Email: formData.get('Email') || '',
+        Phone: formData.get('Phone') || '',
+        Message: formData.get('Message') || ''
+      };
+
+      // 1) Log to Google Sheet — one row PER ITEM, all sharing the same Ticket so they read as one order
+      let ticket = '';
+      const sheetReady = GOOGLE_SHEET_WEBHOOK_URL && GOOGLE_SHEET_WEBHOOK_URL !== "GOOGLE_SHEET_WEBHOOK_URL";
+      if(sheetReady){
+        try{
+          const items = cart.length ? cart : [{
+            type: formData.get('Type') || '', fabric: formData.get('Fabric') || '',
+            gsm: formData.get('GSM') || '', color: formData.get('Color') || '',
+            size: formData.get('Size') || '', qty: formData.get('Qty') || ''
+          }];
+          for(const item of items){
+            const payload = Object.assign({}, baseFields, {
+              Type: item.type, Fabric: item.fabric, GSM: item.gsm,
+              Color: item.color, Size: item.size, Qty: item.qty
+            });
+            if(ticket) payload.Ticket = ticket; // reuse the first item's ticket for every following row
+            const sheetRes = await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+              method: 'POST',
+              body: JSON.stringify(payload),
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+            });
+            const sheetData = await sheetRes.json();
+            if(!ticket) ticket = sheetData.ticket || '';
+          }
+        }catch(err){ /* sheet logging is best-effort; email still sends below */ }
+      }
+
+      // 2) Email the order via FormSubmit (one summary email, no signup needed)
+      try{
+        await fetch('https://formsubmit.co/ajax/' + BUSINESS_EMAIL, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+        statusEl.style.color = 'var(--cyan)';
+        statusEl.textContent = ticket
+          ? `Thanks — your order has been received! Your ticket: ${ticket}`
+          : 'Thanks — your order request has been received!';
+        orderForm.reset();
+        document.getElementById('configSummaryBox').style.display = 'none';
+        cart = [];
+        renderCart();
+      }catch(err){
+        statusEl.style.color = 'var(--magenta)';
+        statusEl.textContent = 'Something went wrong. Please WhatsApp us directly at 0325-0043448.';
+      }
+    });
+  }
+
+  // ---------- Private Admin Dashboard (not linked anywhere in the nav or page) ----------
+  // Open the site with ?admin=1 at the end of the URL to reveal this section.
+  if(location.search.includes('admin=1')){
+    document.getElementById('admin-panel').style.display = 'block';
+  }
+
+  let allOrders = [];
+  let currentAdminKey = '';
+
+  async function loadOrders(){
+    const key = document.getElementById('adminKeyInput').value;
+    const msg = document.getElementById('adminMsg');
+    msg.textContent = 'Loading...';
+    try{
+      const res = await fetch(GOOGLE_SHEET_WEBHOOK_URL + '?action=orders&key=' + encodeURIComponent(key));
+      const data = await res.json();
+      if(data.error){ msg.textContent = 'Incorrect key or no access.'; return; }
+      msg.textContent = '';
+      allOrders = data;
+      currentAdminKey = key;
+      document.getElementById('adminFilterBox').style.display = data.length ? 'block' : 'none';
+      renderOrdersTable(allOrders, key);
+    }catch(err){ msg.textContent = 'Could not load orders — check your connection.'; }
+  }
+
+  function applyStatusFilter(){
+    const filter = document.getElementById('statusFilter').value;
+    let filtered = allOrders;
+    if(filter === 'running') filtered = allOrders.filter(o => o.Status !== 'Delivered');
+    if(filter === 'finished') filtered = allOrders.filter(o => o.Status === 'Delivered');
+    renderOrdersTable(filtered, currentAdminKey);
+  }
+
+  function renderOrdersTable(orders, key){
+    const el = document.getElementById('adminOrdersTable');
+    if(!orders.length){ el.innerHTML = '<p style="color:var(--muted);">No orders match this filter.</p>'; return; }
+    const sorted = orders.slice().reverse(); // newest first
+    const statuses = ['Received','Confirmed','In Production','Shipped','Delivered'];
+    let prevTicket = null;
+    const rows = sorted.map(o => {
+      const sameGroup = o.Ticket === prevTicket;
+      prevTicket = o.Ticket;
+      return `
+        <tr style="${sameGroup ? '' : 'border-top:2px solid var(--cyan);'}">
+          <td class="ticket-badge">${sameGroup ? '' : (o.Ticket||'')}</td>
+          <td>${sameGroup ? '' : (o.Timestamp||'')}</td>
+          <td>${sameGroup ? '' : (o.Name||'')}</td>
+          <td>${sameGroup ? '' : (o.Email||'')+'<br>'+(o.Phone||'')}</td>
+          <td>${o.Type||''}</td>
+          <td>${o.Fabric||''}</td>
+          <td>${o.GSM||''}</td>
+          <td>${o.Color||''}</td>
+          <td>${o.Size||''}</td>
+          <td>${o.Qty||''}</td>
+          <td style="max-width:200px;">${o.Message||''}</td>
+          <td>
+            <select onchange="updateOrderStatus('${o.Ticket}', this.value, '${key}')">
+              ${statuses.map(s=>`<option value="${s}" ${s===o.Status?'selected':''}>${s}</option>`).join('')}
+            </select>
+          </td>
+        </tr>`;
+    }).join('');
+    el.innerHTML = `<p style="color:var(--cyan); font-size:13px; margin-bottom:14px;"><b>${orders.length}</b> line item${orders.length===1?'':'s'} shown — a cyan top border marks where each order starts</p>
+      <table class="admin-table"><thead><tr>
+      <th>Ticket</th><th>Date</th><th>Name</th><th>Contact</th><th>Type</th><th>Fabric</th><th>GSM</th><th>Color</th><th>Size</th><th>Qty</th><th>Message</th><th>Status</th>
+      </tr></thead><tbody>${rows}</tbody></table>`;
+  }
+
+  async function updateOrderStatus(ticket, status, key){
+    try{
+      await fetch(GOOGLE_SHEET_WEBHOOK_URL + '?action=updateStatus&key=' + encodeURIComponent(key) + '&ticket=' + encodeURIComponent(ticket) + '&status=' + encodeURIComponent(status));
+      allOrders.forEach(o => { if(o.Ticket === ticket) o.Status = status; });
+    }catch(err){ alert('Could not update status — check your connection.'); }
+  }
+</script>
+
+</body>
+</html>
