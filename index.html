@@ -1,66 +1,3 @@
-function handleInquirySubmit(e) {
-  e.preventDefault();
-  const name = document.getElementById('custName').value;
-  const company = document.getElementById('custCompany').value;
-  const email = document.getElementById('custEmail').value;
-  const phone = document.getElementById('custPhone').value;
-  const notes = document.getElementById('custNotes').value;
-
-  const orderId = `AZ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
-  const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
-
-  let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') : 'Custom Inquiry Request';
-
-  // 10-Tab Relational Google Sheet Payload
-  const payload = {
-    orderId: orderId,
-    date: now,
-    name: name,
-    company: company || '',
-    email: email,
-    phone: phone,
-    country: 'Global / Export',
-    notes: notes || '',
-    itemCount: cart.length || 1,
-    items: itemSummary,
-    itemsList: cart.map(c => ({
-      sku: c.sku,
-      qty: c.qty,
-      fabric: c.fabric,
-      size: c.size
-    }))
-  };
-
-  // Google Sheet par Data Send karna
-  if (typeof GOOGLE_SHEET_WEBHOOK_URL !== 'undefined' && GOOGLE_SHEET_WEBHOOK_URL !== "") {
-    fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload)
-    });
-  }
-
-  // Local Admin Dashboard logging
-  const newOrder = {
-    id: orderId,
-    date: now,
-    name: `${name} ${company ? '(' + company + ')' : ''}`,
-    contact: `${email}\n${phone}`,
-    items: itemSummary,
-    notes: notes || 'No additional notes',
-    status: 'New',
-    updatedBy: 'Customer Submission'
-  };
-
-  adminOrders.unshift(newOrder);
-  renderAdminOrders();
-
-  document.getElementById('formStatus').textContent = `Requisition Received! Your Order Ticket: ${orderId}`;
-  document.getElementById('orderForm').reset();
-  cart = [];
-  updateCartUI();
-}
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
@@ -1781,5 +1718,74 @@ function handleInquirySubmit(e) {
     renderProducts(PRODUCTS);
     renderAdminOrders();
   </script>
+<script>
+  // 1. Wahan Google Apps Script ka Web App Exec Link dalein (Sheet ka link nahi)
+  const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/YOUR_EXEC_KEY_HERE/exec";
+
+  // 2. Form Submission Handler
+  function handleInquirySubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('custName').value;
+    const company = document.getElementById('custCompany').value;
+    const email = document.getElementById('custEmail').value;
+    const phone = document.getElementById('custPhone').value;
+    const notes = document.getElementById('custNotes').value;
+
+    const orderId = `AZ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+    const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
+
+    let itemSummary = typeof cart !== 'undefined' && cart.length > 0 
+      ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') 
+      : 'Custom Inquiry Request';
+
+    const payload = {
+      orderId: orderId,
+      date: now,
+      name: name,
+      company: company || '',
+      email: email,
+      phone: phone,
+      country: 'Global / Export',
+      notes: notes || '',
+      itemCount: typeof cart !== 'undefined' ? cart.length || 1 : 1,
+      items: itemSummary,
+      itemsList: typeof cart !== 'undefined' ? cart.map(c => ({
+        sku: c.sku,
+        qty: c.qty,
+        fabric: c.fabric,
+        size: c.size
+      })) : []
+    };
+
+    // Google Sheet Par Data Send Karna
+    if (GOOGLE_SHEET_WEBHOOK_URL && GOOGLE_SHEET_WEBHOOK_URL.includes("script.google.com")) {
+      fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+    }
+
+    // Local Admin Dashboard Update
+    if (typeof adminOrders !== 'undefined') {
+      adminOrders.unshift({
+        id: orderId,
+        date: now,
+        name: `${name} ${company ? '(' + company + ')' : ''}`,
+        contact: `${email}\n${phone}`,
+        items: itemSummary,
+        notes: notes || 'No additional notes',
+        status: 'New',
+        updatedBy: 'Customer Submission'
+      });
+      if (typeof renderAdminOrders === 'function') renderAdminOrders();
+    }
+
+    document.getElementById('formStatus').textContent = `Requisition Received! Your Order Ticket: ${orderId}`;
+    document.getElementById('orderForm').reset();
+    if (typeof cart !== 'undefined') { cart = []; if (typeof updateCartUI === 'function') updateCartUI(); }
+  }
+</script>
 </body>
 </html>
