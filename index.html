@@ -1,12 +1,58 @@
-handleInquirySubmit(// Google Sheet mein Data Send karne ke liye
-fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-  method: 'POST',
-  mode: 'no-cors',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(newOrder)
-}).then(() => {
-  console.log("Order logged to Google Sheet successfully!");
-});)
+function handleInquirySubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('custName').value;
+  const company = document.getElementById('custCompany').value;
+  const email = document.getElementById('custEmail').value;
+  const phone = document.getElementById('custPhone').value;
+  const notes = document.getElementById('custNotes').value;
+
+  const orderId = `AZ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+  const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
+
+  let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') : 'Custom Inquiry Request';
+
+  // Google Sheet Data Payload
+  const payload = {
+    orderId: orderId,
+    date: now,
+    name: name,
+    company: company || '',
+    email: email,
+    phone: phone,
+    items: itemSummary,
+    notes: notes || ''
+  };
+
+  // Google Sheet par Data Bhejna
+  if (typeof GOOGLE_SHEET_WEBHOOK_URL !== 'undefined' && GOOGLE_SHEET_WEBHOOK_URL !== "") {
+    fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+  }
+
+  // Local Admin Dashboard
+  const newOrder = {
+    id: orderId,
+    date: now,
+    name: `${name} ${company ? '(' + company + ')' : ''}`,
+    contact: `${email}\n${phone}`,
+    items: itemSummary,
+    notes: notes || 'No additional notes',
+    status: 'New',
+    updatedBy: 'Customer Submission'
+  };
+
+  adminOrders.unshift(newOrder);
+  renderAdminOrders();
+
+  document.getElementById('formStatus').textContent = `Requisition Received! Your Order Ticket: ${orderId}`;
+  document.getElementById('orderForm').reset();
+  cart = [];
+  updateCartUI();
+}
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
