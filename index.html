@@ -1,4 +1,12 @@
-handleInquirySubmit(const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxZ_T6YRAI0MlWMZTFaBNmYU1wrax611QrPgLZGvrQmPwiJjPhEBaxAZuLu7Y6jdeHY/exec";)
+handleInquirySubmit(// Google Sheet mein Data Send karne ke liye
+fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+  method: 'POST',
+  mode: 'no-cors',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(newOrder)
+}).then(() => {
+  console.log("Order logged to Google Sheet successfully!");
+});)
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
