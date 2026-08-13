@@ -11,7 +11,7 @@ function handleInquirySubmit(e) {
 
   let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') : 'Custom Inquiry Request';
 
-  // Google Sheet Data Payload
+  // 10-Tab Relational Google Sheet Payload
   const payload = {
     orderId: orderId,
     date: now,
@@ -19,11 +19,19 @@ function handleInquirySubmit(e) {
     company: company || '',
     email: email,
     phone: phone,
+    country: 'Global / Export',
+    notes: notes || '',
+    itemCount: cart.length || 1,
     items: itemSummary,
-    notes: notes || ''
+    itemsList: cart.map(c => ({
+      sku: c.sku,
+      qty: c.qty,
+      fabric: c.fabric,
+      size: c.size
+    }))
   };
 
-  // Google Sheet par Data Bhejna
+  // Google Sheet par Data Send karna
   if (typeof GOOGLE_SHEET_WEBHOOK_URL !== 'undefined' && GOOGLE_SHEET_WEBHOOK_URL !== "") {
     fetch(GOOGLE_SHEET_WEBHOOK_URL, {
       method: 'POST',
@@ -33,7 +41,7 @@ function handleInquirySubmit(e) {
     });
   }
 
-  // Local Admin Dashboard
+  // Local Admin Dashboard logging
   const newOrder = {
     id: orderId,
     date: now,
