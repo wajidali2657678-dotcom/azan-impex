@@ -589,12 +589,26 @@
 
     .product-specs-preview {
       display: flex;
-      gap: 12px;
+      justify-content: space-between;
       font-size: 0.78rem;
       color: var(--text-muted);
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       padding-top: 10px;
       border-top: 1px dashed var(--border-subtle);
+    }
+
+    .size-select-wrap {
+      margin-bottom: 16px;
+    }
+
+    .size-select-wrap label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold-main);
+      font-weight: 700;
+      margin-bottom: 4px;
     }
 
     .product-actions-row {
@@ -974,7 +988,7 @@
       <div class="section-header">
         <div class="section-eyebrow">92-GARMENT DATABASE</div>
         <h2 class="section-title">SUBLIMATION PRODUCT CATALOGUE</h2>
-        <p class="section-desc">Browse our full range of sublimated sports apparel. Add items to your Requisition Cart to request bulk pricing and samples.</p>
+        <p class="section-desc">Browse our full range of sublimated sports apparel. Select your desired size and add items to your Requisition Cart.</p>
       </div>
 
       <!-- FILTER & SEARCH BAR -->
@@ -1001,45 +1015,61 @@
     </div>
   </section>
 
-  <!-- CUSTOM KIT BUILDER -->
+  <!-- CUSTOM KIT BUILDER WITH SIZE FILTER -->
   <section id="custom-builder" style="padding:90px 0; background:var(--navy-dark); border-top:1px solid var(--border-subtle);">
     <div class="container">
       <div class="section-header text-center">
         <div class="section-eyebrow">CUSTOM MANUFACTURING</div>
         <h2 class="section-title">REQUISITION YOUR CUSTOM TEAM KIT</h2>
-        <p class="section-desc">Select your desired sport, fabric weight, and quantities for direct factory dispatch.</p>
+        <p class="section-desc">Select your desired sport, fabric weight, size ratio, and quantities for direct factory dispatch.</p>
       </div>
 
-      <div style="background:var(--navy-card); border:1px solid var(--border-strong); padding:40px; border-radius:var(--radius-lg); max-width:800px; margin:0 auto;">
+      <div style="background:var(--navy-card); border:1px solid var(--border-strong); padding:40px; border-radius:var(--radius-lg); max-width:850px; margin:0 auto;">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;">
           <div class="form-group">
             <label>Sport Category</label>
             <select class="form-control" id="builderSport">
-              <option>Baseball</option>
-              <option>Basketball</option>
-              <option>Soccer / Football</option>
-              <option>Rugby</option>
-              <option>Cricket</option>
-              <option>Volleyball</option>
-              <option>Tracksuit / Outerwear</option>
+              <option value="Baseball">Baseball</option>
+              <option value="Basketball">Basketball</option>
+              <option value="Soccer / Football">Soccer / Football</option>
+              <option value="Rugby">Rugby</option>
+              <option value="Cricket">Cricket</option>
+              <option value="Volleyball">Volleyball</option>
+              <option value="Tracksuit / Outerwear">Tracksuit / Outerwear</option>
             </select>
           </div>
 
           <div class="form-group">
             <label>Preferred Fabric Construction</label>
             <select class="form-control" id="builderFabric">
-              <option>Micro Interlock (140 GSM)</option>
-              <option>Micro PQ Cricket (170 GSM)</option>
-              <option>Dazzle Mesh (170 GSM)</option>
-              <option>Heavy Jersey (280 GSM)</option>
-              <option>Polynix Twill (200 GSM)</option>
+              <option value="Micro Interlock (140 GSM)">Micro Interlock (140 GSM)</option>
+              <option value="Micro PQ Cricket (170 GSM)">Micro PQ Cricket (170 GSM)</option>
+              <option value="Dazzle Mesh (170 GSM)">Dazzle Mesh (170 GSM)</option>
+              <option value="Heavy Jersey (280 GSM)">Heavy Jersey (280 GSM)</option>
+              <option value="Polynix Twill (200 GSM)">Polynix Twill (200 GSM)</option>
             </select>
           </div>
         </div>
 
-        <div class="form-group">
-          <label>Estimated Total Quantity (Pcs)</label>
-          <input type="number" class="form-control" id="builderQty" placeholder="e.g. 50" value="50">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;">
+          <div class="form-group">
+            <label>Select Size / Size Ratio</label>
+            <select class="form-control" id="builderSize">
+              <option value="Mixed Size Breakdown (S-3XL)">Mixed Size Breakdown (S to 3XL)</option>
+              <option value="Small (S)">Small (S)</option>
+              <option value="Medium (M)">Medium (M)</option>
+              <option value="Large (L)">Large (L)</option>
+              <option value="Extra Large (XL)">Extra Large (XL)</option>
+              <option value="2XL">2XL</option>
+              <option value="3XL">3XL</option>
+              <option value="Custom Ratio (Specify in Notes)">Custom Ratio Breakdown</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Estimated Total Quantity (Pcs)</label>
+            <input type="number" class="form-control" id="builderQty" placeholder="e.g. 50" value="50">
+          </div>
         </div>
 
         <button class="btn btn-whatsapp" style="width:100%; margin-top:10px;" onclick="sendCustomBuilderWhatsApp()">INQUIRE THIS SPEC ON WHATSAPP →</button>
@@ -1140,8 +1170,8 @@
         </div>
 
         <div class="form-group">
-          <label>Requisition Notes / Custom Design Specs</label>
-          <textarea id="custNotes" class="form-control" rows="4" placeholder="Describe required colors, sizing breakdown, or artwork details..."></textarea>
+          <label>Requisition Notes / Custom Design Specs & Size Details</label>
+          <textarea id="custNotes" class="form-control" rows="4" placeholder="Describe required colors, size ratio breakdown, or artwork details..."></textarea>
         </div>
 
         <button type="submit" class="btn btn-gold" style="width:100%;">SUBMIT ORDER REQUISITION →</button>
@@ -1169,7 +1199,7 @@
               <th>Date / Time</th>
               <th>Customer</th>
               <th>Contact</th>
-              <th>Items</th>
+              <th>Items & Sizes</th>
               <th>Notes</th>
               <th>Status</th>
               <th>Updated By</th>
@@ -1252,7 +1282,7 @@
         </div>
       </div>
 
-      <div style="border-top:1px solid var(--border-subtle); padding-top:20px; display:flex; justify-space-between; align-items:center; font-size:0.78rem;">
+      <div style="border-top:1px solid var(--border-subtle); padding-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
         <div>© <span id="year"></span> Azan Impex. All rights reserved. Registered Export Enterprise.</div>
         <div>Engineered for B2B Wholesale & Custom Teamwear Exporters</div>
       </div>
@@ -1260,7 +1290,7 @@
   </footer>
 
   <!-- ==========================================================================
-       PLATFORM ENGINE & 92-GARMENT DATABASE
+       PLATFORM ENGINE & DATABASE
        ========================================================================== -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -1292,7 +1322,6 @@
     let idCounter = 1;
 
     SPORTS_CATEGORIES.forEach(cat => {
-      // Create ~11 to 12 garments per sport to total 92 products
       for (let i = 1; i <= 12; i++) {
         if (PRODUCTS.length >= 92) break;
         
@@ -1329,27 +1358,30 @@
     });
 
     // --------------------------------------------------------------------------
-    // 2. REQUISITION CART SYSTEM
+    // 2. REQUISITION CART SYSTEM WITH SIZE SUPPORT
     // --------------------------------------------------------------------------
     let cart = [];
 
-    function addToCart(sku) {
+    function addToCart(sku, explicitSize = null) {
       const prod = PRODUCTS.find(p => p.sku === sku);
       if (!prod) return;
 
-      const existing = cart.find(item => item.sku === sku);
+      const sizeSelect = document.getElementById(`size-${sku}`);
+      const selectedSize = explicitSize || (sizeSelect ? sizeSelect.value : 'Mixed Sizes (S-3XL)');
+
+      const existing = cart.find(item => item.sku === sku && item.size === selectedSize);
       if (existing) {
         existing.qty += 10;
       } else {
-        cart.push({ sku: prod.sku, name: prod.name, fabric: prod.fabric, qty: 30 });
+        cart.push({ sku: prod.sku, name: prod.name, fabric: prod.fabric, size: selectedSize, qty: 30 });
       }
 
       updateCartUI();
       toggleCartDrawer(true);
     }
 
-    function removeFromCart(sku) {
-      cart = cart.filter(item => item.sku !== sku);
+    function removeFromCart(index) {
+      cart.splice(index, 1);
       updateCartUI();
     }
 
@@ -1362,14 +1394,15 @@
         return;
       }
 
-      container.innerHTML = cart.map(item => `
+      container.innerHTML = cart.map((item, index) => `
         <div class="cart-item-row">
           <div>
             <div style="font-weight:700; font-size:0.88rem;">${item.name}</div>
             <div style="font-size:0.75rem; color:var(--gold-main);">${item.sku} · ${item.fabric}</div>
+            <div style="font-size:0.78rem; color:var(--cyan-bright); font-weight:600;">Size: ${item.size}</div>
             <div style="font-size:0.78rem; color:var(--text-muted);">Qty: ${item.qty} pcs</div>
           </div>
-          <button onclick="removeFromCart('${item.sku}')" style="background:none; border:none; color:var(--magenta-accent); cursor:pointer;">✕</button>
+          <button onclick="removeFromCart(${index})" style="background:none; border:none; color:var(--magenta-accent); cursor:pointer;">✕</button>
         </div>
       `).join('');
     }
@@ -1391,7 +1424,7 @@
 
       let text = "Hello Azan Impex,\nI would like to request an official quote for the following items:\n\n";
       cart.forEach((item, i) => {
-        text += `${i + 1}. SKU: ${item.sku} | ${item.name} | Fabric: ${item.fabric} | Qty: ${item.qty} pcs\n`;
+        text += `${i + 1}. SKU: ${item.sku} | ${item.name} | Fabric: ${item.fabric} | Size: ${item.size} | Qty: ${item.qty} pcs\n`;
       });
 
       window.open(`https://wa.me/923250043448?text=${encodeURIComponent(text)}`, '_blank');
@@ -1400,14 +1433,15 @@
     function sendCustomBuilderWhatsApp() {
       const sport = document.getElementById('builderSport').value;
       const fabric = document.getElementById('builderFabric').value;
+      const size = document.getElementById('builderSize').value;
       const qty = document.getElementById('builderQty').value;
 
-      const text = `Hello Azan Impex,\nI want a custom team kit quote:\n- Sport: ${sport}\n- Fabric: ${fabric}\n- Quantity: ${qty} pcs`;
+      const text = `Hello Azan Impex,\nI want a custom team kit quote:\n- Sport: ${sport}\n- Fabric: ${fabric}\n- Selected Size: ${size}\n- Quantity: ${qty} pcs`;
       window.open(`https://wa.me/923250043448?text=${encodeURIComponent(text)}`, '_blank');
     }
 
     // --------------------------------------------------------------------------
-    // 3. CATALOGUE RENDER & FILTERS
+    // 3. CATALOGUE RENDER & FILTERS WITH SIZE DROPDOWN
     // --------------------------------------------------------------------------
     function renderProducts(items) {
       const grid = document.getElementById('productsGrid');
@@ -1434,6 +1468,20 @@
             <div class="product-specs-preview">
               <div>Fabric: <strong>${p.fabric}</strong></div>
               <div>SKU: <strong>${p.sku}</strong></div>
+            </div>
+
+            <!-- SIZE SELECTOR FILTER -->
+            <div class="size-select-wrap">
+              <label>Select Size Filter:</label>
+              <select id="size-${p.sku}" class="form-control" style="padding:6px 10px; font-size:0.78rem; background:var(--navy-dark);">
+                <option value="Mixed Sizes (S-3XL)">Mixed Sizes (S to 3XL)</option>
+                <option value="Small (S)">Small (S)</option>
+                <option value="Medium (M)">Medium (M)</option>
+                <option value="Large (L)">Large (L)</option>
+                <option value="Extra Large (XL)">Extra Large (XL)</option>
+                <option value="2XL">2XL</option>
+                <option value="3XL">3XL</option>
+              </select>
             </div>
 
             <div class="product-actions-row">
@@ -1470,7 +1518,7 @@
     }
 
     // --------------------------------------------------------------------------
-    // 4. PRODUCT DETAIL MODAL (PDP)
+    // 4. PRODUCT DETAIL MODAL (PDP) WITH SIZE SELECTION
     // --------------------------------------------------------------------------
     function openPDP(sku) {
       const p = PRODUCTS.find(item => item.sku === sku);
@@ -1508,13 +1556,26 @@
               <span>${p.gsm}</span>
             </div>
             <div class="pdp-spec-box">
-              <label>Available Sizes</label>
+              <label>Available Size Run</label>
               <span>${p.sizes}</span>
             </div>
           </div>
 
-          <div style="display:flex; gap:12px; margin-top:24px;">
-            <button class="btn btn-gold" style="flex:1;" onclick="addToCart('${p.sku}'); closeModal();">ADD TO REQUISITION CART</button>
+          <div class="form-group" style="margin-top:16px;">
+            <label style="color:var(--gold-main);">Select Size / Size Ratio for Requisition:</label>
+            <select id="pdpSizeSelect" class="form-control" style="background:var(--navy-dark);">
+              <option value="Mixed Sizes (S-3XL)">Mixed Size Breakdown (S to 3XL)</option>
+              <option value="Small (S)">Small (S)</option>
+              <option value="Medium (M)">Medium (M)</option>
+              <option value="Large (L)">Large (L)</option>
+              <option value="Extra Large (XL)">Extra Large (XL)</option>
+              <option value="2XL">2XL</option>
+              <option value="3XL">3XL</option>
+            </select>
+          </div>
+
+          <div style="display:flex; gap:12px; margin-top:20px;">
+            <button class="btn btn-gold" style="flex:1;" onclick="const sz=document.getElementById('pdpSizeSelect').value; addToCart('${p.sku}', sz); closeModal();">ADD TO REQUISITION CART</button>
             <a href="https://wa.me/923250043448?text=Hello%20Azan%20Impex,%20I%20am%20inquiring%20about%20SKU:%20${p.sku}%20(${p.name})" target="_blank" class="btn btn-whatsapp">WHATSAPP</a>
           </div>
         </div>
@@ -1556,7 +1617,7 @@
         date: "2026-08-12 10:15",
         name: "David Miller",
         contact: "david@thunderbaseball.com\n+1 555 987 6543",
-        items: "30x AZ-BSB-001 (Baseball Jersey)",
+        items: "30x AZ-BSB-001 (Size: Mixed S-3XL)",
         notes: "Need royal blue piping on collar.",
         status: "In Production",
         updatedBy: "Muhammad Wajid (MD)"
@@ -1566,7 +1627,7 @@
         date: "2026-08-13 09:30",
         name: "Carlos Silva",
         contact: "carlos@furiafc.br\n+55 11 98888 7777",
-        items: "50x AZ-SOC-003 (Soccer Kit Set)",
+        items: "50x AZ-SOC-003 (Size: Large)",
         notes: "Custom sponsor logo printed on front.",
         status: "New",
         updatedBy: "System Received"
@@ -1584,7 +1645,7 @@
       const orderId = `AZ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
       const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
 
-      let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku}`).join(', ') : 'Custom Inquiry Request';
+      let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') : 'Custom Inquiry Request';
 
       const newOrder = {
         id: orderId,
