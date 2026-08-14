@@ -16,9 +16,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       AZAN IMPEX — BRAND DESIGN SYSTEM & TOKENS
-       ========================================================================== */
     :root {
       --navy-main: #0D1B2A;
       --navy-dark: #070D15;
@@ -102,7 +99,6 @@
       padding: 0 24px;
     }
 
-    /* BADGES */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -133,7 +129,6 @@
       border: 1px solid var(--border-subtle);
     }
 
-    /* BUTTONS */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -194,7 +189,6 @@
       font-size: 0.78rem;
     }
 
-    /* TOP ANNOUNCEMENT BAR */
     .top-bar {
       background: #04080E;
       border-bottom: 1px solid var(--border-subtle);
@@ -209,7 +203,6 @@
       align-items: center;
     }
 
-    /* HEADER & BRAND LOGO */
     header {
       position: sticky;
       top: 0;
@@ -309,7 +302,6 @@
       font-weight: 800;
     }
 
-    /* HERO SLIDESHOW SECTION */
     .hero-slideshow {
       position: relative;
       min-height: 620px;
@@ -406,7 +398,6 @@
       border-radius: 99px;
     }
 
-    /* SECTION HEADERS */
     .section-header {
       margin-bottom: 44px;
     }
@@ -441,7 +432,6 @@
       font-size: 1.05rem;
     }
 
-    /* CATALOGUE & MULTI-FILTER SECTION */
     .catalogue-section {
       padding: 90px 0;
     }
@@ -499,7 +489,6 @@
       border-color: var(--gold-main);
     }
 
-    /* PRODUCTS GRID */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -621,7 +610,6 @@
       flex: 1;
     }
 
-    /* REQUISITION CART & MODALS */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -742,7 +730,6 @@
       font-weight: 600;
     }
 
-    /* INQUIRY CART DRAWER */
     .cart-drawer {
       position: fixed;
       top: 0;
@@ -773,7 +760,6 @@
       border-bottom: 1px solid var(--border-subtle);
     }
 
-    /* FORM STYLES */
     .form-group {
       margin-bottom: 18px;
     }
@@ -802,7 +788,6 @@
       border-color: var(--gold-main);
     }
 
-    /* ADMIN DASHBOARD */
     .admin-section {
       padding: 60px 0;
       background: #04070D;
@@ -838,7 +823,6 @@
       border-radius: var(--radius-sm);
     }
 
-    /* FOOTER */
     footer {
       background: #030509;
       border-top: 1px solid var(--border-subtle);
@@ -854,7 +838,6 @@
       margin-bottom: 50px;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 992px) {
       .slide-grid, .pdp-grid, .footer-grid {
         grid-template-columns: 1fr;
@@ -884,7 +867,6 @@
   <header>
     <div class="container nav-inner">
       <a href="#" class="brand-logo-wrap">
-        <!-- SVG Vector Official Logo -->
         <svg class="logo-svg" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="90" cy="80" r="55" fill="none" stroke="#0D1B2A" stroke-width="4"/>
           <path d="M40 80 H140 M90 30 V130" stroke="#0D1B2A" stroke-width="2" opacity="0.4"/>
@@ -914,69 +896,52 @@
     </div>
   </header>
 
-  <!-- HERO SLIDESHOW SECTION -->
+  <!-- HERO SLIDESHOW SECTION (DYNAMICALLY SYNCED WITH GOOGLE SHEET HERO TAB) -->
   <section class="hero-slideshow">
-    <div class="container" style="width:100%;">
+    <div class="container" style="width:100%; position:relative;">
       
-      <!-- Slide 1: Baseball -->
-      <div class="slide active" id="slide1">
-        <div class="slide-grid">
-          <div>
-            <span class="badge badge-gold" style="margin-bottom:12px;">Pro Baseball Collection</span>
-            <h1 class="slide-title">SUBLIMATED <span>BASEBALL</span> KITS</h1>
-            <p class="slide-desc">Engineered full-button and two-button baseball jerseys, shorts, and performance warmups. Built with 200 GSM Polyester Twill and breathable mesh side inserts.</p>
-            <div style="display:flex; gap:14px;">
-              <button class="btn btn-gold" onclick="filterCategory('Baseball')">EXPLORE BASEBALL</button>
-              <a href="#contact" class="btn btn-navy">REQUEST SAMPLE</a>
+      <div id="heroSlidesWrap">
+        <!-- Default Fallback Slide 1 -->
+        <div class="slide active">
+          <div class="slide-grid">
+            <div>
+              <span class="badge badge-gold" style="margin-bottom:12px;">Pro Baseball Collection</span>
+              <h1 class="slide-title">SUBLIMATED <span>BASEBALL</span> KITS</h1>
+              <p class="slide-desc">Engineered full-button and two-button baseball jerseys, shorts, and performance warmups. Built with 200 GSM Polyester Twill.</p>
+              <div style="display:flex; gap:14px;">
+                <button class="btn btn-gold" onclick="filterCategory('Baseball')">EXPLORE BASEBALL</button>
+                <a href="#contact" class="btn btn-navy">REQUEST SAMPLE</a>
+              </div>
+            </div>
+            <div class="slide-visual-card">
+              <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=1000&q=80" class="slide-img" alt="Baseball Jersey">
             </div>
           </div>
-          <div class="slide-visual-card">
-            <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=1000&q=80" class="slide-img" alt="Baseball Jersey">
+        </div>
+
+        <!-- Default Fallback Slide 2 -->
+        <div class="slide">
+          <div class="slide-grid">
+            <div>
+              <span class="badge badge-cyan" style="margin-bottom:12px;">Basketball & Activewear</span>
+              <h1 class="slide-title">ELITE <span>BASKETBALL</span> UNIFORMS</h1>
+              <p class="slide-desc">Full-bleed dye-sublimated basketball vests and shorts made from 170 GSM Dazzle Mesh. Vibrant, non-cracking color saturation.</p>
+              <div style="display:flex; gap:14px;">
+                <button class="btn btn-gold" onclick="filterCategory('Basketball')">VIEW BASKETBALL</button>
+                <a href="#contact" class="btn btn-navy">GET A QUOTE</a>
+              </div>
+            </div>
+            <div class="slide-visual-card">
+              <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1000&q=80" class="slide-img" alt="Basketball Uniform">
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Slide 2: Basketball -->
-      <div class="slide" id="slide2">
-        <div class="slide-grid">
-          <div>
-            <span class="badge badge-cyan" style="margin-bottom:12px;">Basketball & Activewear</span>
-            <h1 class="slide-title">ELITE <span>BASKETBALL</span> UNIFORMS</h1>
-            <p class="slide-desc">Full-bleed dye-sublimated basketball vests and shorts made from 170 GSM Dazzle Mesh. Vibrant, non-cracking color saturation built for high-level court wear.</p>
-            <div style="display:flex; gap:14px;">
-              <button class="btn btn-gold" onclick="filterCategory('Basketball')">VIEW BASKETBALL</button>
-              <a href="#contact" class="btn btn-navy">GET A QUOTE</a>
-            </div>
-          </div>
-          <div class="slide-visual-card">
-            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1000&q=80" class="slide-img" alt="Basketball Uniform">
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3: Soccer / Football -->
-      <div class="slide" id="slide3">
-        <div class="slide-grid">
-          <div>
-            <span class="badge badge-gold" style="margin-bottom:12px;">Soccer & Rugby Range</span>
-            <h1 class="slide-title">MATCH-READY <span>SOCCER</span> KITS</h1>
-            <p class="slide-desc">140 GSM Micro Interlock lightweight soccer jerseys and shorts. Heat-bonded sublimation guarantees zero weight increase from printed graphics.</p>
-            <div style="display:flex; gap:14px;">
-              <button class="btn btn-gold" onclick="filterCategory('Football')">SOCCER CATALOGUE</button>
-              <a href="#contact" class="btn btn-navy">START REQUISITION</a>
-            </div>
-          </div>
-          <div class="slide-visual-card">
-            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1000&q=80" class="slide-img" alt="Soccer Jersey">
-          </div>
-        </div>
-      </div>
-
-      <!-- Slideshow Navigation Dots -->
-      <div class="slideshow-dots">
+      <!-- Slideshow Dots -->
+      <div class="slideshow-dots" id="heroDotsWrap">
         <div class="dot active" onclick="setSlide(0)"></div>
         <div class="dot" onclick="setSlide(1)"></div>
-        <div class="dot" onclick="setSlide(2)"></div>
       </div>
     </div>
   </section>
@@ -995,7 +960,6 @@
         <p class="section-desc">Browse our full range of sublimated sports apparel. Select your desired size and add items to your Requisition Cart.</p>
       </div>
 
-      <!-- FILTER & SEARCH BAR -->
       <div class="filter-bar">
         <div class="filter-group" id="categoryFilters">
           <button class="filter-pill active" onclick="filterCategory('ALL')">ALL PRODUCTS</button>
@@ -1012,14 +976,11 @@
         <input type="text" id="searchInput" class="search-input" placeholder="Search by SKU, fabric, sport..." onkeyup="handleSearch()">
       </div>
 
-      <!-- PRODUCTS GRID -->
-      <div class="products-grid" id="productsGrid">
-        <!-- Dynamically rendered JS / Google Sheet products -->
-      </div>
+      <div class="products-grid" id="productsGrid"></div>
     </div>
   </section>
 
-  <!-- CUSTOM KIT BUILDER WITH SIZE FILTER -->
+  <!-- CUSTOM KIT BUILDER -->
   <section id="custom-builder" style="padding:90px 0; background:var(--navy-dark); border-top:1px solid var(--border-subtle);">
     <div class="container">
       <div class="section-header text-center">
@@ -1187,7 +1148,7 @@
     </div>
   </section>
 
-  <!-- INTERNAL SECURE ADMIN DASHBOARD (PROTECTED BY LOGIN MODAL) -->
+  <!-- SECURE ADMIN DASHBOARD -->
   <section id="adminPanel" class="admin-section" style="display:none;">
     <div class="container">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
@@ -1215,9 +1176,7 @@
               <th>Updated By</th>
             </tr>
           </thead>
-          <tbody id="adminOrderTableBody">
-            <!-- Dynamically populated admin orders -->
-          </tbody>
+          <tbody id="adminOrderTableBody"></tbody>
         </table>
       </div>
     </div>
@@ -1252,9 +1211,7 @@
       <button onclick="toggleCartDrawer()" style="background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✕</button>
     </div>
 
-    <div id="cartItemsContainer" style="flex-grow:1; overflow-y:auto;">
-      <!-- Dynamic cart items -->
-    </div>
+    <div id="cartItemsContainer" style="flex-grow:1; overflow-y:auto;"></div>
 
     <div style="margin-top:auto; padding-top:20px; border-top:1px solid var(--border-subtle);">
       <button class="btn btn-whatsapp" style="width:100%; margin-bottom:10px;" onclick="sendCartToWhatsApp()">SEND CART TO WHATSAPP →</button>
@@ -1266,9 +1223,7 @@
   <div class="modal-backdrop" id="productModal" onclick="if(event.target===this) closeModal()">
     <div class="modal-container">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
-      <div class="pdp-grid" id="modalContent">
-        <!-- Dynamic PDP Content -->
-      </div>
+      <div class="pdp-grid" id="modalContent"></div>
     </div>
   </div>
 
@@ -1315,7 +1270,7 @@
         </div>
       </div>
 
-      <div style="border-top:1px solid var(--border-subtle); padding-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+      <div style="border-top:1px solid var(--border-subtle); padding-top:20px; display:flex; justify-space-between; align-items:center; font-size:0.78rem;">
         <div>© <span id="year"></span> Azan Impex. All rights reserved. Registered Export Enterprise.</div>
         <div>Engineered for B2B Wholesale & Custom Teamwear Exporters</div>
       </div>
@@ -1323,7 +1278,7 @@
   </footer>
 
   <!-- ==========================================================================
-       PLATFORM ENGINE & DYNAMIC SHEET SYNC
+       PLATFORM ENGINE & DYNAMIC HERO/SHEET SYNC
        ========================================================================== -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -1331,43 +1286,17 @@
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbw-bs-E8S-Ndd7M9QNFA7SsR3kxHxMRhILDma0u6rXZIEEnIRmwU_GSPV3-zHcgX0g5/exec";
     const OWNER_EMAIL = "wajidali2657678@gmail.com";
 
-    // --------------------------------------------------------------------------
-    // UNIQUE HIGH-DEFINITION SPORTSWEAR IMAGES POOL
-    // --------------------------------------------------------------------------
     const UNIQUE_SPORT_IMGS = {
-      Baseball: [
-        "https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=800&q=80"
-      ],
-      Basketball: [
-        "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80"
-      ],
-      Football: [
-        "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80"
-      ],
-      Rugby: [
-        "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80"
-      ],
-      Cricket: [
-        "https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80"
-      ],
-      Volleyball: [
-        "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80"
-      ],
-      Performance: [
-        "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80"
-      ],
-      Lifestyle: [
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
-      ]
+      Baseball: ["https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=800&q=80"],
+      Basketball: ["https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80"],
+      Football: ["https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80"],
+      Rugby: ["https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80"],
+      Cricket: ["https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80"],
+      Volleyball: ["https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80"],
+      Performance: ["https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80"],
+      Lifestyle: ["https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"]
     };
 
-    // --------------------------------------------------------------------------
-    // 1. DEFAULT 92 PRODUCTS CATALOGUE (FALLBACK)
-    // --------------------------------------------------------------------------
     const SPORTS_CATEGORIES = [
       { name: 'Baseball', code: 'BSB', fabric: 'Polynix Twill / Mesh', gsm: '200 GSM' },
       { name: 'Basketball', code: 'BKB', fabric: 'Dazzle Mesh', gsm: '170 GSM' },
@@ -1419,9 +1348,7 @@
       }
     });
 
-    // --------------------------------------------------------------------------
-    // 2. LIVE RELATIONAL GOOGLE SHEETS DYNAMIC FETCH ENGINE
-    // --------------------------------------------------------------------------
+    // LIVE GOOGLE SHEET SYNC ENGINE (PRODUCTS + HERO BANNERS)
     async function loadLiveSheetData() {
       if (!GOOGLE_SHEET_WEBHOOK_URL || !GOOGLE_SHEET_WEBHOOK_URL.includes("script.google.com")) return;
 
@@ -1429,8 +1356,13 @@
         const response = await fetch(GOOGLE_SHEET_WEBHOOK_URL + "?action=getData");
         const sheetData = await response.json();
 
+        // 1. SYNC HERO SLIDESHOW BANNERS FROM GOOGLE SHEET "Hero" TAB
+        if (sheetData && sheetData.hero && sheetData.hero.length > 0) {
+          renderHeroSlidesFromSheet(sheetData.hero);
+        }
+
+        // 2. SYNC PRODUCTS FROM GOOGLE SHEET "Products" TAB
         if (sheetData && sheetData.products && sheetData.products.length > 0) {
-          // Map products from Google Sheet "Products" Tab
           const liveProducts = sheetData.products.map((row, idx) => {
             const sportName = row.SportID || row.Sport || "Custom Sport";
             const imgPool = UNIQUE_SPORT_IMGS[sportName] || UNIQUE_SPORT_IMGS.Performance;
@@ -1459,7 +1391,6 @@
           document.getElementById("liveSyncBadge").textContent = `⚡ LIVE SHEET SYNC ACTIVE (${PRODUCTS.length} PRODUCTS)`;
         }
 
-        // Dynamically Populate Custom Kit Builder Fabric Dropdown from Fabrics Tab
         if (sheetData && sheetData.fabrics && sheetData.fabrics.length > 0) {
           const fabricSelect = document.getElementById("builderFabric");
           fabricSelect.innerHTML = sheetData.fabrics.map(f => 
@@ -1467,7 +1398,6 @@
           ).join('');
         }
 
-        // Dynamically Populate Custom Kit Builder Sport Dropdown from Sports Tab
         if (sheetData && sheetData.sports && sheetData.sports.length > 0) {
           const sportSelect = document.getElementById("builderSport");
           sportSelect.innerHTML = sheetData.sports.map(s => 
@@ -1480,9 +1410,48 @@
       }
     }
 
-    // --------------------------------------------------------------------------
-    // 3. REQUISITION CART SYSTEM WITH SIZE SUPPORT
-    // --------------------------------------------------------------------------
+    // RENDER HERO SLIDES DYNAMICALLY FROM GOOGLE SHEET HERO TAB
+    function renderHeroSlidesFromSheet(heroRows) {
+      const slidesWrap = document.getElementById("heroSlidesWrap");
+      const dotsWrap = document.getElementById("heroDotsWrap");
+
+      slidesWrap.innerHTML = heroRows.map((slide, i) => {
+        const title = slide.Title || "SUBLIMATED SPORTSWEAR";
+        const highlight = slide.HighlightWord || "";
+        let formattedTitle = title;
+        if (highlight && title.includes(highlight)) {
+          formattedTitle = title.replace(highlight, `<span>${highlight}</span>`);
+        }
+
+        return `
+          <div class="slide ${i === 0 ? 'active' : ''}">
+            <div class="slide-grid">
+              <div>
+                <span class="badge badge-gold" style="margin-bottom:12px;">${slide.BadgeText || 'Custom Sublimation'}</span>
+                <h1 class="slide-title">${formattedTitle}</h1>
+                <p class="slide-desc">${slide.Description || 'Engineered sublimation sportswear manufactured in Sialkot, Pakistan.'}</p>
+                <div style="display:flex; gap:14px;">
+                  <button class="btn btn-gold" onclick="filterCategory('${slide.Btn1Category || 'ALL'}')">${slide.Btn1Text || 'EXPLORE CATALOGUE'}</button>
+                  <a href="#contact" class="btn btn-navy">REQUEST SAMPLE</a>
+                </div>
+              </div>
+              <div class="slide-visual-card">
+                <img src="${slide.ImageURL || 'https://images.unsplash.com/photo-1517649763962-0c623266010b'}" class="slide-img" alt="Hero Banner">
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      dotsWrap.innerHTML = heroRows.map((_, i) => `
+        <div class="dot ${i === 0 ? 'active' : ''}" onclick="setSlide(${i})"></div>
+      `).join('');
+
+      // Restart Slideshow Timer
+      initSlideshowTimer();
+    }
+
+    // REQUISITION CART SYSTEM
     let cart = [];
 
     function addToCart(sku, explicitSize = null) {
@@ -1563,9 +1532,6 @@
       window.open(`https://wa.me/923250043448?text=${encodeURIComponent(text)}`, '_blank');
     }
 
-    // --------------------------------------------------------------------------
-    // 4. CATALOGUE RENDER & FILTERS WITH SIZE DROPDOWN
-    // --------------------------------------------------------------------------
     function renderProducts(items) {
       const grid = document.getElementById('productsGrid');
       if (!items || items.length === 0) {
@@ -1593,7 +1559,6 @@
               <div>SKU: <strong>${p.sku}</strong></div>
             </div>
 
-            <!-- SIZE SELECTOR FILTER -->
             <div class="size-select-wrap">
               <label>Select Size Filter:</label>
               <select id="size-${p.sku}" class="form-control" style="padding:6px 10px; font-size:0.78rem; background:var(--navy-dark);">
@@ -1640,9 +1605,6 @@
       renderProducts(filtered);
     }
 
-    // --------------------------------------------------------------------------
-    // 5. PRODUCT DETAIL MODAL (PDP) WITH SIZE SELECTION
-    // --------------------------------------------------------------------------
     function openPDP(sku) {
       const p = PRODUCTS.find(item => item.sku === sku);
       if (!p) return;
@@ -1711,29 +1673,34 @@
       document.getElementById('productModal').classList.remove('active');
     }
 
-    // --------------------------------------------------------------------------
-    // 6. HERO SLIDESHOW LOGIC
-    // --------------------------------------------------------------------------
+    // HERO SLIDESHOW TIMER ENGINE
     let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
+    let slideTimer = null;
+
+    function initSlideshowTimer() {
+      if (slideTimer) clearInterval(slideTimer);
+      slideTimer = setInterval(() => {
+        const slides = document.querySelectorAll('.slide');
+        if (slides.length > 0) {
+          setSlide((currentSlide + 1) % slides.length);
+        }
+      }, 5000);
+    }
 
     function setSlide(index) {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      if (slides.length === 0) return;
+
       slides.forEach(s => s.classList.remove('active'));
       dots.forEach(d => d.classList.remove('active'));
 
       currentSlide = index;
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
+      if (slides[currentSlide]) slides[currentSlide].classList.add('active');
+      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
     }
 
-    setInterval(() => {
-      setSlide((currentSlide + 1) % slides.length);
-    }, 5000);
-
-    // --------------------------------------------------------------------------
-    // 7. ORDER FORM, EMAIL NOTIFICATION & ADMIN STATUS SYSTEM
-    // --------------------------------------------------------------------------
+    // ORDER FORM & ADMIN STATUS SYSTEM
     let defaultOrders = [
       {
         id: "AZ-2026-1001",
@@ -1744,16 +1711,6 @@
         notes: "Need royal blue piping on collar.",
         status: "In Production",
         updatedBy: "Muhammad Wajid (MD)"
-      },
-      {
-        id: "AZ-2026-1002",
-        date: "2026-08-13 09:30",
-        name: "Carlos Silva (Furia FC)",
-        contact: "carlos@furiafc.br\n+55 11 98888 7777",
-        items: "50x AZ-SOC-003 [Size: Large]",
-        notes: "Custom sponsor logo printed on front.",
-        status: "New",
-        updatedBy: "System Received"
       }
     ];
 
@@ -1780,7 +1737,6 @@
 
       let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') : 'Custom Kit Inquiry Request';
 
-      // 1. Send Email Notification directly to wajidali2657678@gmail.com
       const formData = new FormData();
       formData.append("Order_Ticket_ID", orderId);
       formData.append("Customer_Name", name);
@@ -1795,7 +1751,6 @@
         body: formData
       }).catch(err => console.log("Email Notification Sent / Deferred:", err));
 
-      // 2. Log Data to 10-Tab Google Sheets Webhook
       const payload = {
         orderId: orderId,
         date: now,
@@ -1819,7 +1774,6 @@
         });
       }
 
-      // 3. Local Storage Order Management
       const newOrder = {
         id: orderId,
         date: now,
@@ -1835,10 +1789,8 @@
       saveOrdersLocally();
       if (isAdminLoggedIn()) renderAdminOrders();
 
-      // UI Success Feedback
       document.getElementById('formStatus').innerHTML = `<strong style="color:var(--cyan-bright);">✅ Requisition Submitted Successfully! Ticket: ${orderId}</strong><br><span style="color:var(--text-muted); font-size:0.8rem;">Logged to Google Sheet Tabs (Orders, Customers, OrderItems).</span>`;
       
-      // Setup WhatsApp Copy Button
       const waText = encodeURIComponent(`Hello Azan Impex,\nI just submitted an order on your website:\n- Ticket: ${orderId}\n- Name: ${name}\n- Items: ${itemSummary}\n- Notes: ${notes}`);
       const waBtn = document.getElementById('whatsappSendBtn');
       waBtn.href = `https://wa.me/923250043448?text=${waText}`;
@@ -1851,9 +1803,6 @@
       submitBtn.textContent = 'SUBMIT ORDER REQUISITION →';
     }
 
-    // --------------------------------------------------------------------------
-    // 8. SECURE ADMIN LOGIN & EXPORT SYSTEM
-    // --------------------------------------------------------------------------
     function openAdminLoginModal() {
       document.getElementById('adminLoginModal').classList.add('active');
     }
@@ -1955,7 +1904,6 @@
       document.body.removeChild(link);
     }
 
-    // Auto-check URL parameter ?admin=1
     if (window.location.search.includes('admin=1')) {
       if (isAdminLoggedIn()) {
         showAdminPanel();
@@ -1966,6 +1914,7 @@
 
     // INITIALIZATION & LIVE SHEET FETCH
     renderProducts(PRODUCTS);
+    initSlideshowTimer();
     loadLiveSheetData();
   </script>
 </body>
