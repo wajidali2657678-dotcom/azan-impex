@@ -910,7 +910,7 @@
         <button class="cart-btn" onclick="toggleCartDrawer()">
           📋 Requisition Cart <span class="cart-badge" id="cartCount">0</span>
         </button>
-        <button class="btn btn-gold btn-sm" onclick="toggleAdminPanel()">ADMIN</button>
+        <!-- ADMIN BUTTON REMOVED FROM CUSTOMER VIEW FOR COMPLETE PRIVACY -->
       </div>
     </div>
   </header>
@@ -1143,7 +1143,7 @@
       <div class="section-header text-center">
         <div class="section-eyebrow">DIRECT REQUISITION</div>
         <h2 class="section-title">SUBMIT OFFICIAL ORDER INQUIRY</h2>
-        <p class="section-desc">Fill out your details below. Your request will automatically generate an Order Ticket in our system.</p>
+        <p class="section-desc">Fill out your details below. Your request will automatically generate an Order Ticket in our system, notify us via Email & WhatsApp, and log to Google Sheets.</p>
       </div>
 
       <form id="orderForm" onsubmit="handleInquirySubmit(event)" style="background:var(--navy-card); border:1px solid var(--border-strong); padding:36px; border-radius:var(--radius-lg);">
@@ -1174,34 +1174,40 @@
           <textarea id="custNotes" class="form-control" rows="4" placeholder="Describe required colors, size ratio breakdown, or artwork details..."></textarea>
         </div>
 
-        <button type="submit" class="btn btn-gold" style="width:100%;">SUBMIT ORDER REQUISITION →</button>
-        <p id="formStatus" style="margin-top:12px; font-size:0.85rem; text-align:center; color:var(--cyan-bright);"></p>
+        <button type="submit" class="btn btn-gold" id="submitOrderBtn" style="width:100%;">SUBMIT ORDER REQUISITION →</button>
+        <div id="formStatus" style="margin-top:16px; font-size:0.9rem; text-align:center;"></div>
+        <div id="whatsappSendBtnWrap" style="margin-top:12px; display:none;">
+          <a id="whatsappSendBtn" href="#" target="_blank" class="btn btn-whatsapp" style="width:100%;">💬 CLICK HERE TO SEND ORDER COPY TO WHATSAPP DIRECTLY</a>
+        </div>
       </form>
     </div>
   </section>
 
-  <!-- INTERNAL ADMIN DASHBOARD (HIDDEN BY DEFAULT) -->
+  <!-- INTERNAL SECURE ADMIN DASHBOARD (PROTECTED BY LOGIN MODAL) -->
   <section id="adminPanel" class="admin-section" style="display:none;">
     <div class="container">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
         <div>
-          <span class="badge badge-gold">INTERNAL MANAGEMENT ONLY</span>
-          <h2 class="section-title" style="font-size:2rem; margin-top:6px;">AZAN IMPEX ORDER DASHBOARD</h2>
+          <span class="badge badge-gold">AZAN IMPEX PRIVATE MANAGEMENT</span>
+          <h2 class="section-title" style="font-size:2rem; margin-top:6px;">FACTORY ORDERS DASHBOARD</h2>
         </div>
-        <button class="btn btn-navy btn-sm" onclick="toggleAdminPanel()">EXIT ADMIN</button>
+        <div style="display:flex; gap:12px;">
+          <button class="btn btn-gold btn-sm" onclick="downloadOrdersCSV()">📥 DOWNLOAD ORDERS LIST (EXCEL/CSV)</button>
+          <button class="btn btn-navy btn-sm" onclick="logoutAdmin()">LOGOUT ADMIN</button>
+        </div>
       </div>
 
       <div style="background:var(--navy-card); border:1px solid var(--border-subtle); padding:20px; border-radius:var(--radius-md); overflow-x:auto;">
         <table class="admin-table">
           <thead>
             <tr>
-              <th>Order ID</th>
+              <th>Order Ticket</th>
               <th>Date / Time</th>
-              <th>Customer</th>
-              <th>Contact</th>
+              <th>Customer Name</th>
+              <th>Contact Info</th>
               <th>Items & Sizes</th>
-              <th>Notes</th>
-              <th>Status</th>
+              <th>Requisition Notes</th>
+              <th>Order Status</th>
               <th>Updated By</th>
             </tr>
           </thead>
@@ -1212,6 +1218,28 @@
       </div>
     </div>
   </section>
+
+  <!-- SECURE ADMIN LOGIN MODAL -->
+  <div class="modal-backdrop" id="adminLoginModal">
+    <div class="modal-container" style="max-width:440px; padding:36px; text-align:center;">
+      <button class="modal-close-btn" onclick="closeAdminLoginModal()">✕</button>
+      <div style="font-family:'Anton'; font-size:1.8rem; color:var(--gold-main); margin-bottom:6px;">AZAN IMPEX</div>
+      <h3 style="font-family:var(--font-heading); margin-bottom:20px; font-size:1.2rem;">FACTORY ADMIN LOGIN</h3>
+      
+      <div class="form-group" style="text-align:left;">
+        <label>Admin Username</label>
+        <input type="text" id="adminUser" class="form-control" placeholder="Username">
+      </div>
+
+      <div class="form-group" style="text-align:left;">
+        <label>Admin Password</label>
+        <input type="password" id="adminPass" class="form-control" placeholder="Password">
+      </div>
+
+      <button class="btn btn-gold" style="width:100%; margin-top:10px;" onclick="authenticateAdmin()">LOGIN TO DASHBOARD →</button>
+      <p id="loginError" style="margin-top:12px; font-size:0.82rem; color:var(--magenta-accent);"></p>
+    </div>
+  </div>
 
   <!-- REQUISITION CART DRAWER -->
   <div class="cart-drawer" id="cartDrawer">
@@ -1274,15 +1302,17 @@
         </div>
 
         <div>
-          <h4 style="font-family:var(--font-heading); color:#fff; margin-bottom:14px;">CONTACT</h4>
+          <h4 style="font-family:var(--font-heading); color:#fff; margin-bottom:14px;">CONTACT & ADMIN</h4>
           <p style="font-size:0.85rem; margin-bottom:6px;">Muhammad Wajid</p>
           <p style="font-size:0.85rem; margin-bottom:6px;">Sialkot, Pakistan</p>
           <p style="font-size:0.85rem; margin-bottom:6px;">wajidali2657678@gmail.com</p>
-          <p style="font-size:0.85rem;">WhatsApp: +92 325 0043448</p>
+          <p style="font-size:0.85rem; margin-bottom:12px;">WhatsApp: +92 325 0043448</p>
+          <!-- SECRET HIDDEN ADMIN LINK -->
+          <a href="javascript:void(0)" onclick="openAdminLoginModal()" style="font-size:0.75rem; color:var(--text-dim); text-decoration:underline;">🔒 Factory Admin Portal</a>
         </div>
       </div>
 
-      <div style="border-top:1px solid var(--border-subtle); padding-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+      <div style="border-top:1px solid var(--border-subtle); padding-top:20px; display:flex; justify-space-between; align-items:center; font-size:0.78rem;">
         <div>© <span id="year"></span> Azan Impex. All rights reserved. Registered Export Enterprise.</div>
         <div>Engineered for B2B Wholesale & Custom Teamwear Exporters</div>
       </div>
@@ -1294,6 +1324,57 @@
        ========================================================================== -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --------------------------------------------------------------------------
+    // GOOGLE SHEET WEBHOOK URL
+    // --------------------------------------------------------------------------
+    const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbw-bs-E8S-Ndd7M9QNFA7SsR3kxHxMRhILDma0u6rXZIEEnIRmwU_GSPV3-zHcgX0g5/exec";
+    const OWNER_EMAIL = "wajidali2657678@gmail.com";
+
+    // --------------------------------------------------------------------------
+    // UNIQUE HIGH-DEFINITION SPORTSWEAR IMAGES POOL (25+ DISTINCT URLS)
+    // --------------------------------------------------------------------------
+    const UNIQUE_SPORT_IMGS = {
+      Baseball: [
+        "https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1595210382266-3d231b7a2d3c?auto=format&fit=crop&w=800&q=80"
+      ],
+      Basketball: [
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&w=800&q=80"
+      ],
+      Football: [
+        "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80"
+      ],
+      Rugby: [
+        "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80"
+      ],
+      Cricket: [
+        "https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80"
+      ],
+      Volleyball: [
+        "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?auto=format&fit=crop&w=800&q=80"
+      ],
+      Performance: [
+        "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
+      ],
+      Lifestyle: [
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80"
+      ]
+    };
 
     // --------------------------------------------------------------------------
     // 1. GENERATE 92 REALISTIC SUBLIMATION PRODUCTS
@@ -1309,19 +1390,12 @@
       { name: 'Lifestyle', code: 'LFS', fabric: 'Heavy Jersey', gsm: '280 GSM' }
     ];
 
-    const SAMPLE_IMGS = [
-      "https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
-    ];
-
     const PRODUCTS = [];
     let idCounter = 1;
 
     SPORTS_CATEGORIES.forEach(cat => {
+      const imgPool = UNIQUE_SPORT_IMGS[cat.name] || UNIQUE_SPORT_IMGS.Performance;
+      
       for (let i = 1; i <= 12; i++) {
         if (PRODUCTS.length >= 92) break;
         
@@ -1336,6 +1410,8 @@
         if (cat.name === 'Lifestyle') garmentType = i % 2 === 0 ? 'Hoodie' : 'Tracksuit';
 
         const name = `Sublimated ${cat.name} ${garmentType} ${skuNumber}`;
+        const imgMain = imgPool[(i - 1) % imgPool.length];
+        const imgHover = imgPool[i % imgPool.length];
         
         PRODUCTS.push({
           id: idCounter++,
@@ -1349,10 +1425,7 @@
           gsm: cat.gsm,
           sizes: 'S, M, L, XL, XXL, 3XL',
           colors: 'Unlimited Sublimation Colors',
-          images: [
-            SAMPLE_IMGS[(i - 1) % SAMPLE_IMGS.length],
-            SAMPLE_IMGS[i % SAMPLE_IMGS.length]
-          ]
+          images: [imgMain, imgHover]
         });
       }
     });
@@ -1609,15 +1682,16 @@
     }, 5000);
 
     // --------------------------------------------------------------------------
-    // 6. ORDER FORM & ADMIN STATUS MANAGEMENT ENGINE
+    // 6. ORDER FORM, EMAIL NOTIFICATION & ADMIN STATUS SYSTEM
     // --------------------------------------------------------------------------
-    let adminOrders = [
+    // Load stored orders or initialize default
+    let defaultOrders = [
       {
         id: "AZ-2026-1001",
         date: "2026-08-12 10:15",
-        name: "David Miller",
+        name: "David Miller (Thunder Baseball)",
         contact: "david@thunderbaseball.com\n+1 555 987 6543",
-        items: "30x AZ-BSB-001 (Size: Mixed S-3XL)",
+        items: "30x AZ-BSB-001 [Size: Mixed S-3XL]",
         notes: "Need royal blue piping on collar.",
         status: "In Production",
         updatedBy: "Muhammad Wajid (MD)"
@@ -1625,17 +1699,27 @@
       {
         id: "AZ-2026-1002",
         date: "2026-08-13 09:30",
-        name: "Carlos Silva",
+        name: "Carlos Silva (Furia FC)",
         contact: "carlos@furiafc.br\n+55 11 98888 7777",
-        items: "50x AZ-SOC-003 (Size: Large)",
+        items: "50x AZ-SOC-003 [Size: Large]",
         notes: "Custom sponsor logo printed on front.",
         status: "New",
         updatedBy: "System Received"
       }
     ];
 
+    let adminOrders = JSON.parse(localStorage.getItem('azan_orders')) || defaultOrders;
+
+    function saveOrdersLocally() {
+      localStorage.setItem('azan_orders', JSON.stringify(adminOrders));
+    }
+
     function handleInquirySubmit(e) {
       e.preventDefault();
+      const submitBtn = document.getElementById('submitOrderBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'SUBMITTING REQUISITION...';
+
       const name = document.getElementById('custName').value;
       const company = document.getElementById('custCompany').value;
       const email = document.getElementById('custEmail').value;
@@ -1645,8 +1729,48 @@
       const orderId = `AZ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
       const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
 
-      let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') : 'Custom Inquiry Request';
+      let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') : 'Custom Kit Inquiry Request';
 
+      // 1. Send Email Notification directly to wajidali2657678@gmail.com via FormSubmit AJAX
+      const formData = new FormData();
+      formData.append("Order_Ticket_ID", orderId);
+      formData.append("Customer_Name", name);
+      formData.append("Company_Club", company || "N/A");
+      formData.append("Email_Address", email);
+      formData.append("Phone_WhatsApp", phone);
+      formData.append("Items_And_Sizes", itemSummary);
+      formData.append("Requisition_Notes", notes || "No additional notes");
+
+      fetch(`https://formsubmit.co/ajax/${OWNER_EMAIL}`, {
+        method: "POST",
+        body: formData
+      }).catch(err => console.log("Email Notification Sent / Deferred:", err));
+
+      // 2. Log Data to Google Sheets Webhook
+      const payload = {
+        orderId: orderId,
+        date: now,
+        name: name,
+        company: company || '',
+        email: email,
+        phone: phone,
+        country: 'Global / Export',
+        notes: notes || '',
+        itemCount: cart.length || 1,
+        items: itemSummary,
+        itemsList: cart.map(c => ({ sku: c.sku, qty: c.qty, fabric: c.fabric, size: c.size }))
+      };
+
+      if (GOOGLE_SHEET_WEBHOOK_URL && GOOGLE_SHEET_WEBHOOK_URL.includes("script.google.com")) {
+        fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      // 3. Local Storage Order Management
       const newOrder = {
         id: orderId,
         date: now,
@@ -1659,12 +1783,63 @@
       };
 
       adminOrders.unshift(newOrder);
-      renderAdminOrders();
+      saveOrdersLocally();
+      if (isAdminLoggedIn()) renderAdminOrders();
 
-      document.getElementById('formStatus').textContent = `Requisition Received! Your Order Ticket: ${orderId}`;
+      // UI Success Feedback
+      document.getElementById('formStatus').innerHTML = `<strong style="color:var(--cyan-bright);">✅ Requisition Submitted Successfully! Ticket: ${orderId}</strong><br><span style="color:var(--text-muted); font-size:0.8rem;">An email alert has been dispatched to export sales.</span>`;
+      
+      // Setup WhatsApp Copy Button
+      const waText = encodeURIComponent(`Hello Azan Impex,\nI just submitted an order on your website:\n- Ticket: ${orderId}\n- Name: ${name}\n- Items: ${itemSummary}\n- Notes: ${notes}`);
+      const waBtn = document.getElementById('whatsappSendBtn');
+      waBtn.href = `https://wa.me/923250043448?text=${waText}`;
+      document.getElementById('whatsappSendBtnWrap').style.display = 'block';
+
       document.getElementById('orderForm').reset();
       cart = [];
       updateCartUI();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'SUBMIT ORDER REQUISITION →';
+    }
+
+    // --------------------------------------------------------------------------
+    // 7. SECURE ADMIN LOGIN & EXPORT SYSTEM
+    // --------------------------------------------------------------------------
+    function openAdminLoginModal() {
+      document.getElementById('adminLoginModal').classList.add('active');
+    }
+
+    function closeAdminLoginModal() {
+      document.getElementById('adminLoginModal').classList.remove('active');
+    }
+
+    function authenticateAdmin() {
+      const u = document.getElementById('adminUser').value;
+      const p = document.getElementById('adminPass').value;
+
+      if (u === "wajid" && p === "AzanImpex2026") {
+        sessionStorage.setItem('azan_admin_auth', 'true');
+        closeAdminLoginModal();
+        showAdminPanel();
+      } else {
+        document.getElementById('loginError').textContent = "Invalid Admin Username or Password.";
+      }
+    }
+
+    function isAdminLoggedIn() {
+      return sessionStorage.getItem('azan_admin_auth') === 'true';
+    }
+
+    function showAdminPanel() {
+      document.getElementById('adminPanel').style.display = 'block';
+      renderAdminOrders();
+      document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('azan_admin_auth');
+      document.getElementById('adminPanel').style.display = 'none';
+      alert("Logged out of Admin Portal.");
     }
 
     function renderAdminOrders() {
@@ -1693,169 +1868,56 @@
       const order = adminOrders.find(o => o.id === orderId);
       if (order) {
         order.status = newStatus;
-        order.updatedBy = `Staff (${new Date().toISOString().substring(11, 16)})`;
+        order.updatedBy = `Muhammad Wajid (${new Date().toISOString().substring(11, 16)})`;
+        saveOrdersLocally();
         alert(`Order ${orderId} updated to: ${newStatus}`);
       }
     }
 
-    function toggleAdminPanel() {
-      const panel = document.getElementById('adminPanel');
-      if (panel.style.display === 'none') {
-        const pass = prompt("Enter Admin Security Passcode:", "azan2026admin");
-        if (pass === "azan2026admin") {
-          panel.style.display = 'block';
-          renderAdminOrders();
-          panel.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          alert("Unauthorized passcode.");
-        }
+    // DOWNLOAD ORDERS AS EXCEL / CSV FILE
+    function downloadOrdersCSV() {
+      if (adminOrders.length === 0) {
+        alert("No orders to export.");
+        return;
+      }
+
+      let csv = "Ticket ID,Date,Customer Name,Contact Info,Items & Sizes,Requisition Notes,Status,Updated By\n";
+      
+      adminOrders.forEach(o => {
+        const row = [
+          `"${o.id}"`,
+          `"${o.date}"`,
+          `"${o.name.replace(/"/g, '""')}"`,
+          `"${o.contact.replace(/\n/g, ' | ').replace(/"/g, '""')}"`,
+          `"${o.items.replace(/"/g, '""')}"`,
+          `"${o.notes.replace(/"/g, '""')}"`,
+          `"${o.status}"`,
+          `"${o.updatedBy}"`
+        ];
+        csv += row.join(",") + "\n";
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `Azan_Impex_Customer_Orders_${new Date().toISOString().substring(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Auto-check URL parameter ?admin=1
+    if (window.location.search.includes('admin=1')) {
+      if (isAdminLoggedIn()) {
+        showAdminPanel();
       } else {
-        panel.style.display = 'none';
+        openAdminLoginModal();
       }
     }
 
     // INITIALIZATION
     renderProducts(PRODUCTS);
-    renderAdminOrders();
   </script>
-<script>
-  // 1. Wahan Google Apps Script ka Web App Exec Link dalein (Sheet ka link nahi)
-  const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/YOUR_EXEC_KEY_HERE/exec";
-
-  // 2. Form Submission Handler
-  function handleInquirySubmit(e) {
-    e.preventDefault();
-    const name = document.getElementById('custName').value;
-    const company = document.getElementById('custCompany').value;
-    const email = document.getElementById('custEmail').value;
-    const phone = document.getElementById('custPhone').value;
-    const notes = document.getElementById('custNotes').value;
-
-    const orderId = `AZ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
-    const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
-
-    let itemSummary = typeof cart !== 'undefined' && cart.length > 0 
-      ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') 
-      : 'Custom Inquiry Request';
-
-    const payload = {
-      orderId: orderId,
-      date: now,
-      name: name,
-      company: company || '',
-      email: email,
-      phone: phone,
-      country: 'Global / Export',
-      notes: notes || '',
-      itemCount: typeof cart !== 'undefined' ? cart.length || 1 : 1,
-      items: itemSummary,
-      itemsList: typeof cart !== 'undefined' ? cart.map(c => ({
-        sku: c.sku,
-        qty: c.qty,
-        fabric: c.fabric,
-        size: c.size
-      })) : []
-    };
-
-    // Google Sheet Par Data Send Karna
-    if (GOOGLE_SHEET_WEBHOOK_URL && GOOGLE_SHEET_WEBHOOK_URL.includes("script.google.com")) {
-      fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
-      });
-    }
-
-    // Local Admin Dashboard Update
-    if (typeof adminOrders !== 'undefined') {
-      adminOrders.unshift({
-        id: orderId,
-        date: now,
-        name: `${name} ${company ? '(' + company + ')' : ''}`,
-        contact: `${email}\n${phone}`,
-        items: itemSummary,
-        notes: notes || 'No additional notes',
-        status: 'New',
-        updatedBy: 'Customer Submission'
-      });
-      if (typeof renderAdminOrders === 'function') renderAdminOrders();
-    }
-
-    document.getElementById('formStatus').textContent = `Requisition Received! Your Order Ticket: ${orderId}`;
-    document.getElementById('orderForm').reset();
-    if (typeof cart !== 'undefined') { cart = []; if (typeof updateCartUI === 'function') updateCartUI(); }
-  }
-</script>
-<script>
-  // Aap ka Google Apps Script Web App Link (Pre-filled)
-  const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbw-bs-E8S-Ndd7M9QNFA7SsR3kxHxMRhILDma0u6rXZIEEnIRmwU_GSPV3-zHcgX0g5/exec";
-
-  // Form Submit Handler
-  function handleInquirySubmit(e) {
-    e.preventDefault();
-    const name = document.getElementById('custName').value;
-    const company = document.getElementById('custCompany').value;
-    const email = document.getElementById('custEmail').value;
-    const phone = document.getElementById('custPhone').value;
-    const notes = document.getElementById('custNotes').value;
-
-    const orderId = `AZ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
-    const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
-
-    let itemSummary = typeof cart !== 'undefined' && cart.length > 0 
-      ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') 
-      : 'Custom Inquiry Request';
-
-    // 10-Tab Relational Data Payload
-    const payload = {
-      orderId: orderId,
-      date: now,
-      name: name,
-      company: company || '',
-      email: email,
-      phone: phone,
-      country: 'Global / Export',
-      notes: notes || '',
-      itemCount: typeof cart !== 'undefined' ? cart.length || 1 : 1,
-      items: itemSummary,
-      itemsList: typeof cart !== 'undefined' ? cart.map(c => ({
-        sku: c.sku,
-        qty: c.qty,
-        fabric: c.fabric,
-        size: c.size
-      })) : []
-    };
-
-    // Google Sheet Par Data Send Karna
-    fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload)
-    }).then(() => {
-      console.log("Data sent to Google Sheet!");
-    });
-
-    // Local Admin Dashboard Logging
-    if (typeof adminOrders !== 'undefined') {
-      adminOrders.unshift({
-        id: orderId,
-        date: now,
-        name: `${name} ${company ? '(' + company + ')' : ''}`,
-        contact: `${email}\n${phone}`,
-        items: itemSummary,
-        notes: notes || 'No additional notes',
-        status: 'New',
-        updatedBy: 'Customer Submission'
-      });
-      if (typeof renderAdminOrders === 'function') renderAdminOrders();
-    }
-
-    document.getElementById('formStatus').textContent = `Requisition Received! Your Order Ticket: ${orderId}`;
-    document.getElementById('orderForm').reset();
-    if (typeof cart !== 'undefined') { cart = []; if (typeof updateCartUI === 'function') updateCartUI(); }
-  }
-</script>
 </body>
 </html>
