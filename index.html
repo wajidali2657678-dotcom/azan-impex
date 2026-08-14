@@ -910,7 +910,6 @@
         <button class="cart-btn" onclick="toggleCartDrawer()">
           📋 Requisition Cart <span class="cart-badge" id="cartCount">0</span>
         </button>
-        <!-- ADMIN BUTTON REMOVED FROM CUSTOMER VIEW FOR COMPLETE PRIVACY -->
       </div>
     </div>
   </header>
@@ -986,15 +985,20 @@
   <section id="catalogue" class="catalogue-section">
     <div class="container">
       <div class="section-header">
-        <div class="section-eyebrow">92-GARMENT DATABASE</div>
-        <h2 class="section-title">SUBLIMATION PRODUCT CATALOGUE</h2>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div class="section-eyebrow">RELATIONAL GOOGLE SHEET LIVE CATALOGUE</div>
+            <h2 class="section-title">SUBLIMATION PRODUCT CATALOGUE</h2>
+          </div>
+          <div id="liveSyncBadge" class="badge badge-gold">⚡ LIVE SHEET SYNC ACTIVE</div>
+        </div>
         <p class="section-desc">Browse our full range of sublimated sports apparel. Select your desired size and add items to your Requisition Cart.</p>
       </div>
 
       <!-- FILTER & SEARCH BAR -->
       <div class="filter-bar">
         <div class="filter-group" id="categoryFilters">
-          <button class="filter-pill active" onclick="filterCategory('ALL')">ALL (92)</button>
+          <button class="filter-pill active" onclick="filterCategory('ALL')">ALL PRODUCTS</button>
           <button class="filter-pill" onclick="filterCategory('Baseball')">BASEBALL</button>
           <button class="filter-pill" onclick="filterCategory('Basketball')">BASKETBALL</button>
           <button class="filter-pill" onclick="filterCategory('Football')">SOCCER / FOOTBALL</button>
@@ -1010,7 +1014,7 @@
 
       <!-- PRODUCTS GRID -->
       <div class="products-grid" id="productsGrid">
-        <!-- Dynamically rendered JS products -->
+        <!-- Dynamically rendered JS / Google Sheet products -->
       </div>
     </div>
   </section>
@@ -1307,12 +1311,11 @@
           <p style="font-size:0.85rem; margin-bottom:6px;">Sialkot, Pakistan</p>
           <p style="font-size:0.85rem; margin-bottom:6px;">wajidali2657678@gmail.com</p>
           <p style="font-size:0.85rem; margin-bottom:12px;">WhatsApp: +92 325 0043448</p>
-          <!-- SECRET HIDDEN ADMIN LINK -->
           <a href="javascript:void(0)" onclick="openAdminLoginModal()" style="font-size:0.75rem; color:var(--text-dim); text-decoration:underline;">🔒 Factory Admin Portal</a>
         </div>
       </div>
 
-      <div style="border-top:1px solid var(--border-subtle); padding-top:20px; display:flex; justify-space-between; align-items:center; font-size:0.78rem;">
+      <div style="border-top:1px solid var(--border-subtle); padding-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
         <div>© <span id="year"></span> Azan Impex. All rights reserved. Registered Export Enterprise.</div>
         <div>Engineered for B2B Wholesale & Custom Teamwear Exporters</div>
       </div>
@@ -1320,64 +1323,50 @@
   </footer>
 
   <!-- ==========================================================================
-       PLATFORM ENGINE & DATABASE
+       PLATFORM ENGINE & DYNAMIC SHEET SYNC
        ========================================================================== -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // --------------------------------------------------------------------------
-    // GOOGLE SHEET WEBHOOK URL
-    // --------------------------------------------------------------------------
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbw-bs-E8S-Ndd7M9QNFA7SsR3kxHxMRhILDma0u6rXZIEEnIRmwU_GSPV3-zHcgX0g5/exec";
     const OWNER_EMAIL = "wajidali2657678@gmail.com";
 
     // --------------------------------------------------------------------------
-    // UNIQUE HIGH-DEFINITION SPORTSWEAR IMAGES POOL (25+ DISTINCT URLS)
+    // UNIQUE HIGH-DEFINITION SPORTSWEAR IMAGES POOL
     // --------------------------------------------------------------------------
     const UNIQUE_SPORT_IMGS = {
       Baseball: [
         "https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1595210382266-3d231b7a2d3c?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=800&q=80"
       ],
       Basketball: [
         "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80"
       ],
       Football: [
         "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80"
       ],
       Rugby: [
-        "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80"
-      ],
-      Cricket: [
-        "https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80"
       ],
+      Cricket: [
+        "https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80"
+      ],
       Volleyball: [
-        "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80"
       ],
       Performance: [
-        "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80"
       ],
       Lifestyle: [
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80"
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
       ]
     };
 
     // --------------------------------------------------------------------------
-    // 1. GENERATE 92 REALISTIC SUBLIMATION PRODUCTS
+    // 1. DEFAULT 92 PRODUCTS CATALOGUE (FALLBACK)
     // --------------------------------------------------------------------------
     const SPORTS_CATEGORIES = [
       { name: 'Baseball', code: 'BSB', fabric: 'Polynix Twill / Mesh', gsm: '200 GSM' },
@@ -1390,7 +1379,7 @@
       { name: 'Lifestyle', code: 'LFS', fabric: 'Heavy Jersey', gsm: '280 GSM' }
     ];
 
-    const PRODUCTS = [];
+    let PRODUCTS = [];
     let idCounter = 1;
 
     SPORTS_CATEGORIES.forEach(cat => {
@@ -1431,7 +1420,68 @@
     });
 
     // --------------------------------------------------------------------------
-    // 2. REQUISITION CART SYSTEM WITH SIZE SUPPORT
+    // 2. LIVE RELATIONAL GOOGLE SHEETS DYNAMIC FETCH ENGINE
+    // --------------------------------------------------------------------------
+    async function loadLiveSheetData() {
+      if (!GOOGLE_SHEET_WEBHOOK_URL || !GOOGLE_SHEET_WEBHOOK_URL.includes("script.google.com")) return;
+
+      try {
+        const response = await fetch(GOOGLE_SHEET_WEBHOOK_URL + "?action=getData");
+        const sheetData = await response.json();
+
+        if (sheetData && sheetData.products && sheetData.products.length > 0) {
+          // Map products from Google Sheet "Products" Tab
+          const liveProducts = sheetData.products.map((row, idx) => {
+            const sportName = row.SportID || row.Sport || "Custom Sport";
+            const imgPool = UNIQUE_SPORT_IMGS[sportName] || UNIQUE_SPORT_IMGS.Performance;
+            
+            const img1 = row["Image 1"] || row.Image1 || imgPool[idx % imgPool.length];
+            const img2 = row["Image 2"] || row.Image2 || imgPool[(idx + 1) % imgPool.length];
+
+            return {
+              id: idx + 1,
+              sku: row.SKU || `AZ-PROD-${idx + 1}`,
+              name: row["Product Name"] || row.ProductName || `Sublimated Garment ${idx + 1}`,
+              sport: sportName,
+              category: sportName,
+              garmentType: row.TypeID || row.GarmentType || "Jersey",
+              description: row.Description || "Dye-sublimated custom activewear garment.",
+              fabric: row.FabricID || row.Fabric || "Micro Interlock",
+              gsm: row.GSM || "140 GSM",
+              sizes: row.Sizes || "S, M, L, XL, 2XL, 3XL",
+              colors: row.Colors || "Custom",
+              images: [img1, img2]
+            };
+          });
+
+          PRODUCTS = liveProducts;
+          renderProducts(PRODUCTS);
+          document.getElementById("liveSyncBadge").textContent = `⚡ LIVE SHEET SYNC ACTIVE (${PRODUCTS.length} PRODUCTS)`;
+        }
+
+        // Dynamically Populate Custom Kit Builder Fabric Dropdown from Fabrics Tab
+        if (sheetData && sheetData.fabrics && sheetData.fabrics.length > 0) {
+          const fabricSelect = document.getElementById("builderFabric");
+          fabricSelect.innerHTML = sheetData.fabrics.map(f => 
+            `<option value="${f.FabricName || f.FabricID} (${f.DefaultGSM || f.GSM || '140 GSM'})">${f.FabricName || f.FabricID} (${f.DefaultGSM || f.GSM || '140 GSM'})</option>`
+          ).join('');
+        }
+
+        // Dynamically Populate Custom Kit Builder Sport Dropdown from Sports Tab
+        if (sheetData && sheetData.sports && sheetData.sports.length > 0) {
+          const sportSelect = document.getElementById("builderSport");
+          sportSelect.innerHTML = sheetData.sports.map(s => 
+            `<option value="${s.SportName}">${s.SportName}</option>`
+          ).join('');
+        }
+
+      } catch (err) {
+        console.log("Sheet Sync Status: Using pre-populated 92 catalogue fallback.");
+      }
+    }
+
+    // --------------------------------------------------------------------------
+    // 3. REQUISITION CART SYSTEM WITH SIZE SUPPORT
     // --------------------------------------------------------------------------
     let cart = [];
 
@@ -1514,7 +1564,7 @@
     }
 
     // --------------------------------------------------------------------------
-    // 3. CATALOGUE RENDER & FILTERS WITH SIZE DROPDOWN
+    // 4. CATALOGUE RENDER & FILTERS WITH SIZE DROPDOWN
     // --------------------------------------------------------------------------
     function renderProducts(items) {
       const grid = document.getElementById('productsGrid');
@@ -1591,7 +1641,7 @@
     }
 
     // --------------------------------------------------------------------------
-    // 4. PRODUCT DETAIL MODAL (PDP) WITH SIZE SELECTION
+    // 5. PRODUCT DETAIL MODAL (PDP) WITH SIZE SELECTION
     // --------------------------------------------------------------------------
     function openPDP(sku) {
       const p = PRODUCTS.find(item => item.sku === sku);
@@ -1662,7 +1712,7 @@
     }
 
     // --------------------------------------------------------------------------
-    // 5. HERO SLIDESHOW LOGIC
+    // 6. HERO SLIDESHOW LOGIC
     // --------------------------------------------------------------------------
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
@@ -1682,9 +1732,8 @@
     }, 5000);
 
     // --------------------------------------------------------------------------
-    // 6. ORDER FORM, EMAIL NOTIFICATION & ADMIN STATUS SYSTEM
+    // 7. ORDER FORM, EMAIL NOTIFICATION & ADMIN STATUS SYSTEM
     // --------------------------------------------------------------------------
-    // Load stored orders or initialize default
     let defaultOrders = [
       {
         id: "AZ-2026-1001",
@@ -1731,7 +1780,7 @@
 
       let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') : 'Custom Kit Inquiry Request';
 
-      // 1. Send Email Notification directly to wajidali2657678@gmail.com via FormSubmit AJAX
+      // 1. Send Email Notification directly to wajidali2657678@gmail.com
       const formData = new FormData();
       formData.append("Order_Ticket_ID", orderId);
       formData.append("Customer_Name", name);
@@ -1746,7 +1795,7 @@
         body: formData
       }).catch(err => console.log("Email Notification Sent / Deferred:", err));
 
-      // 2. Log Data to Google Sheets Webhook
+      // 2. Log Data to 10-Tab Google Sheets Webhook
       const payload = {
         orderId: orderId,
         date: now,
@@ -1787,7 +1836,7 @@
       if (isAdminLoggedIn()) renderAdminOrders();
 
       // UI Success Feedback
-      document.getElementById('formStatus').innerHTML = `<strong style="color:var(--cyan-bright);">✅ Requisition Submitted Successfully! Ticket: ${orderId}</strong><br><span style="color:var(--text-muted); font-size:0.8rem;">An email alert has been dispatched to export sales.</span>`;
+      document.getElementById('formStatus').innerHTML = `<strong style="color:var(--cyan-bright);">✅ Requisition Submitted Successfully! Ticket: ${orderId}</strong><br><span style="color:var(--text-muted); font-size:0.8rem;">Logged to Google Sheet Tabs (Orders, Customers, OrderItems).</span>`;
       
       // Setup WhatsApp Copy Button
       const waText = encodeURIComponent(`Hello Azan Impex,\nI just submitted an order on your website:\n- Ticket: ${orderId}\n- Name: ${name}\n- Items: ${itemSummary}\n- Notes: ${notes}`);
@@ -1803,7 +1852,7 @@
     }
 
     // --------------------------------------------------------------------------
-    // 7. SECURE ADMIN LOGIN & EXPORT SYSTEM
+    // 8. SECURE ADMIN LOGIN & EXPORT SYSTEM
     // --------------------------------------------------------------------------
     function openAdminLoginModal() {
       document.getElementById('adminLoginModal').classList.add('active');
@@ -1874,7 +1923,6 @@
       }
     }
 
-    // DOWNLOAD ORDERS AS EXCEL / CSV FILE
     function downloadOrdersCSV() {
       if (adminOrders.length === 0) {
         alert("No orders to export.");
@@ -1916,8 +1964,9 @@
       }
     }
 
-    // INITIALIZATION
+    // INITIALIZATION & LIVE SHEET FETCH
     renderProducts(PRODUCTS);
+    loadLiveSheetData();
   </script>
 </body>
 </html>
