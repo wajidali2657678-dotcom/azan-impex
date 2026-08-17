@@ -1,2208 +1,765 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="scroll-smooth">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Azan Impex — Global Custom Sublimation Apparel & Sportswear Exporter</title>
- <meta name="description" content="Azan Impex is a premier registered sublimation apparel manufacturer and exporter based in Sialkot, Pakistan. Engineered jerseys, teamwear, tracksuits, and activewear for global sports brands.">
- <meta name="keywords" content="Sublimation jerseys, teamwear manufacturer, Sialkot sportswear exporter, custom polo shirts, sublimated shorts, private label activewear, Azan Impex">
- 
- <!-- Favicon SVG -->
- <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230D1B2A'/><path d='M25 75 L50 25 L75 75 Z' fill='none' stroke='%23D4AF37' stroke-width='8'/><path d='M20 60 Q50 80 80 40' fill='none' stroke='%233A7CA5' stroke-width='6'/></svg>">
-
-
- <!-- Google Fonts: Inter, Space Grotesk, Anton -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-
- <style>
- :root {
- --navy-main: #0D1B2A;
- --navy-dark: #070D15;
- --navy-card: #132235;
- --navy-hover: #1C2F47;
- 
- --gold-main: #D4AF37;
- --gold-light: #F3E5AB;
- --gold-glow: rgba(212, 175, 55, 0.25);
- 
- --blue-accent: #3A7CA5;
- --cyan-bright: #00C2D6;
- --magenta-accent: #FF2F92;
- --green-whatsapp: #25D366;
- 
- --text-light: #F8FAFC;
- --text-muted: #94A3B8;
- --text-dim: #64748B;
- 
- --border-subtle: rgba(255, 255, 255, 0.08);
- --border-gold: rgba(212, 175, 55, 0.3);
- --border-strong: rgba(255, 255, 255, 0.16);
- 
- --font-display: 'Anton', sans-serif;
- --font-heading: 'Space Grotesk', sans-serif;
- --font-body: 'Inter', sans-serif;
- 
- --radius-sm: 4px;
- --radius-md: 8px;
- --radius-lg: 14px;
- --radius-xl: 20px;
- 
- --shadow-subtle: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
- --shadow-gold: 0 0 35px rgba(212, 175, 55, 0.15);
- 
- --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
- --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-
- *, *::before, *::after {
- box-sizing: border-box;
- margin: 0;
- padding: 0;
-    }
-
-
- html {
- scroll-behavior: smooth;
- font-size: 16px;
- background-color: var(--navy-dark);
- color: var(--text-light);
-    }
-
-
- body {
- font-family: var(--font-body);
- line-height: 1.6;
- overflow-x: hidden;
- -webkit-font-smoothing: antialiased;
-    }
-
-
- h1, h2, h3, h4, h5, h6 {
- color: var(--text-light);
- line-height: 1.1;
- letter-spacing: -0.02em;
-    }
-
-
- a {
- color: inherit;
- text-decoration: none;
- transition: color var(--transition-fast);
-    }
-
-
- img {
- max-width: 100%;
- height: auto;
- display: block;
-    }
-
-
-    .container {
- max-width: 1400px;
- margin: 0 auto;
- padding: 0 24px;
-    }
-
-
-    .badge {
- display: inline-flex;
- align-items: center;
- gap: 6px;
- padding: 4px 10px;
- border-radius: 99px;
- font-size: 0.72rem;
- font-weight: 700;
- text-transform: uppercase;
- letter-spacing: 0.08em;
-    }
-
-
-    .badge-gold {
- background: rgba(212, 175, 55, 0.12);
- color: var(--gold-main);
- border: 1px solid var(--border-gold);
-    }
-
-
-    .badge-cyan {
- background: rgba(0, 194, 214, 0.12);
- color: var(--cyan-bright);
- border: 1px solid rgba(0, 194, 214, 0.3);
-    }
-
-
-    .badge-outline {
- background: transparent;
- color: var(--text-muted);
- border: 1px solid var(--border-subtle);
-    }
-
-
-    .btn {
- display: inline-flex;
- align-items: center;
- justify-content: center;
- gap: 10px;
- padding: 14px 28px;
- border-radius: var(--radius-sm);
- font-family: var(--font-heading);
- font-size: 0.88rem;
- font-weight: 700;
- text-transform: uppercase;
- letter-spacing: 0.06em;
- cursor: pointer;
- border: none;
- transition: all var(--transition-fast);
- white-space: nowrap;
-    }
-
-
-    .btn-gold {
- background: linear-gradient(135deg, var(--gold-main) 0%, #B89028 100%);
- color: #000;
- box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
-    }
-
-
-    .btn-gold:hover {
- background: linear-gradient(135deg, #E5C158 0%, var(--gold-main) 100%);
- transform: translateY(-2px);
- box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-    }
-
-
-    .btn-navy {
- background: var(--navy-card);
- color: var(--text-light);
- border: 1px solid var(--border-strong);
-    }
-
-
-    .btn-navy:hover {
- background: var(--navy-hover);
- border-color: var(--gold-main);
- color: var(--gold-main);
- transform: translateY(-2px);
-    }
-
-
-    .btn-whatsapp {
- background: var(--green-whatsapp);
- color: #000;
- font-weight: 700;
-    }
-
-
-    .btn-whatsapp:hover {
- background: #20bd5a;
- transform: translateY(-2px);
- box-shadow: 0 0 25px rgba(37, 211, 102, 0.35);
-    }
-
-
-    .btn-sm {
- padding: 8px 16px;
- font-size: 0.78rem;
-    }
-
-
-    .top-bar {
- background: #04080E;
- border-bottom: 1px solid var(--border-subtle);
- padding: 8px 0;
- font-size: 0.78rem;
- color: var(--text-muted);
-    }
-
-
-    .top-bar-inner {
- display: flex;
- justify-content: space-between;
- align-items: center;
-    }
-
-
- header {
- position: sticky;
- top: 0;
- z-index: 100;
- background: rgba(7, 13, 21, 0.92);
- backdrop-filter: blur(16px);
- border-bottom: 1px solid var(--border-subtle);
-    }
-
-
-    .nav-inner {
- display: flex;
- align-items: center;
- justify-content: space-between;
- height: 82px;
-    }
-
-
-    .brand-logo-wrap {
- display: flex;
- align-items: center;
- gap: 14px;
-    }
-
-
-    .logo-svg {
- height: 52px;
- width: auto;
-    }
-
-
-    .nav-menu {
- display: flex;
- align-items: center;
- gap: 28px;
- list-style: none;
-    }
-
-
-    .nav-link {
- font-family: var(--font-heading);
- font-size: 0.85rem;
- font-weight: 600;
- text-transform: uppercase;
- letter-spacing: 0.06em;
- color: var(--text-muted);
- position: relative;
- padding: 6px 0;
-    }
-
-
-    .nav-link:hover, .nav-link.active {
- color: var(--gold-main);
-    }
-
-
-    .nav-link::after {
- content: '';
- position: absolute;
- bottom: 0;
- left: 0;
- width: 0%;
- height: 2px;
- background: var(--gold-main);
- transition: width var(--transition-fast);
-    }
-
-
-    .nav-link:hover::after, .nav-link.active::after {
- width: 100%;
-    }
-
-
-    .nav-actions {
- display: flex;
- align-items: center;
- gap: 14px;
-    }
-
-
-    .cart-btn {
- position: relative;
- background: var(--navy-card);
- border: 1px solid var(--border-subtle);
- border-radius: var(--radius-sm);
- padding: 10px 16px;
- color: var(--text-light);
- font-size: 0.82rem;
- font-weight: 700;
- cursor: pointer;
- display: flex;
- align-items: center;
- gap: 8px;
-    }
-
-
-    .cart-btn:hover {
- border-color: var(--gold-main);
- color: var(--gold-main);
-    }
-
-
-    .cart-badge {
- background: var(--gold-main);
- color: #000;
- border-radius: 99px;
- padding: 2px 7px;
- font-size: 0.72rem;
- font-weight: 800;
-    }
-
-
-    .hero-slideshow {
- position: relative;
- min-height: 620px;
- background: radial-gradient(circle at 70% 30%, rgba(58, 124, 165, 0.15) 0%, transparent 60%),
- radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
- overflow: hidden;
- display: flex;
- align-items: center;
-    }
-
-
-    .slide {
- position: absolute;
- inset: 0;
- opacity: 0;
- transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
- display: flex;
- align-items: center;
- pointer-events: none;
-    }
-
-
-    .slide.active {
- opacity: 1;
- pointer-events: auto;
-    }
-
-
-    .slide-grid {
- display: grid;
- grid-template-columns: 1.1fr 0.9fr;
- gap: 60px;
- align-items: center;
- width: 100%;
-    }
-
-
-    .slide-title {
- font-family: var(--font-display);
- font-size: clamp(3rem, 5.5vw, 5rem);
- text-transform: uppercase;
- line-height: 0.92;
- margin-bottom: 20px;
-    }
-
-
-    .slide-title span {
- color: var(--gold-main);
-    }
-
-
-    .slide-desc {
- font-size: 1.1rem;
- color: var(--text-muted);
- max-width: 560px;
- margin-bottom: 32px;
-    }
-
-
-    .slide-visual-card {
- position: relative;
- aspect-ratio: 4/3.2;
- background: var(--navy-card);
- border: 1px solid var(--border-gold);
- border-radius: var(--radius-lg);
- overflow: hidden;
- box-shadow: var(--shadow-gold);
- display: flex;
- align-items: center;
- justify-content: center;
-    }
-
-
-    .slide-img {
- width: 100%;
- height: 100%;
- object-fit: cover;
-    }
-
-
-    .slideshow-dots {
- position: absolute;
- bottom: 24px;
- left: 50%;
- transform: translateX(-50%);
- display: flex;
- gap: 10px;
- z-index: 10;
-    }
-
-
-    .dot {
- width: 12px;
- height: 12px;
- border-radius: 50%;
- background: var(--border-strong);
- cursor: pointer;
- transition: all var(--transition-fast);
-    }
-
-
-    .dot.active {
- background: var(--gold-main);
- width: 32px;
- border-radius: 99px;
-    }
-
-
-    .section-header {
- margin-bottom: 44px;
-    }
-
-
-    .section-header.text-center {
- text-align: center;
- max-width: 760px;
- margin-left: auto;
- margin-right: auto;
-    }
-
-
-    .section-eyebrow {
- font-family: var(--font-heading);
- font-size: 0.82rem;
- font-weight: 700;
- text-transform: uppercase;
- letter-spacing: 0.15em;
- color: var(--gold-main);
- margin-bottom: 10px;
-    }
-
-
-    .section-title {
- font-family: var(--font-display);
- font-size: clamp(2.2rem, 4vw, 3.4rem);
- text-transform: uppercase;
- line-height: 0.95;
-    }
-
-
-    .section-desc {
- margin-top: 12px;
- color: var(--text-muted);
- font-size: 1.05rem;
-    }
-
-
-    .catalogue-section {
- padding: 90px 0;
-    }
-
-
-    .filter-bar {
- background: var(--navy-card);
- border: 1px solid var(--border-subtle);
- border-radius: var(--radius-md);
- padding: 18px 22px;
- margin-bottom: 36px;
- display: flex;
- flex-wrap: wrap;
- align-items: center;
- justify-content: space-between;
- gap: 16px;
-    }
-
-
-    .filter-group {
- display: flex;
- align-items: center;
- gap: 10px;
- flex-wrap: wrap;
-    }
-
-
-    .filter-pill {
- background: var(--navy-dark);
- border: 1px solid var(--border-subtle);
- color: var(--text-muted);
- padding: 8px 16px;
- border-radius: 99px;
- font-size: 0.8rem;
- font-weight: 600;
- cursor: pointer;
- transition: all var(--transition-fast);
-    }
-
-
-    .filter-pill:hover, .filter-pill.active {
- background: var(--gold-main);
- color: #000;
- border-color: var(--gold-main);
-    }
-
-
-    .search-input {
- background: var(--navy-dark);
- border: 1px solid var(--border-subtle);
- color: var(--text-light);
- padding: 10px 18px;
- border-radius: 99px;
- font-size: 0.85rem;
- outline: none;
- min-width: 260px;
-    }
-
-
-    .search-input:focus {
- border-color: var(--gold-main);
-    }
-
-
-    .products-grid {
- display: grid;
- grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
- gap: 26px;
-    }
-
-
-    .product-card {
- background: var(--navy-card);
- border: 1px solid var(--border-subtle);
- border-radius: var(--radius-md);
- overflow: hidden;
- transition: all var(--transition-smooth);
- display: flex;
- flex-direction: column;
- position: relative;
-    }
-
-
-    .product-card:hover {
- transform: translateY(-6px);
- border-color: var(--border-gold);
- box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
-    }
-
-
-    .product-thumb-wrap {
- position: relative;
- aspect-ratio: 4/4.5;
- background: #09131F;
- overflow: hidden;
- cursor: pointer;
-    }
-
-
-    .product-img {
- width: 100%;
- height: 100%;
- object-fit: cover;
- transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-
-    .product-img-hover {
- position: absolute;
- inset: 0;
- opacity: 0;
- transition: opacity 0.4s ease;
-    }
-
-
-    .product-card:hover .product-img {
- transform: scale(1.05);
-    }
-
-
-    .product-card:hover .product-img-hover {
- opacity: 1;
-    }
-
-
-    .product-badge-stack {
- position: absolute;
- top: 12px;
- left: 12px;
- display: flex;
- flex-direction: column;
- gap: 6px;
- z-index: 2;
-    }
-
-
-    .product-details {
- padding: 20px;
- display: flex;
- flex-direction: column;
- flex-grow: 1;
-    }
-
-
-    .product-category-sub {
- font-size: 0.72rem;
- text-transform: uppercase;
- letter-spacing: 0.1em;
- color: var(--gold-main);
- font-weight: 700;
- margin-bottom: 6px;
-    }
-
-
-    .product-title {
- font-family: var(--font-heading);
- font-size: 1.1rem;
- font-weight: 700;
- margin-bottom: 12px;
- color: var(--text-light);
-    }
-
-
-    .product-specs-preview {
- display: flex;
- justify-content: space-between;
- font-size: 0.78rem;
- color: var(--text-muted);
- margin-bottom: 12px;
- padding-top: 10px;
- border-top: 1px dashed var(--border-subtle);
-    }
-
-
-    .size-select-wrap {
- margin-bottom: 16px;
-    }
-
-
-    .size-select-wrap label {
- display: block;
- font-size: 0.7rem;
- text-transform: uppercase;
- letter-spacing: 0.08em;
- color: var(--gold-main);
- font-weight: 700;
- margin-bottom: 4px;
-    }
-
-
-    .product-actions-row {
- margin-top: auto;
- display: flex;
- gap: 10px;
-    }
-
-
-    .product-actions-row .btn {
- flex: 1;
-    }
-
-
-    .modal-backdrop {
- position: fixed;
- inset: 0;
- z-index: 1000;
- background: rgba(4, 8, 14, 0.88);
- backdrop-filter: blur(12px);
- display: flex;
- align-items: center;
- justify-content: center;
- padding: 24px;
- opacity: 0;
- pointer-events: none;
- transition: opacity var(--transition-fast);
-    }
-
-
-    .modal-backdrop.active {
- opacity: 1;
- pointer-events: auto;
-    }
-
-
-    .modal-container {
- background: var(--navy-card);
- border: 1px solid var(--border-strong);
- border-radius: var(--radius-lg);
- width: 100%;
- max-width: 1050px;
- max-height: 90vh;
- overflow-y: auto;
- position: relative;
- box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
-    }
-
-
-    .modal-close-btn {
- position: absolute;
- top: 18px;
- right: 18px;
- width: 36px;
- height: 36px;
- border-radius: 50%;
- background: var(--navy-dark);
- border: 1px solid var(--border-subtle);
- color: var(--text-light);
- display: flex;
- align-items: center;
- justify-content: center;
- cursor: pointer;
- z-index: 10;
-    }
-
-
-    .pdp-grid {
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 40px;
- padding: 40px;
-    }
-
-
-    .pdp-gallery {
- display: flex;
- flex-direction: column;
- gap: 16px;
-    }
-
-
-    .pdp-main-image-wrap {
- aspect-ratio: 1;
- background: var(--navy-dark);
- border-radius: var(--radius-md);
- overflow: hidden;
- border: 1px solid var(--border-subtle);
-    }
-
-
-    .pdp-main-image {
- width: 100%;
- height: 100%;
- object-fit: cover;
-    }
-
-
-    .pdp-thumbnails {
- display: flex;
- gap: 10px;
- overflow-x: auto;
-    }
-
-
-    .pdp-thumb {
- width: 70px;
- height: 70px;
- border-radius: var(--radius-sm);
- border: 1px solid var(--border-subtle);
- object-fit: cover;
- cursor: pointer;
- opacity: 0.6;
-    }
-
-
-    .pdp-thumb.active {
- opacity: 1;
- border-color: var(--gold-main);
-    }
-
-
-    .pdp-specs-grid {
- display: grid;
- grid-template-columns: repeat(2, 1fr);
- gap: 14px;
- margin: 20px 0;
- background: var(--navy-dark);
- padding: 18px;
- border-radius: var(--radius-md);
- border: 1px solid var(--border-subtle);
-    }
-
-
-    .pdp-spec-box label {
- font-size: 0.72rem;
- text-transform: uppercase;
- color: var(--gold-main);
- display: block;
-    }
-
-
-    .pdp-spec-box span {
- font-size: 0.92rem;
- font-weight: 600;
-    }
-
-
-    .cart-drawer {
- position: fixed;
- top: 0;
- right: 0;
- bottom: 0;
- width: 100%;
- max-width: 480px;
- background: var(--navy-card);
- border-left: 1px solid var(--border-strong);
- z-index: 1200;
- transform: translateX(100%);
- transition: transform var(--transition-smooth);
- padding: 30px;
- display: flex;
- flex-direction: column;
- box-shadow: -15px 0 40px rgba(0,0,0,0.8);
-    }
-
-
-    .cart-drawer.active {
- transform: translateX(0);
-    }
-
-
-    .cart-item-row {
- display: flex;
- justify-content: space-between;
- align-items: center;
- padding: 12px 0;
- border-bottom: 1px solid var(--border-subtle);
-    }
-
-
-    .form-group {
- margin-bottom: 18px;
-    }
-
-
-    .form-group label {
- display: block;
- font-size: 0.78rem;
- text-transform: uppercase;
- color: var(--text-muted);
- margin-bottom: 6px;
-    }
-
-
-    .form-control {
- width: 100%;
- background: var(--navy-dark);
- border: 1px solid var(--border-subtle);
- color: var(--text-light);
- padding: 12px 14px;
- border-radius: var(--radius-sm);
- font-family: var(--font-body);
- font-size: 0.9rem;
- outline: none;
-    }
-
-
-    .form-control:focus {
- border-color: var(--gold-main);
-    }
-
-
-    .admin-section {
- padding: 60px 0;
- background: #04070D;
- border-top: 2px solid var(--gold-main);
-    }
-
-
-    .admin-table {
- width: 100%;
- border-collapse: collapse;
- font-size: 0.82rem;
- margin-top: 20px;
-    }
-
-
-    .admin-table th {
- text-align: left;
- padding: 12px;
- color: var(--gold-main);
- border-bottom: 1px solid var(--border-subtle);
- text-transform: uppercase;
-    }
-
-
-    .admin-table td {
- padding: 12px;
- border-bottom: 1px solid var(--border-subtle);
- vertical-align: top;
-    }
-
-
-    .admin-table select {
- background: var(--navy-card);
- color: var(--text-light);
- border: 1px solid var(--border-subtle);
- padding: 6px;
- border-radius: var(--radius-sm);
-    }
-
-
- footer {
- background: #030509;
- border-top: 1px solid var(--border-subtle);
- padding: 70px 0 30px;
- font-size: 0.85rem;
- color: var(--text-muted);
-    }
-
-
-    .footer-grid {
- display: grid;
- grid-template-columns: 2fr repeat(3, 1fr);
- gap: 40px;
- margin-bottom: 50px;
-    }
-
-
- @media (max-width: 992px) {
-      .slide-grid, .pdp-grid, .footer-grid {
- grid-template-columns: 1fr;
-      }
-      .nav-menu {
- display: none;
-      }
-    }
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azan Impex | Premium Custom Sportswear Manufacturer & Exporter</title>
+    <meta name="description" content="Sialkot-based B2B custom apparel manufacturer specializing in sublimation sportswear, teamwear, and streetwear. Fast turnaround, low MOQ, and global shipping.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 900: '#0A1118', 800: '#111D2A', 700: '#182636', 600: '#23354A' },
+                        gold: { 400: '#E3B96A', 500: '#CBA052', 600: '#B5893D' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar for horizontal product/category scrolling on mobile */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Modal Overlay */
+        .modal-active { overflow: hidden; }
+    </style>
 </head>
-<body>
-
-
- <!-- TOP ANNOUNCEMENT BAR -->
- <div class="top-bar">
- <div class="container top-bar-inner">
- <div>
- <span class="badge badge-gold">FBR REGISTERED</span>
- <span>Custom Sublimation Apparel Manufacturer & Exporter — Sialkot, Pakistan</span>
- </div>
- <div>
- <span>Direct Factory Contact: <strong>+92 325 0043448</strong> | <strong>wajidali2657678@gmail.com</strong></span>
- </div>
- </div>
- </div>
-
-
- <!-- NAVIGATION HEADER -->
- <header>
- <div class="container nav-inner">
- <a href="#" class="brand-logo-wrap">
- <svg class="logo-svg" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
- <circle cx="90" cy="80" r="55" fill="none" stroke="#0D1B2A" stroke-width="4"/>
- <path d="M40 80 H140 M90 30 V130" stroke="#0D1B2A" stroke-width="2" opacity="0.4"/>
- <path d="M50 115 L90 30 L130 115" stroke="#D4AF37" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
- <path d="M45 110 L90 35" stroke="#0D1B2A" stroke-width="14" stroke-linecap="round"/>
- <path d="M35 90 Q90 120 145 45" stroke="#3A7CA5" stroke-width="10" fill="none" stroke-linecap="round"/>
- <path d="M135 45 L145 45 L145 55" stroke="#3A7CA5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
- <text x="170" y="82" fill="#0D1B2A" font-family="'Anton', sans-serif" font-size="64" letter-spacing="2">AZAN</text>
- <text x="172" y="130" fill="#3A7CA5" font-family="'Anton', sans-serif" font-size="48" letter-spacing="4">IMPEX</text>
- <text x="174" y="150" fill="#0D1B2A" font-family="'Inter', sans-serif" font-weight="700" font-size="13" letter-spacing="2">GLOBAL TRADE. DELIVERING EXCELLENCE.</text>
- </svg>
- </a>
-
-
- <ul class="nav-menu">
- <li><a href="#catalogue" class="nav-link active">Garment Catalogue</a></li>
- <li><a href="#custom-builder" class="nav-link">Custom Kit Builder</a></li>
- <li><a href="#process" class="nav-link">Production Process</a></li>
- <li><a href="#about" class="nav-link">About Factory</a></li>
- <li><a href="#contact" class="nav-link">Inquire</a></li>
- </ul>
-
-
- <div class="nav-actions">
- <button class="cart-btn" onclick="toggleCartDrawer()">
-          📋 Requisition Cart <span class="cart-badge" id="cartCount">0</span>
- </button>
- </div>
- </div>
- </header>
-
-
- <!-- HERO SLIDESHOW SECTION (DYNAMICALLY SYNCED WITH GOOGLE SHEET HERO TAB) -->
- <section class="hero-slideshow">
- <div class="container" style="width:100%; position:relative;">
- 
- <div id="heroSlidesWrap">
- <!-- Default Fallback Slide 1 -->
- <div class="slide active">
- <div class="slide-grid">
- <div>
- <span class="badge badge-gold" style="margin-bottom:12px;">Pro Baseball Collection</span>
- <h1 class="slide-title">SUBLIMATED <span>BASEBALL</span> KITS</h1>
- <p class="slide-desc">Engineered full-button and two-button baseball jerseys, shorts, and performance warmups. Built with 200 GSM Polyester Twill.</p>
- <div style="display:flex; gap:14px;">
- <button class="btn btn-gold" onclick="filterCategory('Baseball')">EXPLORE BASEBALL</button>
- <a href="#contact" class="btn btn-navy">REQUEST SAMPLE</a>
- </div>
- </div>
- <div class="slide-visual-card">
- <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=1000&q=80" class="slide-img" alt="Baseball Jersey">
- </div>
- </div>
- </div>
-
-
- <!-- Default Fallback Slide 2 -->
- <div class="slide">
- <div class="slide-grid">
- <div>
- <span class="badge badge-cyan" style="margin-bottom:12px;">Basketball & Activewear</span>
- <h1 class="slide-title">ELITE <span>BASKETBALL</span> UNIFORMS</h1>
- <p class="slide-desc">Full-bleed dye-sublimated basketball vests and shorts made from 170 GSM Dazzle Mesh. Vibrant, non-cracking color saturation.</p>
- <div style="display:flex; gap:14px;">
- <button class="btn btn-gold" onclick="filterCategory('Basketball')">VIEW BASKETBALL</button>
- <a href="#contact" class="btn btn-navy">GET A QUOTE</a>
- </div>
- </div>
- <div class="slide-visual-card">
- <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1000&q=80" class="slide-img" alt="Basketball Uniform">
- </div>
- </div>
- </div>
- </div>
-
-
- <!-- Slideshow Dots -->
- <div class="slideshow-dots" id="heroDotsWrap">
- <div class="dot active" onclick="setSlide(0)"></div>
- <div class="dot" onclick="setSlide(1)"></div>
- </div>
- </div>
- </section>
-
-
- <!-- MAIN CATALOGUE SECTION -->
- <section id="catalogue" class="catalogue-section">
- <div class="container">
- <div class="section-header">
- <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
- <div>
- <div class="section-eyebrow">RELATIONAL GOOGLE SHEET LIVE CATALOGUE</div>
- <h2 class="section-title">SUBLIMATION PRODUCT CATALOGUE</h2>
- </div>
- <div id="liveSyncBadge" class="badge badge-gold">⚡ LIVE SHEET SYNC ACTIVE</div>
- </div>
- <p class="section-desc">Browse our full range of sublimated sports apparel. Select your desired size and add items to your Requisition Cart.</p>
- </div>
-
-
- <div class="filter-bar">
- <div class="filter-group" id="categoryFilters">
- <button class="filter-pill active" onclick="filterCategory('ALL')">ALL PRODUCTS</button>
- <button class="filter-pill" onclick="filterCategory('Baseball')">BASEBALL</button>
- <button class="filter-pill" onclick="filterCategory('Basketball')">BASKETBALL</button>
- <button class="filter-pill" onclick="filterCategory('Football')">SOCCER / FOOTBALL</button>
- <button class="filter-pill" onclick="filterCategory('Rugby')">RUGBY</button>
- <button class="filter-pill" onclick="filterCategory('Cricket')">CRICKET</button>
- <button class="filter-pill" onclick="filterCategory('Volleyball')">VOLLEYBALL</button>
- <button class="filter-pill" onclick="filterCategory('Performance')">PERFORMANCE & RUNNING</button>
- <button class="filter-pill" onclick="filterCategory('Lifestyle')">HOODIES & TRACKSUITS</button>
- </div>
-
-
- <input type="text" id="searchInput" class="search-input" placeholder="Search by SKU, fabric, sport..." onkeyup="handleSearch()">
- </div>
-
-
- <div class="products-grid" id="productsGrid"></div>
- </div>
- </section>
-
-
- <!-- CUSTOM KIT BUILDER -->
- <section id="custom-builder" style="padding:90px 0; background:var(--navy-dark); border-top:1px solid var(--border-subtle);">
- <div class="container">
- <div class="section-header text-center">
- <div class="section-eyebrow">CUSTOM MANUFACTURING</div>
- <h2 class="section-title">REQUISITION YOUR CUSTOM TEAM KIT</h2>
- <p class="section-desc">Select your desired sport, fabric weight, size ratio, and quantities for direct factory dispatch.</p>
- </div>
-
-
- <div style="background:var(--navy-card); border:1px solid var(--border-strong); padding:40px; border-radius:var(--radius-lg); max-width:850px; margin:0 auto;">
- <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;">
- <div class="form-group">
- <label>Sport Category</label>
- <select class="form-control" id="builderSport">
- <option value="Baseball">Baseball</option>
- <option value="Basketball">Basketball</option>
- <option value="Soccer / Football">Soccer / Football</option>
- <option value="Rugby">Rugby</option>
- <option value="Cricket">Cricket</option>
- <option value="Volleyball">Volleyball</option>
- <option value="Tracksuit / Outerwear">Tracksuit / Outerwear</option>
- </select>
- </div>
-
-
- <div class="form-group">
- <label>Preferred Fabric Construction</label>
- <select class="form-control" id="builderFabric">
- <option value="Micro Interlock (140 GSM)">Micro Interlock (140 GSM)</option>
- <option value="Micro PQ Cricket (170 GSM)">Micro PQ Cricket (170 GSM)</option>
- <option value="Dazzle Mesh (170 GSM)">Dazzle Mesh (170 GSM)</option>
- <option value="Heavy Jersey (280 GSM)">Heavy Jersey (280 GSM)</option>
- <option value="Polynix Twill (200 GSM)">Polynix Twill (200 GSM)</option>
- </select>
- </div>
- </div>
-
-
- <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;">
- <div class="form-group">
- <label>Select Size / Size Ratio</label>
- <select class="form-control" id="builderSize">
- <option value="Mixed Size Breakdown (S-3XL)">Mixed Size Breakdown (S to 3XL)</option>
- <option value="Small (S)">Small (S)</option>
- <option value="Medium (M)">Medium (M)</option>
- <option value="Large (L)">Large (L)</option>
- <option value="Extra Large (XL)">Extra Large (XL)</option>
- <option value="2XL">2XL</option>
- <option value="3XL">3XL</option>
- <option value="Custom Ratio (Specify in Notes)">Custom Ratio Breakdown</option>
- </select>
- </div>
-
-
- <div class="form-group">
- <label>Estimated Total Quantity (Pcs)</label>
- <input type="number" class="form-control" id="builderQty" placeholder="e.g. 50" value="50">
- </div>
- </div>
-
-
- <button class="btn btn-whatsapp" style="width:100%; margin-top:10px;" onclick="sendCustomBuilderWhatsApp()">INQUIRE THIS SPEC ON WHATSAPP →</button>
- </div>
- </div>
- </section>
-
-
- <!-- PRODUCTION PROCESS -->
- <section id="process" style="padding:90px 0; border-top:1px solid var(--border-subtle);">
- <div class="container">
- <div class="section-header text-center">
- <div class="section-eyebrow">FACTORY FLOOR MOVEMENT</div>
- <h2 class="section-title">5-STEP SUBLIMATION MANUFACTURING</h2>
- </div>
-
-
- <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px; margin-top:40px;">
- <div style="background:var(--navy-card); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
- <div style="font-family:var(--font-display); font-size:2.5rem; color:var(--gold-main); opacity:0.6;">01</div>
- <h3 style="margin-bottom:8px;">Design & VectorProofing</h3>
- <p style="font-size:0.85rem; color:var(--text-muted);">Artwork scaled to full pattern size prior to printing.</p>
- </div>
- <div style="background:var(--navy-card); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
- <div style="font-family:var(--font-display); font-size:2.5rem; color:var(--gold-main); opacity:0.6;">02</div>
- <h3 style="margin-bottom:8px;">Sublimation Heat Press</h3>
- <p style="font-size:0.85rem; color:var(--text-muted);">Italian inks vaporized directly into polyester fabric fibers.</p>
- </div>
- <div style="background:var(--navy-card); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
- <div style="font-family:var(--font-display); font-size:2.5rem; color:var(--gold-main); opacity:0.6;">03</div>
- <h3 style="margin-bottom:8px;">Laser Cutting & Sewing</h3>
- <p style="font-size:0.85rem; color:var(--text-muted);">Precision cut panels stitched with reinforced seams.</p>
- </div>
- <div style="background:var(--navy-card); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
- <div style="font-family:var(--font-display); font-size:2.5rem; color:var(--gold-main); opacity:0.6;">04</div>
- <h3 style="margin-bottom:8px;">Quality Control (QC)</h3>
- <p style="font-size:0.85rem; color:var(--text-muted);">Every batch inspected for sizing and seam integrity.</p>
- </div>
- <div style="background:var(--navy-card); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
- <div style="font-family:var(--font-display); font-size:2.5rem; color:var(--gold-main); opacity:0.6;">05</div>
- <h3 style="margin-bottom:8px;">Global Export Dispatch</h3>
- <p style="font-size:0.85rem; color:var(--text-muted);">Polybagged, cartooned, and shipped via DHL/FedEx air freight.</p>
- </div>
- </div>
- </div>
- </section>
-
-
- <!-- FACTORY / ABOUT -->
- <section id="about" style="padding:90px 0; background:var(--navy-dark); border-top:1px solid var(--border-subtle);">
- <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
- <div>
- <span class="badge badge-gold" style="margin-bottom:12px;">Registered Apparel Exporter</span>
- <h2 class="section-title">BUILT ON THE FACTORY FLOOR</h2>
- <p style="color:var(--text-muted); margin-top:16px; line-height:1.7;">
-          Azan Impex is an active FBR-registered apparel manufacturer operating in Sialkot, Pakistan. Founded by <strong>Muhammad Wajid</strong>, we specialize exclusively in custom dye-sublimation manufacturing, private label sports apparel, and global wholesale dispatch.
- </p>
- </div>
- <div style="background:var(--navy-card); border:1px solid var(--border-strong); padding:32px; border-radius:var(--radius-lg);">
- <h3 style="margin-bottom:16px; color:var(--gold-main);">EXPORTER PROFILE</h3>
- <p style="font-size:0.9rem; margin-bottom:8px;"><strong>Legal Business:</strong> Azan Impex</p>
- <p style="font-size:0.9rem; margin-bottom:8px;"><strong>Founder & MD:</strong> Muhammad Wajid</p>
- <p style="font-size:0.9rem; margin-bottom:8px;"><strong>City / Country:</strong> Sialkot, Pakistan</p>
- <p style="font-size:0.9rem; margin-bottom:8px;"><strong>FBR Status:</strong> Active Taxpayer (Importer / Exporter)</p>
- <p style="font-size:0.9rem; margin-bottom:8px;"><strong>Direct Email:</strong> wajidali2657678@gmail.com</p>
- <p style="font-size:0.9rem;"><strong>WhatsApp / Phone:</strong> +92 325 0043448</p>
- </div>
- </div>
- </section>
-
-
- <!-- INQUIRY FORM SECTION -->
- <section id="contact" style="padding:90px 0; border-top:1px solid var(--border-subtle);">
- <div class="container" style="max-width:800px;">
- <div class="section-header text-center">
- <div class="section-eyebrow">DIRECT REQUISITION</div>
- <h2 class="section-title">SUBMIT OFFICIAL ORDER INQUIRY</h2>
- <p class="section-desc">Fill out your details below. Your request will automatically generate an Order Ticket in our system, notify us via Email & WhatsApp, and log to Google Sheets.</p>
- </div>
-
-
- <form id="orderForm" onsubmit="handleInquirySubmit(event)" style="background:var(--navy-card); border:1px solid var(--border-strong); padding:36px; border-radius:var(--radius-lg);">
- <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
- <div class="form-group">
- <label>Customer Name *</label>
- <input type="text" id="custName" class="form-control" required placeholder="John Smith">
- </div>
- <div class="form-group">
- <label>Company / Club Name</label>
- <input type="text" id="custCompany" class="form-control" placeholder="Thunder Baseball Club">
- </div>
- </div>
-
-
- <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
- <div class="form-group">
- <label>Email Address *</label>
- <input type="email" id="custEmail" class="form-control" required placeholder="john@team.com">
- </div>
- <div class="form-group">
- <label>WhatsApp / Phone *</label>
- <input type="text" id="custPhone" class="form-control" required placeholder="+1 555 123 4567">
- </div>
- </div>
-
-
- <div class="form-group">
- <label>Requisition Notes / Custom Design Specs & Size Details</label>
- <textarea id="custNotes" class="form-control" rows="4" placeholder="Describe required colors, size ratio breakdown, or artwork details..."></textarea>
- </div>
-
-
- <button type="submit" class="btn btn-gold" id="submitOrderBtn" style="width:100%;">SUBMIT ORDER REQUISITION →</button>
- <div id="formStatus" style="margin-top:16px; font-size:0.9rem; text-align:center;"></div>
- <div id="whatsappSendBtnWrap" style="margin-top:12px; display:none;">
- <a id="whatsappSendBtn" href="#" target="_blank" class="btn btn-whatsapp" style="width:100%;">💬 CLICK HERE TO SEND ORDER COPY TO WHATSAPP DIRECTLY</a>
- </div>
- </form>
- </div>
- </section>
-
-
- <!-- SECURE ADMIN DASHBOARD -->
- <section id="adminPanel" class="admin-section" style="display:none;">
- <div class="container">
- <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
- <div>
- <span class="badge badge-gold">AZAN IMPEX PRIVATE MANAGEMENT</span>
- <h2 class="section-title" style="font-size:2rem; margin-top:6px;">FACTORY ORDERS DASHBOARD</h2>
- </div>
- <div style="display:flex; gap:12px;">
- <button class="btn btn-gold btn-sm" onclick="downloadOrdersCSV()">📥 DOWNLOAD ORDERS LIST (EXCEL/CSV)</button>
- <button class="btn btn-navy btn-sm" onclick="logoutAdmin()">LOGOUT ADMIN</button>
- </div>
- </div>
-
-
- <div style="background:var(--navy-card); border:1px solid var(--border-subtle); padding:20px; border-radius:var(--radius-md); overflow-x:auto;">
- <table class="admin-table">
- <thead>
- <tr>
- <th>Order Ticket</th>
- <th>Date / Time</th>
- <th>Customer Name</th>
- <th>Contact Info</th>
- <th>Items & Sizes</th>
- <th>Requisition Notes</th>
- <th>Order Status</th>
- <th>Updated By</th>
- </tr>
- </thead>
- <tbody id="adminOrderTableBody"></tbody>
- </table>
- </div>
- </div>
- </section>
-
-
- <!-- SECURE ADMIN LOGIN MODAL -->
- <div class="modal-backdrop" id="adminLoginModal">
- <div class="modal-container" style="max-width:440px; padding:36px; text-align:center;">
- <button class="modal-close-btn" onclick="closeAdminLoginModal()">✕</button>
- <div style="font-family:'Anton'; font-size:1.8rem; color:var(--gold-main); margin-bottom:6px;">AZAN IMPEX</div>
- <h3 style="font-family:var(--font-heading); margin-bottom:20px; font-size:1.2rem;">FACTORY ADMIN LOGIN</h3>
- 
- <div class="form-group" style="text-align:left;">
- <label>Admin Username</label>
- <input type="text" id="adminUser" class="form-control" placeholder="Username">
- </div>
-
-
- <div class="form-group" style="text-align:left;">
- <label>Admin Password</label>
- <input type="password" id="adminPass" class="form-control" placeholder="Password">
- </div>
-
-
- <button class="btn btn-gold" style="width:100%; margin-top:10px;" onclick="authenticateAdmin()">LOGIN TO DASHBOARD →</button>
- <p id="loginError" style="margin-top:12px; font-size:0.82rem; color:var(--magenta-accent);"></p>
- </div>
- </div>
-
-
- <!-- REQUISITION CART DRAWER -->
- <div class="cart-drawer" id="cartDrawer">
- <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border-subtle); padding-bottom:12px;">
- <h3 style="font-family:var(--font-heading);">YOUR REQUISITION CART</h3>
- <button onclick="toggleCartDrawer()" style="background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✕</button>
- </div>
-
-
- <div id="cartItemsContainer" style="flex-grow:1; overflow-y:auto;"></div>
-
-
- <div style="margin-top:auto; padding-top:20px; border-top:1px solid var(--border-subtle);">
- <button class="btn btn-whatsapp" style="width:100%; margin-bottom:10px;" onclick="sendCartToWhatsApp()">SEND CART TO WHATSAPP →</button>
- <a href="#contact" class="btn btn-gold" style="width:100%;" onclick="toggleCartDrawer()">PROCEED TO FORM</a>
- </div>
- </div>
-
-
- <!-- PRODUCT DETAIL MODAL (PDP) -->
- <div class="modal-backdrop" id="productModal" onclick="if(event.target===this) closeModal()">
- <div class="modal-container">
- <button class="modal-close-btn" onclick="closeModal()">✕</button>
- <div class="pdp-grid" id="modalContent"></div>
- </div>
- </div>
-
-
- <!-- FOOTER -->
- <footer>
- <div class="container">
- <div class="footer-grid">
- <div>
- <div style="font-family:'Anton'; font-size:1.8rem; color:#fff; margin-bottom:10px;">AZAN <span style="color:var(--gold-main);">IMPEX</span></div>
- <p style="font-size:0.85rem; line-height:1.6; margin-bottom:16px;">
-            Registered custom dye-sublimation sportswear and apparel manufacturer based in Sialkot, Pakistan. Exporting globally.
- </p>
- <span class="badge badge-gold">FBR Income Tax Active</span>
- </div>
-
-
- <div>
- <h4 style="font-family:var(--font-heading); color:#fff; margin-bottom:14px;">SPORTS RANGE</h4>
- <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
- <li><a href="#catalogue" onclick="filterCategory('Baseball')">Baseball Apparel</a></li>
- <li><a href="#catalogue" onclick="filterCategory('Basketball')">Basketball Kits</a></li>
- <li><a href="#catalogue" onclick="filterCategory('Football')">Soccer / Football</a></li>
- <li><a href="#catalogue" onclick="filterCategory('Cricket')">Cricket Uniforms</a></li>
- <li><a href="#catalogue" onclick="filterCategory('Rugby')">Rugby Jerseys</a></li>
- </ul>
- </div>
-
-
- <div>
- <h4 style="font-family:var(--font-heading); color:#fff; margin-bottom:14px;">FACTORY</h4>
- <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
- <li><a href="#about">About Azan Impex</a></li>
- <li><a href="#process">5-Step Process</a></li>
- <li><a href="#custom-builder">Custom Kit Builder</a></li>
- <li><a href="#contact">Request Sample</a></li>
- </ul>
- </div>
-
-
- <div>
- <h4 style="font-family:var(--font-heading); color:#fff; margin-bottom:14px;">CONTACT & ADMIN</h4>
- <p style="font-size:0.85rem; margin-bottom:6px;">Muhammad Wajid</p>
- <p style="font-size:0.85rem; margin-bottom:6px;">Sialkot, Pakistan</p>
- <p style="font-size:0.85rem; margin-bottom:6px;">wajidali2657678@gmail.com</p>
- <p style="font-size:0.85rem; margin-bottom:12px;">WhatsApp: +92 325 0043448</p>
- <a href="javascript:void(0)" onclick="openAdminLoginModal()" style="font-size:0.75rem; color:var(--text-dim); text-decoration:underline;">🔒 Factory Admin Portal</a>
- </div>
- </div>
-
-
- <div style="border-top:1px solid var(--border-subtle); padding-top:20px; display:flex; justify-space-between; align-items:center; font-size:0.78rem;">
- <div>© <span id="year"></span> Azan Impex. All rights reserved. Registered Export Enterprise.</div>
- <div>Engineered for B2B Wholesale & Custom Teamwear Exporters</div>
- </div>
- </div>
- </footer>
-
-
- <!-- ==========================================================================
-       PLATFORM ENGINE & DYNAMIC HERO/SHEET SYNC
-       ========================================================================== -->
- <script>
- document.getElementById('year').textContent = new Date().getFullYear();
-
-
- const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbw-bs-E8S-Ndd7M9QNFA7SsR3kxHxMRhILDma0u6rXZIEEnIRmwU_GSPV3-zHcgX0g5/exec";
- const OWNER_EMAIL = "wajidali2657678@gmail.com";
-
-
- const UNIQUE_SPORT_IMGS = {
- Baseball: ["https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=800&q=80"],
- Basketball: ["https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80"],
- Football: ["https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80"],
- Rugby: ["https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80"],
- Cricket: ["https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80"],
- Volleyball: ["https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80"],
- Performance: ["https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80"],
- Lifestyle: ["https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"]
- };
-
-
- const SPORTS_CATEGORIES = [
- { name: 'Baseball', code: 'BSB', fabric: 'Polynix Twill / Mesh', gsm: '200 GSM' },
- { name: 'Basketball', code: 'BKB', fabric: 'Dazzle Mesh', gsm: '170 GSM' },
- { name: 'Football', code: 'SOC', fabric: 'Micro Interlock', gsm: '140 GSM' },
- { name: 'Rugby', code: 'RGB', fabric: 'THT-952 Reinforced', gsm: '310 GSM' },
- { name: 'Cricket', code: 'CRK', fabric: 'Micro Speedo Cricket', gsm: '220 GSM' },
- { name: 'Volleyball', code: 'VLB', fabric: 'Micro Mesh Dull', gsm: '115 GSM' },
- { name: 'Performance', code: 'PRF', fabric: '5-Hole Mesh', gsm: '100 GSM' },
- { name: 'Lifestyle', code: 'LFS', fabric: 'Heavy Jersey', gsm: '280 GSM' }
- ];
-
-
- const FALLBACK_PRODUCTS = [{"id": 1, "sku": "AZ-BSB-REV01", "name": "Premium Full-Button Baseball Jersey", "sport": "Baseball", "category": "Baseball", "sportId": "SPT-BSB", "garmentType": "Jersey", "typeId": "TYP-JRS", "description": "Professional baseball garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-PNX", "fabricId": "FAB-PNX", "gsm": "200 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://image.made-in-china.com/202f0j00cKHhWiFIHafV/Custom-Baseball-Uniform-Sublimation-Softball-Jersey-Full-Button-Baseball-Jersey.jpg"]}, {"id": 2, "sku": "AZ-BKB-REV01", "name": "Elite Reversible Basketball Full Kit", "sport": "Basketball", "category": "Basketball", "sportId": "SPT-BKB", "garmentType": "Full Kit Set", "typeId": "TYP-SET", "description": "Professional basketball garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-DAZ", "fabricId": "FAB-DAZ", "gsm": "170 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://image.made-in-china.com/202f0j00mMjopaqnwScb/100-Polyester-Fabric-Wholesales-Basketball-Jersey-Uniform-Custom-Made-Basketball-Uniform.webp"]}, {"id": 3, "sku": "AZ-SOC-REV01", "name": "Elite Sublimated Soccer Match Shorts", "sport": "Soccer / Football", "category": "Soccer / Football", "sportId": "SPT-SOC", "garmentType": "Shorts", "typeId": "TYP-SHT", "description": "Professional soccer / football garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-LYC", "fabricId": "FAB-LYC", "gsm": "180 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://image.made-in-china.com/2f0j00BOklZtQqaRup/Custom-Football-Shorts-Sublimation-Jersey-Recycled-Soccer-Shorts.webp"]}, {"id": 4, "sku": "AZ-GYM-REV01", "name": "Performance Sublimated Team Hoodie", "sport": "Gym / Training", "category": "Gym / Training", "sportId": "SPT-GYM", "garmentType": "Hoodie", "typeId": "TYP-HDY", "description": "Professional gym / training garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-FRC", "fabricId": "FAB-FRC", "gsm": "280 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://r80sports.com/cdn/shop/files/sublimated-hoodiesr80-sports-9214864.jpg?v=1758418019&width=1445"]}, {"id": 5, "sku": "AZ-SOC-REV02", "name": "Professional Team Tracksuit", "sport": "Soccer / Football", "category": "Soccer / Football", "sportId": "SPT-SOC", "garmentType": "Tracksuit", "typeId": "TYP-TRK", "description": "Professional soccer / football garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-PES", "fabricId": "FAB-PES", "gsm": "160 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://kozzdesign.com.au/cdn/shop/files/Tracksetcopy.jpg?v=1720331912&width=1445"]}, {"id": 6, "sku": "AZ-GEN-REV01", "name": "Premium Team Sublimation T-Shirt", "sport": "General Sportswear", "category": "General Sportswear", "sportId": "SPT-GEN", "garmentType": "T-Shirt", "typeId": "TYP-TSH", "description": "Professional general sportswear garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-PES", "fabricId": "FAB-PES", "gsm": "160 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://image.made-in-china.com/226f3j00AjJchtErLLkd/Dry-Fit-Sublimation-T-Shirt-Sportswear-100-Polyester-Tee-Wholesale-Running-Shirts-Custom-Printing-T-Shirt.webp"]}, {"id": 7, "sku": "AZ-CRK-REV01", "name": "Premium Cricket Performance Polo", "sport": "Cricket", "category": "Cricket", "sportId": "SPT-CRK", "garmentType": "Polo Shirt", "typeId": "TYP-POL", "description": "Professional cricket garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-POL", "fabricId": "FAB-POL", "gsm": "180 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://s.alicdn.com/%40sc04/kf/Sa7d667f23edf4ba7a38bf697b20d2f78e/High-Quality-Half-Sleeve-Sublimation-Design-Cricket-Jersey-100-Polyester-Custom-Team-Name-Number-Cricket-Jerseys.jpg"]}, {"id": 8, "sku": "AZ-VOL-REV01", "name": "Elite Volleyball Court Tank", "sport": "Volleyball", "category": "Volleyball", "sportId": "SPT-VOL", "garmentType": "Tank Top", "typeId": "TYP-TNK", "description": "Professional volleyball garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-MSH", "fabricId": "FAB-MSH", "gsm": "145 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://ribblesports.com/wp-content/uploads/2021/02/Mellen_Granite_Diggers-Full_womens_Volleyball_uniform-Classic-side_pannel-PbUEdK_2048x-1024x1024.png"]}, {"id": 9, "sku": "AZ-RUN-REV01", "name": "Elite Running Compression Top", "sport": "Running", "category": "Running", "sportId": "SPT-RUN", "garmentType": "Compression Top", "typeId": "TYP-CMP", "description": "Professional running garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-SPX", "fabricId": "FAB-SPX", "gsm": "180 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://image.made-in-china.com/202f0j00CsVoQEdaCUqw/OEM-Custom-Sublimation-Printed-Mmarash-Guard-Colorful-Compression-Shirts.webp"]}, {"id": 10, "sku": "AZ-GEN-REV02", "name": "Premium Sublimated Team Jacket", "sport": "General Sportswear", "category": "General Sportswear", "sportId": "SPT-GEN", "garmentType": "Team Jacket", "typeId": "TYP-JKT", "description": "Professional general sportswear garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-RPS", "fabricId": "FAB-RPS", "gsm": "110 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://www.alleghenyapparel.com/cdn/shop/files/CustomSublimatedFull-ZipJacket.jpg"]}, {"id": 11, "sku": "AZ-GYM-REV02", "name": "Performance Sports Pants", "sport": "Gym / Training", "category": "Gym / Training", "sportId": "SPT-GYM", "garmentType": "Sports Pants", "typeId": "TYP-PNT", "description": "Professional gym / training garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-FRC", "fabricId": "FAB-FRC", "gsm": "280 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://www.spartanmerch.com/cdn/shop/products/sublimatedjoggerpants_df277bd6-4ffb-4f3c-98a5-95af96160e35_1024x1024.png?v=1680273524"]}, {"id": 12, "sku": "AZ-CYC-REV01", "name": "Elite Cycling Windbreaker", "sport": "Cycling", "category": "Cycling", "sportId": "SPT-CYC", "garmentType": "Windbreaker", "typeId": "TYP-WBK", "description": "Professional cycling garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-RPS", "fabricId": "FAB-RPS", "gsm": "110 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://www.opensports.com.ar/media/catalog/product/cache/05274af0d548b38ac2c73c40ddac6010/c/p/cpcu101-20_2.jpg"]}, {"id": 13, "sku": "AZ-SOC-REV03", "name": "Professional Goalkeeper Jersey", "sport": "Soccer / Football", "category": "Soccer / Football", "sportId": "SPT-SOC", "garmentType": "Goalkeeper Jersey", "typeId": "TYP-GKJ", "description": "Professional soccer / football garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-MIC", "fabricId": "FAB-MIC", "gsm": "150 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://ae01.alicdn.com/kf/S083cf2cac35242cb8a1efc8ff9be4f35v.jpg"]}, {"id": 14, "sku": "AZ-SOC-REV04", "name": "Professional Soccer Training Top", "sport": "Soccer / Football", "category": "Soccer / Football", "sportId": "SPT-SOC", "garmentType": "Training Top", "typeId": "TYP-TRN", "description": "Professional soccer / football garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-PES", "fabricId": "FAB-PES", "gsm": "160 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://static.wixstatic.com/media/eca775_2fe5956fa7744b0aa4b250281cc9e567~mv2.png/v1/fill/w_480%2Ch_480%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/eca775_2fe5956fa7744b0aa4b250281cc9e567~mv2.png"]}, {"id": 15, "sku": "AZ-GYM-REV03", "name": "Premium Performance Joggers", "sport": "Gym / Training", "category": "Gym / Training", "sportId": "SPT-GYM", "garmentType": "Performance Joggers", "typeId": "TYP-JGR", "description": "Professional gym / training garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-FRC", "fabricId": "FAB-FRC", "gsm": "280 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://www.kitbeastapparel.com/cdn/shop/files/JOGGERS.jpg?v=1713462490"]}, {"id": 16, "sku": "AZ-CYC-REV02", "name": "Elite Cycling Race Jersey", "sport": "Cycling", "category": "Cycling", "sportId": "SPT-CYC", "garmentType": "Cycling Jersey", "typeId": "TYP-CYC", "description": "Professional cycling garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-LYC", "fabricId": "FAB-LYC", "gsm": "180 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://ridestylecustom.com/cdn/shop/files/personalized-name-team-name-upload-logo-mens-cycling-jersey-full-kit.jpg?crop=center&height=1036&v=1768712449&width=1036"]}, {"id": 17, "sku": "AZ-RGB-REV01", "name": "Professional Rugby Shorts", "sport": "Rugby", "category": "Rugby", "sportId": "SPT-RGB", "garmentType": "Rugby Shorts", "typeId": "TYP-RGS", "description": "Professional rugby garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-THT", "fabricId": "FAB-THT", "gsm": "220 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://img.yfisher.com/m6282/1744640443792-img20240528172803/jpg100-t3-scale100.webp"]}, {"id": 18, "sku": "AZ-RUN-REV02", "name": "Professional Running Singlet", "sport": "Running", "category": "Running", "sportId": "SPT-RUN", "garmentType": "Performance Singlet", "typeId": "TYP-SNG", "description": "Professional running garment designed for full-dye sublimation, breathable polyester performance construction, sharp edge-to-edge graphics and OEM/private-label team branding.", "fabric": "FAB-PES", "fabricId": "FAB-PES", "gsm": "160 GSM", "sizes": "XS-5XL", "colors": "Custom / Unlimited", "gender": "Unisex", "featured": true, "images": ["https://theoutfitters.nf.ca/cdn/shop/files/download_db577a08-50d0-40bc-bd23-170f469924ce.png?v=1722955385&width=556"]}];
-
- let PRODUCTS = FALLBACK_PRODUCTS;
- let idCounter = PRODUCTS.length + 1;
-
- // LIVE GOOGLE SHEET SYNC ENGINE (PRODUCTS + HERO BANNERS)
- async function loadLiveSheetData() {
- if (!GOOGLE_SHEET_WEBHOOK_URL || !GOOGLE_SHEET_WEBHOOK_URL.includes("script.google.com")) return;
-
- try {
-   const response = await fetch(GOOGLE_SHEET_WEBHOOK_URL + "?action=getData", { cache: "no-store" });
-   if (!response.ok) throw new Error("Google Sheet request failed: " + response.status);
-   const sheetData = await response.json();
-
-   const sportMap = {};
-   (sheetData.sports || []).forEach(s => {
-     if (s.SportID) sportMap[String(s.SportID).trim().toUpperCase()] = s.SportName || s.SportID;
-   });
-
-   const typeMap = {};
-   (sheetData.garmentTypes || sheetData.garmenttypes || []).forEach(t => {
-     if (t.TypeID) typeMap[String(t.TypeID).trim().toUpperCase()] = t.TypeName || t.TypeID;
-   });
-
-   const fabricMap = {};
-   (sheetData.fabrics || []).forEach(f => {
-     if (f.FabricID) {
-       fabricMap[String(f.FabricID).trim().toUpperCase()] = {
-         name: f.FabricName || f.FabricID,
-         gsm: f.DefaultGSM || f.GSM || ""
-       };
-     }
-   });
-
-   if (sheetData && sheetData.hero && sheetData.hero.length) {
-     renderHeroSlidesFromSheet(sheetData.hero);
-   }
-
-   if (sheetData && sheetData.products && sheetData.products.length) {
-     const liveProducts = sheetData.products
-       .filter(row => String(row.SKU || "").trim())
-       .map((row, idx) => {
-         const sportId = String(row.SportID || row.Sport || "").trim().toUpperCase();
-         const typeId = String(row.TypeID || row.GarmentType || "").trim().toUpperCase();
-         const fabricId = String(row.FabricID || row.Fabric || "").trim().toUpperCase();
-
-         const sportName = sportMap[sportId] || row.SportName || sportId || "Custom Sport";
-         const garmentType = typeMap[typeId] || row.TypeName || row.GarmentType || typeId || "Jersey";
-         const fabricInfo = fabricMap[fabricId] || {};
-         const imageUrls = Array.from({length: 10}, (_, i) => {
-           const key = `Image ${i + 1}`;
-           return row[key] || row[`Image${i + 1}`] || "";
-         }).filter(Boolean);
-
-         // Always keep a usable gallery. Image 1 is the primary fallback.
-         if (!imageUrls.length) imageUrls.push(
-           (UNIQUE_SPORT_IMGS[sportName] || UNIQUE_SPORT_IMGS.Performance || [])[0] ||
-           "https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=1000&q=85"
-         );
-         while (imageUrls.length < 10) imageUrls.push(imageUrls[imageUrls.length % imageUrls.length]);
-
-         return {
-           id: idx + 1,
-           sku: row.SKU,
-           name: row["Product Name"] || row.ProductName || "Sublimated Garment",
-           sport: sportName,
-           category: sportName,
-           sportId,
-           garmentType,
-           typeId,
-           description: row.Description || "Custom full-dye sublimated performance garment.",
-           fabric: fabricInfo.name || row.FabricName || fabricId || "Performance Polyester",
-           fabricId,
-           gsm: row.GSM || fabricInfo.gsm || "140 GSM",
-           sizes: row.Sizes || "XS-5XL",
-           colors: row.Colors || "Custom / Unlimited",
-           gender: row.Gender || "Unisex",
-           featured: String(row.Featured).toLowerCase() === "true" || row.Featured === true,
-           images: imageUrls.slice(0, 10)
-         };
-       });
-
-     PRODUCTS = liveProducts;
-     renderProducts(PRODUCTS);
-     const badge = document.getElementById("liveSyncBadge");
-     if (badge) badge.textContent = `⚡ LIVE SHEET SYNC ACTIVE (${PRODUCTS.length} PRODUCTS)`;
-   }
-
-   if (sheetData && sheetData.fabrics && sheetData.fabrics.length) {
-     const fabricSelect = document.getElementById("builderFabric");
-     if (fabricSelect) {
-       fabricSelect.innerHTML = sheetData.fabrics.map(f =>
-         `<option value="${f.FabricName || f.FabricID} (${f.DefaultGSM || f.GSM || '140 GSM'})">${f.FabricName || f.FabricID} (${f.DefaultGSM || f.GSM || '140 GSM'})</option>`
-       ).join("");
-     }
-   }
-
-   if (sheetData && sheetData.sports && sheetData.sports.length) {
-     const sportSelect = document.getElementById("builderSport");
-     if (sportSelect) {
-       sportSelect.innerHTML = sheetData.sports.map(s =>
-         `<option value="${s.SportName}">${s.SportName}</option>`
-       ).join("");
-     }
-   }
- } catch (err) {
-   console.warn("Google Sheet sync unavailable; using aligned local catalogue fallback.", err);
-   PRODUCTS = FALLBACK_PRODUCTS;
-   renderProducts(PRODUCTS);
-   const badge = document.getElementById("liveSyncBadge");
-   if (badge) badge.textContent = `CATALOGUE FALLBACK (${PRODUCTS.length} PRODUCTS)`;
- }
- }
-
- // RENDER HERO SLIDES DYNAMICALLY FROM GOOGLE SHEET HERO TAB
- function renderHeroSlidesFromSheet(heroRows) {
- const slidesWrap = document.getElementById("heroSlidesWrap");
- const dotsWrap = document.getElementById("heroDotsWrap");
-
-
- slidesWrap.innerHTML = heroRows.map((slide, i) => {
- const title = slide.Title || "SUBLIMATED SPORTSWEAR";
- const highlight = slide.HighlightWord || "";
- let formattedTitle = title;
- if (highlight && title.includes(highlight)) {
- formattedTitle = title.replace(highlight, `<span>${highlight}</span>`);
- }
-
-
- return `
-          <div class="slide ${i === 0 ? 'active' : ''}">
-            <div class="slide-grid">
-              <div>
-                <span class="badge badge-gold" style="margin-bottom:12px;">${slide.BadgeText || 'Custom Sublimation'}</span>
-                <h1 class="slide-title">${formattedTitle}</h1>
-                <p class="slide-desc">${slide.Description || 'Engineered sublimation sportswear manufactured in Sialkot, Pakistan.'}</p>
-                <div style="display:flex; gap:14px;">
-                  <button class="btn btn-gold" onclick="filterCategory('${slide.Btn1Category || 'ALL'}')">${slide.Btn1Text || 'EXPLORE CATALOGUE'}</button>
-                  <a href="#contact" class="btn btn-navy">REQUEST SAMPLE</a>
+<body class="bg-navy-900 text-gray-200 font-sans antialiased selection:bg-gold-500 selection:text-navy-900">
+
+    <!-- ==========================================
+         1. HEADER & NAVIGATION
+         ========================================== -->
+    <header class="fixed w-full top-0 z-50 bg-navy-900/95 backdrop-blur-md border-b border-navy-700 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex-shrink-0 flex items-center gap-2">
+                    <span class="font-heading text-2xl font-bold tracking-wider text-white">AZAN <span class="text-gold-500">IMPEX</span></span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#categories" class="text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-gold-500 transition-colors">Categories</a>
+                    <a href="#process" class="text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-gold-500 transition-colors">Process</a>
+                    <a href="#catalog" class="text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-gold-500 transition-colors">Catalog</a>
+                    <a href="#about" class="text-sm font-semibold uppercase tracking-wider text-gray-300 hover:text-gold-500 transition-colors">About Us</a>
+                </nav>
+
+                <!-- Desktop CTA & Mobile Toggle -->
+                <div class="flex items-center gap-4">
+                    <a href="#rfq" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-bold uppercase tracking-wider rounded bg-gold-500 text-navy-900 hover:bg-gold-400 transition-all transform hover:-translate-y-0.5">
+                        Get a Quote
+                    </a>
+                    <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
                 </div>
-              </div>
-              <div class="slide-visual-card">
-                <img src="${slide.ImageURL || 'https://images.unsplash.com/photo-1517649763962-0c623266010b'}" class="slide-img" alt="Hero Banner">
-              </div>
             </div>
-          </div>
-        `;
- }).join('');
-
-
- dotsWrap.innerHTML = heroRows.map((_, i) => `
-        <div class="dot ${i === 0 ? 'active' : ''}" onclick="setSlide(${i})"></div>
-      `).join('');
-
-
- // Restart Slideshow Timer
- initSlideshowTimer();
- }
-
-
- // REQUISITION CART SYSTEM
- let cart = [];
-
-
- function addToCart(sku, explicitSize = null) {
- const prod = PRODUCTS.find(p => p.sku === sku);
- if (!prod) return;
-
-
- const sizeSelect = document.getElementById(`size-${sku}`);
- const selectedSize = explicitSize || (sizeSelect ? sizeSelect.value : 'Mixed Sizes (S-3XL)');
-
-
- const existing = cart.find(item => item.sku === sku && item.size === selectedSize);
- if (existing) {
- existing.qty += 10;
- } else {
- cart.push({ sku: prod.sku, name: prod.name, fabric: prod.fabric, size: selectedSize, qty: 30 });
- }
-
-
- updateCartUI();
- toggleCartDrawer(true);
- }
-
-
- function removeFromCart(index) {
- cart.splice(index, 1);
- updateCartUI();
- }
-
-
- function updateCartUI() {
- document.getElementById('cartCount').textContent = cart.length;
- const container = document.getElementById('cartItemsContainer');
-
-
- if (cart.length === 0) {
- container.innerHTML = `<p style="color:var(--text-muted); font-size:0.85rem; padding:20px 0;">Your requisition cart is empty. Add items from the product catalogue.</p>`;
- return;
- }
-
-
- container.innerHTML = cart.map((item, index) => `
-        <div class="cart-item-row">
-          <div>
-            <div style="font-weight:700; font-size:0.88rem;">${item.name}</div>
-            <div style="font-size:0.75rem; color:var(--gold-main);">${item.sku} · ${item.fabric}</div>
-            <div style="font-size:0.78rem; color:var(--cyan-bright); font-weight:600;">Size: ${item.size}</div>
-            <div style="font-size:0.78rem; color:var(--text-muted);">Qty: ${item.qty} pcs</div>
-          </div>
-          <button onclick="removeFromCart(${index})" style="background:none; border:none; color:var(--magenta-accent); cursor:pointer;">✕</button>
         </div>
-      `).join('');
- }
-
-
- function toggleCartDrawer(forceOpen = false) {
- const drawer = document.getElementById('cartDrawer');
- if (forceOpen) {
- drawer.classList.add('active');
- } else {
- drawer.classList.toggle('active');
- }
- }
-
-
- function sendCartToWhatsApp() {
- if (cart.length === 0) {
- alert('Please add products to your cart first.');
- return;
- }
-
-
- let text = "Hello Azan Impex,\nI would like to request an official quote for the following items:\n\n";
- cart.forEach((item, i) => {
- text += `${i + 1}. SKU: ${item.sku} | ${item.name} | Fabric: ${item.fabric} | Size: ${item.size} | Qty: ${item.qty} pcs\n`;
- });
-
-
- window.open(`https://wa.me/923250043448?text=${encodeURIComponent(text)}`, '_blank');
- }
-
-
- function sendCustomBuilderWhatsApp() {
- const sport = document.getElementById('builderSport').value;
- const fabric = document.getElementById('builderFabric').value;
- const size = document.getElementById('builderSize').value;
- const qty = document.getElementById('builderQty').value;
-
-
- const text = `Hello Azan Impex,\nI want a custom team kit quote:\n- Sport: ${sport}\n- Fabric: ${fabric}\n- Selected Size: ${size}\n- Quantity: ${qty} pcs`;
- window.open(`https://wa.me/923250043448?text=${encodeURIComponent(text)}`, '_blank');
- }
-
-
- function safeText(value) {
- return String(value ?? "")
-   .replace(/&/g, "&amp;").replace(/</g, "&lt;")
-   .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
-   .replace(/'/g, "&#039;");
- }
-
- function imageFallback(img, fallback) {
- return `this.onerror=null;this.src='${String(fallback || "").replace(/'/g, "\\'")}'`;
- }
-
- function renderProducts(items) {
- const grid = document.getElementById('productsGrid');
- if (!items || items.length === 0) {
-   grid.innerHTML = `<div style="grid-column:1/-1; color:var(--text-muted); padding:40px 0; text-align:center;">No products match your search query.</div>`;
-   return;
- }
-
- grid.innerHTML = items.map(p => {
-   const images = Array.isArray(p.images) && p.images.length ? p.images : [""];
-   const primary = images[0];
-   const hover = images[1] || primary;
-   return `
-        <div class="product-card">
-          <div class="product-thumb-wrap" onclick="openPDP('${safeText(p.sku)}')">
-            <img class="product-img" src="${safeText(primary)}" alt="${safeText(p.name)}" loading="lazy" onerror="${imageFallback(hover, primary)}">
-            <img class="product-img product-img-hover" src="${safeText(hover)}" alt="${safeText(p.name)} alternate view" loading="lazy" onerror="${imageFallback(primary, primary)}">
-            <div class="product-badge-stack">
-              <span class="badge badge-gold">${safeText(p.gsm)}</span>
-              <span class="badge badge-outline">${safeText(p.sport)}</span>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-navy-800 border-b border-navy-700">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#categories" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-navy-700 rounded">Categories</a>
+                <a href="#process" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-navy-700 rounded">Process</a>
+                <a href="#catalog" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-navy-700 rounded">Catalog</a>
+                <a href="#rfq" class="block px-3 py-2 text-base font-medium text-gold-500 bg-navy-700 rounded mt-4 text-center font-bold uppercase">Get a Quote</a>
             </div>
-          </div>
-
-          <div class="product-details">
-            <div class="product-category-sub">${safeText(p.sport)} · ${safeText(p.garmentType)}</div>
-            <h3 class="product-title">${safeText(p.name)}</h3>
-
-            <div class="product-specs-preview">
-              <div>Fabric: <strong>${safeText(p.fabric)}</strong></div>
-              <div>SKU: <strong>${safeText(p.sku)}</strong></div>
-            </div>
-
-            <div class="size-select-wrap">
-              <label>Select Size Filter:</label>
-              <select id="size-${safeText(p.sku)}" class="form-control" style="padding:6px 10px; font-size:0.78rem; background:var(--navy-dark);">
-                <option value="Mixed Sizes (S-3XL)">Mixed Sizes (XS to 5XL)</option>
-                <option value="Small (S)">Small (S)</option>
-                <option value="Medium (M)">Medium (M)</option>
-                <option value="Large (L)">Large (L)</option>
-                <option value="Extra Large (XL)">Extra Large (XL)</option>
-                <option value="2XL">2XL</option>
-                <option value="3XL">3XL</option>
-                <option value="4XL">4XL</option>
-                <option value="5XL">5XL</option>
-              </select>
-            </div>
-
-            <div class="product-actions-row">
-              <button class="btn btn-navy btn-sm" onclick="openPDP('${safeText(p.sku)}')">DETAILS</button>
-              <button class="btn btn-gold btn-sm" onclick="addToCart('${safeText(p.sku)}')">+ REQUISITION</button>
-            </div>
-          </div>
         </div>
-      `;
- }).join('');
- }
+    </header>
 
- function normalized(value) {
- return String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
- }
-
- function filterCategory(catName) {
- const target = normalized(catName);
-
- const buttonCategoryMap = {
-   "all products": "all",
-   "baseball": "baseball",
-   "basketball": "basketball",
-   "soccer / football": "soccer / football",
-   "rugby": "rugby",
-   "cricket": "cricket",
-   "volleyball": "volleyball",
-   "performance & running": "performance",
-   "hoodies & tracksuits": "lifestyle"
- };
-
- document.querySelectorAll('.filter-pill').forEach(btn => {
-   const label = normalized(btn.textContent);
-   const mapped = buttonCategoryMap[label] || label;
-   btn.classList.toggle('active', mapped === target || (target === "all" && mapped === "all"));
- });
-
- if (target === "all") {
-   renderProducts(PRODUCTS);
-   return;
- }
-
- const filtered = PRODUCTS.filter(p => {
-   const sport = normalized(p.sport);
-   const sportId = normalized(p.sportId);
-   const type = normalized(p.garmentType);
-   const typeId = normalized(p.typeId);
-   const category = normalized(p.category);
-
-   if (target === "soccer / football" || target === "football" || target === "soccer") {
-     return sportId === "spt-soc" || sport === "soccer / football" || sport.includes("soccer") || sport.includes("football");
-   }
-   if (target === "performance") {
-     return ["spt-run","spt-gym","spt-prf"].includes(sportId)
-       || ["running","gym / training","performance"].some(v => sport.includes(v))
-       || ["typ-cmp","typ-trn","typ-sng","typ-jgr"].includes(typeId)
-       || ["compression","training","performance","singlet","jogger"].some(v => type.includes(v));
-   }
-   if (target === "lifestyle") {
-     return ["typ-hdy","typ-trk"].includes(typeId)
-       || type.includes("hoodie") || type.includes("tracksuit");
-   }
-
-   const sportMatches = sport === target || sportId === `spt-${target.substring(0,3)}`;
-   const categoryMatches = category === target;
-   return sportMatches || categoryMatches;
- });
-
- renderProducts(filtered);
- }
-
- function handleSearch() {
- const query = normalized(document.getElementById('searchInput').value);
- if (!query) {
-   renderProducts(PRODUCTS);
-   return;
- }
-
- const filtered = PRODUCTS.filter(p => [
-   p.name, p.sku, p.fabric, p.sport, p.garmentType, p.description, p.gsm
- ].some(value => normalized(value).includes(query)));
-
- renderProducts(filtered);
- }
-
- function openPDP(sku) {
- const p = PRODUCTS.find(item => item.sku === sku);
- if (!p) return;
-
-
- const modalContent = document.getElementById('modalContent');
- modalContent.innerHTML = `
-        <div class="pdp-gallery">
-          <div class="pdp-main-image-wrap">
-            <img id="pdpMainImg" class="pdp-main-image" src="${p.images[0]}" alt="${p.name}">
-          </div>
-          <div class="pdp-thumbnails">
- ${p.images.map((img, i) => `
-              <img class="pdp-thumb ${i===0?'active':''}" src="${img}" alt="thumb" onclick="document.getElementById('pdpMainImg').src='${img}'">
-            `).join('')}
-          </div>
+    <!-- ==========================================
+         2. HERO SECTION
+         ========================================== -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Image & Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&q=80&w=2000" alt="Sportswear Manufacturing" class="w-full h-full object-cover object-center opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/90 to-navy-900/50"></div>
         </div>
 
-        <div>
-          <span class="badge badge-gold" style="margin-bottom:8px;">${p.sport} Collection</span>
-          <h2 style="font-family:var(--font-display); font-size:2rem; text-transform:uppercase; margin-bottom:12px;">${p.name}</h2>
-          <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">${p.description}</p>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <span class="block text-gold-500 font-bold tracking-widest text-sm mb-4 uppercase">Sialkot, Pakistan • Global Exporter</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-heading font-bold text-white uppercase leading-tight mb-6">
+                    Premium Custom <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">Sublimation Sportswear</span>
+                </h1>
+                <p class="text-lg text-gray-400 mb-8 max-w-2xl leading-relaxed">
+                    Azan Impex is a B2B factory direct manufacturer delivering high-quality, fully customizable teamwear, activewear, and performance apparel for brands worldwide.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 mb-12">
+                    <a href="#catalog" class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold uppercase tracking-wider rounded bg-gold-500 text-navy-900 hover:bg-gold-400 transition-all">
+                        View Catalog
+                    </a>
+                    <a href="#rfq" class="inline-flex items-center justify-center px-8 py-3.5 border-2 border-gold-500 text-sm font-bold uppercase tracking-wider rounded text-gold-500 hover:bg-gold-500 hover:text-navy-900 transition-all">
+                        Custom Inquiry
+                    </a>
+                </div>
 
-          <div class="pdp-specs-grid">
-            <div class="pdp-spec-box">
-              <label>SKU Code</label>
-              <span>${p.sku}</span>
+                <!-- Trust Badges -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-white/10 pt-8">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span class="text-sm font-medium text-gray-300">Fast Turnaround</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        <span class="text-sm font-medium text-gray-300">Factory Direct</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span class="text-sm font-medium text-gray-300">Global Shipping</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span class="text-sm font-medium text-gray-300">Strict QC</span>
+                    </div>
+                </div>
             </div>
-            <div class="pdp-spec-box">
-              <label>Fabric Type</label>
-              <span>${p.fabric}</span>
-            </div>
-            <div class="pdp-spec-box">
-              <label>Weight (GSM)</label>
-              <span>${p.gsm}</span>
-            </div>
-            <div class="pdp-spec-box">
-              <label>Available Size Run</label>
-              <span>${p.sizes}</span>
-            </div>
-          </div>
-
-          <div class="form-group" style="margin-top:16px;">
-            <label style="color:var(--gold-main);">Select Size / Size Ratio for Requisition:</label>
-            <select id="pdpSizeSelect" class="form-control" style="background:var(--navy-dark);">
-              <option value="Mixed Sizes (S-3XL)">Mixed Size Breakdown (S to 3XL)</option>
-              <option value="Small (S)">Small (S)</option>
-              <option value="Medium (M)">Medium (M)</option>
-              <option value="Large (L)">Large (L)</option>
-              <option value="Extra Large (XL)">Extra Large (XL)</option>
-              <option value="2XL">2XL</option>
-              <option value="3XL">3XL</option>
-            </select>
-          </div>
-
-          <div style="display:flex; gap:12px; margin-top:20px;">
-            <button class="btn btn-gold" style="flex:1;" onclick="const sz=document.getElementById('pdpSizeSelect').value; addToCart('${p.sku}', sz); closeModal();">ADD TO REQUISITION CART</button>
-            <a href="https://wa.me/923250043448?text=Hello%20Azan%20Impex,%20I%20am%20inquiring%20about%20SKU:%20${p.sku}%20(${p.name})" target="_blank" class="btn btn-whatsapp">WHATSAPP</a>
-          </div>
         </div>
-      `;
-
-
- document.getElementById('productModal').classList.add('active');
- }
-
-
- function closeModal() {
- document.getElementById('productModal').classList.remove('active');
- }
-
-
- // HERO SLIDESHOW TIMER ENGINE
- let currentSlide = 0;
- let slideTimer = null;
-
-
- function initSlideshowTimer() {
- if (slideTimer) clearInterval(slideTimer);
- slideTimer = setInterval(() => {
- const slides = document.querySelectorAll('.slide');
- if (slides.length > 0) {
- setSlide((currentSlide + 1) % slides.length);
- }
- }, 5000);
- }
-
-
- function setSlide(index) {
- const slides = document.querySelectorAll('.slide');
- const dots = document.querySelectorAll('.dot');
- if (slides.length === 0) return;
-
-
- slides.forEach(s => s.classList.remove('active'));
- dots.forEach(d => d.classList.remove('active'));
-
-
- currentSlide = index;
- if (slides[currentSlide]) slides[currentSlide].classList.add('active');
- if (dots[currentSlide]) dots[currentSlide].classList.add('active');
- }
-
-
- // ORDER FORM & ADMIN STATUS SYSTEM
- let defaultOrders = [
- {
- id: "AZ-2026-1001",
- date: "2026-08-12 10:15",
- name: "David Miller (Thunder Baseball)",
- contact: "david@thunderbaseball.com\n+1 555 987 6543",
- items: "30x AZ-BSB-001 [Size: Mixed S-3XL]",
- notes: "Need royal blue piping on collar.",
- status: "In Production",
- updatedBy: "Muhammad Wajid (MD)"
- }
- ];
-
-
- let adminOrders = JSON.parse(localStorage.getItem('azan_orders')) || defaultOrders;
-
-
- function saveOrdersLocally() {
- localStorage.setItem('azan_orders', JSON.stringify(adminOrders));
- }
-
-
- function handleInquirySubmit(e) {
- e.preventDefault();
- const submitBtn = document.getElementById('submitOrderBtn');
- submitBtn.disabled = true;
- submitBtn.textContent = 'SUBMITTING REQUISITION...';
-
-
- const name = document.getElementById('custName').value;
- const company = document.getElementById('custCompany').value;
- const email = document.getElementById('custEmail').value;
- const phone = document.getElementById('custPhone').value;
- const notes = document.getElementById('custNotes').value;
-
-
- const orderId = `AZ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
- const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
-
-
- let itemSummary = cart.length > 0 ? cart.map(c => `${c.qty}x ${c.sku} [Size: ${c.size}]`).join(', ') : 'Custom Kit Inquiry Request';
-
-
- const formData = new FormData();
- formData.append("Order_Ticket_ID", orderId);
- formData.append("Customer_Name", name);
- formData.append("Company_Club", company || "N/A");
- formData.append("Email_Address", email);
- formData.append("Phone_WhatsApp", phone);
- formData.append("Items_And_Sizes", itemSummary);
- formData.append("Requisition_Notes", notes || "No additional notes");
-
-
- fetch(`https://formsubmit.co/ajax/${OWNER_EMAIL}`, {
- method: "POST",
- body: formData
- }).catch(err => console.log("Email Notification Sent / Deferred:", err));
-
-
- const payload = {
- orderId: orderId,
- date: now,
- name: name,
- company: company || '',
- email: email,
- phone: phone,
- country: 'Global / Export',
- notes: notes || '',
- itemCount: cart.length || 1,
- items: itemSummary,
- itemsList: cart.map(c => ({ sku: c.sku, qty: c.qty, fabric: c.fabric, size: c.size }))
- };
-
-
- if (GOOGLE_SHEET_WEBHOOK_URL && GOOGLE_SHEET_WEBHOOK_URL.includes("script.google.com")) {
- fetch(GOOGLE_SHEET_WEBHOOK_URL, {
- method: 'POST',
- mode: 'no-cors',
- headers: { 'Content-Type': 'text/plain;charset=utf-8' },
- body: JSON.stringify(payload)
- });
- }
-
-
- const newOrder = {
- id: orderId,
- date: now,
- name: `${name} ${company ? '(' + company + ')' : ''}`,
- contact: `${email}\n${phone}`,
- items: itemSummary,
- notes: notes || 'No additional notes',
- status: 'New',
- updatedBy: 'Customer Submission'
- };
-
-
- adminOrders.unshift(newOrder);
- saveOrdersLocally();
- if (isAdminLoggedIn()) renderAdminOrders();
-
-
- document.getElementById('formStatus').innerHTML = `<strong style="color:var(--cyan-bright);">✅ Requisition Submitted Successfully! Ticket: ${orderId}</strong><br><span style="color:var(--text-muted); font-size:0.8rem;">Logged to Google Sheet Tabs (Orders, Customers, OrderItems).</span>`;
- 
- const waText = encodeURIComponent(`Hello Azan Impex,\nI just submitted an order on your website:\n- Ticket: ${orderId}\n- Name: ${name}\n- Items: ${itemSummary}\n- Notes: ${notes}`);
- const waBtn = document.getElementById('whatsappSendBtn');
- waBtn.href = `https://wa.me/923250043448?text=${waText}`;
- document.getElementById('whatsappSendBtnWrap').style.display = 'block';
-
-
- document.getElementById('orderForm').reset();
- cart = [];
- updateCartUI();
- submitBtn.disabled = false;
- submitBtn.textContent = 'SUBMIT ORDER REQUISITION →';
- }
-
-
- function openAdminLoginModal() {
- document.getElementById('adminLoginModal').classList.add('active');
- }
-
-
- function closeAdminLoginModal() {
- document.getElementById('adminLoginModal').classList.remove('active');
- }
-
-
- function authenticateAdmin() {
- const u = document.getElementById('adminUser').value;
- const p = document.getElementById('adminPass').value;
-
-
- if (u === "wajid" && p === "AzanImpex2026") {
- sessionStorage.setItem('azan_admin_auth', 'true');
- closeAdminLoginModal();
- showAdminPanel();
- } else {
- document.getElementById('loginError').textContent = "Invalid Admin Username or Password.";
- }
- }
-
-
- function isAdminLoggedIn() {
- return sessionStorage.getItem('azan_admin_auth') === 'true';
- }
-
-
- function showAdminPanel() {
- document.getElementById('adminPanel').style.display = 'block';
- renderAdminOrders();
- document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
- }
-
-
- function logoutAdmin() {
- sessionStorage.removeItem('azan_admin_auth');
- document.getElementById('adminPanel').style.display = 'none';
- alert("Logged out of Admin Portal.");
- }
-
-
- function renderAdminOrders() {
- const tbody = document.getElementById('adminOrderTableBody');
- const statuses = ["New", "Under Review", "Quotation Sent", "In Production", "QC Inspection", "Dispatched", "Completed", "Cancelled"];
-
-
- tbody.innerHTML = adminOrders.map((o, idx) => `
-        <tr>
-          <td><strong style="color:var(--gold-main);">${o.id}</strong></td>
-          <td>${o.date}</td>
-          <td>${o.name}</td>
-          <td style="white-space:pre-line;">${o.contact}</td>
-          <td>${o.items}</td>
-          <td>${o.notes}</td>
-          <td>
-            <select onchange="updateOrderStatus('${o.id}', this.value)">
- ${statuses.map(s => `<option value="${s}" ${s === o.status ? 'selected' : ''}>${s}</option>`).join('')}
-            </select>
-          </td>
-          <td>${o.updatedBy}</td>
-        </tr>
-      `).join('');
- }
-
-
- function updateOrderStatus(orderId, newStatus) {
- const order = adminOrders.find(o => o.id === orderId);
- if (order) {
- order.status = newStatus;
- order.updatedBy = `Muhammad Wajid (${new Date().toISOString().substring(11, 16)})`;
- saveOrdersLocally();
- alert(`Order ${orderId} updated to: ${newStatus}`);
- }
- }
-
-
- function downloadOrdersCSV() {
- if (adminOrders.length === 0) {
- alert("No orders to export.");
- return;
- }
-
-
- let csv = "Ticket ID,Date,Customer Name,Contact Info,Items & Sizes,Requisition Notes,Status,Updated By\n";
- 
- adminOrders.forEach(o => {
- const row = [
- `"${o.id}"`,
- `"${o.date}"`,
- `"${o.name.replace(/"/g, '""')}"`,
- `"${o.contact.replace(/\n/g, ' | ').replace(/"/g, '""')}"`,
- `"${o.items.replace(/"/g, '""')}"`,
- `"${o.notes.replace(/"/g, '""')}"`,
- `"${o.status}"`,
- `"${o.updatedBy}"`
- ];
- csv += row.join(",") + "\n";
- });
-
-
- const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
- const url = URL.createObjectURL(blob);
- const link = document.createElement("a");
- link.setAttribute("href", url);
- link.setAttribute("download", `Azan_Impex_Customer_Orders_${new Date().toISOString().substring(0,10)}.csv`);
- document.body.appendChild(link);
- link.click();
- document.body.removeChild(link);
- }
-
-
- if (window.location.search.includes('admin=1')) {
- if (isAdminLoggedIn()) {
- showAdminPanel();
- } else {
- openAdminLoginModal();
- }
- }
-
-
- // INITIALIZATION & LIVE SHEET FETCH
- renderProducts(PRODUCTS);
- initSlideshowTimer();
- loadLiveSheetData();
- </script>
+    </section>
+
+    <!-- ==========================================
+         3. PRODUCT CATEGORIES GRID
+         ========================================== -->
+    <section id="categories" class="py-24 bg-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold-500 font-bold tracking-widest text-sm uppercase">Our Specialties</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white uppercase mt-2 mb-4">Core Categories</h2>
+                <p class="text-gray-400">We manufacture a wide range of athletic and casual wear tailored to your exact specifications and branding.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="group relative bg-navy-900 rounded-xl overflow-hidden border border-navy-700 hover:border-gold-500 transition-colors">
+                    <div class="aspect-[4/5] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition-all z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=600" alt="Soccer Kits" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 z-20">
+                            <span class="bg-navy-900/80 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Sublimation</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-2">Soccer Kits</h3>
+                        <p class="text-sm text-gray-400 mb-4">Moisture-wicking, full dye-sublimation jerseys and shorts.</p>
+                        <a href="#rfq" class="text-gold-500 text-sm font-bold uppercase tracking-wider hover:text-gold-400 inline-flex items-center gap-2">Inquire Now <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative bg-navy-900 rounded-xl overflow-hidden border border-navy-700 hover:border-gold-500 transition-colors">
+                    <div class="aspect-[4/5] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition-all z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&q=80&w=600" alt="Basketball Uniforms" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 z-20">
+                            <span class="bg-navy-900/80 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Reversible</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-2">Basketball Uniforms</h3>
+                        <p class="text-sm text-gray-400 mb-4">Elite dazzle mesh construction for maximum court performance.</p>
+                        <a href="#rfq" class="text-gold-500 text-sm font-bold uppercase tracking-wider hover:text-gold-400 inline-flex items-center gap-2">Inquire Now <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group relative bg-navy-900 rounded-xl overflow-hidden border border-navy-700 hover:border-gold-500 transition-colors">
+                    <div class="aspect-[4/5] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition-all z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600" alt="Compression Wear" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 z-20">
+                            <span class="bg-navy-900/80 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Performance</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-2">Compression Wear</h3>
+                        <p class="text-sm text-gray-400 mb-4">High-stretch Lycra/Spandex blends for MMA, Gym, and Running.</p>
+                        <a href="#rfq" class="text-gold-500 text-sm font-bold uppercase tracking-wider hover:text-gold-400 inline-flex items-center gap-2">Inquire Now <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="group relative bg-navy-900 rounded-xl overflow-hidden border border-navy-700 hover:border-gold-500 transition-colors">
+                    <div class="aspect-[4/5] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition-all z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600" alt="Streetwear & Leisure" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 z-20">
+                            <span class="bg-navy-900/80 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Private Label</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-2">Streetwear & Leisure</h3>
+                        <p class="text-sm text-gray-400 mb-4">Heavyweight hoodies, tracksuits, and premium cotton t-shirts.</p>
+                        <a href="#rfq" class="text-gold-500 text-sm font-bold uppercase tracking-wider hover:text-gold-400 inline-flex items-center gap-2">Inquire Now <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         4. MANUFACTURING PROCESS
+         ========================================== -->
+    <section id="process" class="py-24 bg-navy-900 border-y border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold-500 font-bold tracking-widest text-sm uppercase">Factory Floor Workflow</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white uppercase mt-2 mb-4">Our Production Process</h2>
+                <p class="text-gray-400">Complete transparency from the moment you submit your tech pack to the day your order is delivered.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Steps generated iteratively -->
+                <div class="bg-navy-800 p-8 rounded-xl border border-navy-700 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-9xl font-heading text-navy-700/50 font-bold z-0 pointer-events-none">01</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-3">Design Setup</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">We review your tech packs, logos, and specific requirements to generate production-ready vector artworks.</p>
+                    </div>
+                </div>
+                <div class="bg-navy-800 p-8 rounded-xl border border-navy-700 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-9xl font-heading text-navy-700/50 font-bold z-0 pointer-events-none">02</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-3">Sublimation Printing</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Using imported Italian inks and high-speed plotters, we print your designs onto transfer paper with perfect color matching.</p>
+                    </div>
+                </div>
+                <div class="bg-navy-800 p-8 rounded-xl border border-navy-700 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-9xl font-heading text-navy-700/50 font-bold z-0 pointer-events-none">03</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-3">Heat Transfer</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">High-pressure industrial heat presses vaporize the ink directly into the polyester fibers for permanent, unfading colors.</p>
+                    </div>
+                </div>
+                <div class="bg-navy-800 p-8 rounded-xl border border-navy-700 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-9xl font-heading text-navy-700/50 font-bold z-0 pointer-events-none">04</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-3">Cutting & Stitching</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Precision laser cutting ensures accurate sizing, followed by reinforced sewing by our experienced stitching craftsmen.</p>
+                    </div>
+                </div>
+                <div class="bg-navy-800 p-8 rounded-xl border border-navy-700 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-9xl font-heading text-navy-700/50 font-bold z-0 pointer-events-none">05</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-3">Quality Control</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Every garment undergoes strict QC to check sizing dimensions, stitching integrity, and color consistency before packing.</p>
+                    </div>
+                </div>
+                <div class="bg-navy-800 p-8 rounded-xl border border-navy-700 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-9xl font-heading text-navy-700/50 font-bold z-0 pointer-events-none">06</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-heading font-bold text-white uppercase mb-3">Global Delivery</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Securely poly-bagged and boxed. We dispatch via reliable air freight (DHL/FedEx) direct to your doorstep worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         5. DYNAMIC PRODUCT CATALOG (SHEETS INTEGRATION)
+         ========================================== -->
+    <section id="catalog" class="py-24 bg-navy-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div class="max-w-2xl">
+                    <span class="text-gold-500 font-bold tracking-widest text-sm uppercase">Live Inventory</span>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-white uppercase mt-2">B2B Product Catalog</h2>
+                </div>
+                <div id="syncStatusBadge" class="bg-navy-800 border border-navy-700 px-4 py-2 rounded text-xs font-bold uppercase tracking-wider text-green-400 flex items-center gap-2">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    Fetching Catalog...
+                </div>
+            </div>
+
+            <!-- Filter & Search Bar -->
+            <div class="bg-navy-800 border border-navy-700 p-4 rounded-xl flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+                <div class="flex gap-2 overflow-x-auto hide-scrollbar w-full md:w-auto" id="catalogFilters">
+                    <button class="filter-btn active px-4 py-2 bg-gold-500 text-navy-900 font-bold text-sm uppercase rounded whitespace-nowrap" data-filter="all">All</button>
+                    <button class="filter-btn px-4 py-2 bg-navy-700 text-gray-300 hover:text-white font-bold text-sm uppercase rounded whitespace-nowrap transition-colors" data-filter="soccer">Soccer</button>
+                    <button class="filter-btn px-4 py-2 bg-navy-700 text-gray-300 hover:text-white font-bold text-sm uppercase rounded whitespace-nowrap transition-colors" data-filter="basketball">Basketball</button>
+                    <button class="filter-btn px-4 py-2 bg-navy-700 text-gray-300 hover:text-white font-bold text-sm uppercase rounded whitespace-nowrap transition-colors" data-filter="baseball">Baseball</button>
+                    <button class="filter-btn px-4 py-2 bg-navy-700 text-gray-300 hover:text-white font-bold text-sm uppercase rounded whitespace-nowrap transition-colors" data-filter="streetwear">Streetwear</button>
+                </div>
+                <div class="w-full md:w-72">
+                    <input type="text" id="catalogSearch" placeholder="Search SKU or Fabric..." class="w-full bg-navy-900 border border-navy-600 text-white text-sm rounded px-4 py-2 focus:outline-none focus:border-gold-500 transition-colors">
+                </div>
+            </div>
+
+            <!-- Dynamic Grid Container -->
+            <div id="dynamicCatalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Loader placeholder -->
+                <div class="col-span-full py-20 text-center text-gray-500">
+                    <svg class="animate-spin h-8 w-8 mx-auto mb-4 text-gold-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Syncing with Google Sheets...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         6. B2B RFQ FORM (REQUEST FOR QUOTE)
+         ========================================== -->
+    <section id="rfq" class="py-24 bg-navy-800 border-t border-navy-700 relative overflow-hidden">
+        <!-- Abstract Decoration -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+            <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-blue-900/10 blur-[120px]"></div>
+            <div class="absolute -bottom-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-gold-900/10 blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Text Area -->
+                <div class="flex flex-col justify-center">
+                    <span class="text-gold-500 font-bold tracking-widest text-sm uppercase">Custom Manufacturing</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-white uppercase mt-2 mb-6 leading-tight">Request an <br>Official Quote</h2>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Ready to start production? Fill out the Request for Quote (RFQ) form with your specific project details. Attach your tech pack or logo, and our production team will get back to you within 24 hours with exact pricing and timelines.
+                    </p>
+                    
+                    <div class="bg-navy-900 p-6 rounded-xl border border-navy-700 mb-6 flex items-start gap-4">
+                        <div class="bg-navy-800 p-3 rounded-full text-gold-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold uppercase mb-1">Direct Factory Email</h4>
+                            <p class="text-gray-400">wajidali2657678@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-navy-900 p-6 rounded-xl border border-navy-700 flex items-start gap-4">
+                        <div class="bg-navy-800 p-3 rounded-full text-green-500">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold uppercase mb-1">WhatsApp Export Team</h4>
+                            <p class="text-gray-400">+92 325 0043448</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Area -->
+                <div class="bg-navy-900 p-8 md:p-10 rounded-2xl border border-navy-700 shadow-2xl">
+                    <form id="b2bRfqForm" onsubmit="handleRFQSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Full Name *</label>
+                                <input type="text" id="rfqName" required class="w-full bg-navy-800 border border-navy-600 rounded px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Company / Club Name</label>
+                                <input type="text" id="rfqCompany" class="w-full bg-navy-800 border border-navy-600 rounded px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors" placeholder="Brand LLC">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Email Address *</label>
+                                <input type="email" id="rfqEmail" required class="w-full bg-navy-800 border border-navy-600 rounded px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors" placeholder="john@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">WhatsApp / Phone *</label>
+                                <input type="text" id="rfqPhone" required class="w-full bg-navy-800 border border-navy-600 rounded px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors" placeholder="+1 234 567 8900">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Product Category</label>
+                                <select id="rfqCategory" class="w-full bg-navy-800 border border-navy-600 rounded px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors appearance-none">
+                                    <option>Soccer / Football</option>
+                                    <option>Basketball</option>
+                                    <option>Baseball</option>
+                                    <option>Compression Wear</option>
+                                    <option>Tracksuits & Hoodies</option>
+                                    <option>Other (Specify in details)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Estimated Quantity</label>
+                                <input type="number" id="rfqQty" class="w-full bg-navy-800 border border-navy-600 rounded px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors" placeholder="e.g. 100" min="10">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Project Details & Specifications</label>
+                            <textarea id="rfqDetails" rows="4" class="w-full bg-navy-800 border border-navy-600 rounded px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors" placeholder="Describe fabrics, size ratios, design requirements..."></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Tech Pack / Logo Upload (Optional)</label>
+                            <input type="file" id="rfqFile" class="w-full bg-navy-800 border border-navy-600 rounded px-4 py-2 text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-bold file:bg-navy-700 file:text-gold-500 hover:file:bg-navy-600 transition-colors">
+                            <p class="text-xs text-gray-500 mt-2">Max file size: 5MB. Formats: PDF, PNG, JPG.</p>
+                        </div>
+
+                        <button type="submit" id="rfqSubmitBtn" class="w-full bg-gold-500 text-navy-900 font-bold uppercase tracking-wider py-4 rounded hover:bg-gold-400 transition-all flex justify-center items-center gap-2">
+                            Submit Quote Request
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                        
+                        <div id="rfqStatus" class="text-center text-sm font-medium mt-4 hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         7. FOOTER
+         ========================================== -->
+    <footer class="bg-navy-900 border-t border-navy-800 pt-16 pb-8" id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand Info -->
+                <div class="lg:col-span-1">
+                    <a href="#" class="inline-block font-heading text-2xl font-bold tracking-wider text-white mb-4">AZAN <span class="text-gold-500">IMPEX</span></a>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Premium B2B manufacturer and exporter of custom sublimation sportswear, activewear, and streetwear. Based in Sialkot, Pakistan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <!-- Social placeholders -->
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-heading font-bold uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#categories" class="hover:text-gold-500 transition-colors">Categories</a></li>
+                        <li><a href="#process" class="hover:text-gold-500 transition-colors">Manufacturing Process</a></li>
+                        <li><a href="#catalog" class="hover:text-gold-500 transition-colors">Product Catalog</a></li>
+                        <li><a href="#rfq" class="hover:text-gold-500 transition-colors">Request for Quote</a></li>
+                    </ul>
+                </div>
+
+                <!-- Products -->
+                <div>
+                    <h4 class="text-white font-heading font-bold uppercase tracking-wider mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#catalog" onclick="filterCatalog('soccer')" class="hover:text-gold-500 transition-colors">Soccer Kits</a></li>
+                        <li><a href="#catalog" onclick="filterCatalog('basketball')" class="hover:text-gold-500 transition-colors">Basketball Uniforms</a></li>
+                        <li><a href="#catalog" onclick="filterCatalog('baseball')" class="hover:text-gold-500 transition-colors">Baseball Jerseys</a></li>
+                        <li><a href="#catalog" onclick="filterCatalog('streetwear')" class="hover:text-gold-500 transition-colors">Tracksuits & Hoodies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-heading font-bold uppercase tracking-wider mb-4">Contact Us</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span>Sialkot, Punjab, Pakistan<br>Global Export Hub</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-gold-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <a href="mailto:wajidali2657678@gmail.com" class="hover:text-gold-500 transition-colors">wajidali2657678@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            <a href="https://wa.me/923250043448" target="_blank" class="hover:text-gold-500 transition-colors">+92 325 0043448</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-navy-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Azan Impex. All rights reserved. Registered Export Enterprise.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         8. JAVASCRIPT LOGIC (UI & DATA)
+         ========================================== -->
+    <script>
+        // --- UI Interactions ---
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Sticky Navbar Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg', 'bg-navy-900/95');
+                navbar.classList.remove('bg-navy-900/50');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // --- Dynamic Product Catalog (Google Sheets Integration) ---
+        
+        // Use the exact webhook URL provided in the instructions
+        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbw-bs-E8S-Ndd7M9QNFA7SsR3kxHxMRhILDma0u6rXZIEEnIRmwU_GSPV3-zHcgX0g5/exec";
+        let PRODUCTS = [];
+
+        // Fallback images based on requested categories
+        const FALLBACK_IMGS = {
+            'Soccer': 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=400',
+            'Basketball': 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&q=80&w=400',
+            'Baseball': 'https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&q=80&w=400',
+            'Compression': 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=400',
+            'Streetwear': 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400',
+            'Default': 'https://images.unsplash.com/photo-1556817411-31ae72fa3ea8?auto=format&fit=crop&q=80&w=400'
+        };
+
+        // Generative local fallback if webhook fails/blocks CORS
+        const LOCAL_FALLBACK_PRODUCTS = [
+            { sku: 'AZ-SOC-001', name: 'Premium Sublimation Soccer Kit', category: 'Soccer', fabric: 'Micro Interlock 140GSM', image: FALLBACK_IMGS['Soccer'] },
+            { sku: 'AZ-SOC-002', name: 'Elite Match Day Football Jersey', category: 'Soccer', fabric: 'Breathable Mesh 160GSM', image: FALLBACK_IMGS['Soccer'] },
+            { sku: 'AZ-BKB-001', name: 'Reversible Basketball Uniform', category: 'Basketball', fabric: 'Dazzle Mesh 170GSM', image: FALLBACK_IMGS['Basketball'] },
+            { sku: 'AZ-BKB-002', name: 'Pro Court Basketball Shorts', category: 'Basketball', fabric: 'Performance Knit 150GSM', image: FALLBACK_IMGS['Basketball'] },
+            { sku: 'AZ-BSB-001', name: 'Full Button Baseball Jersey', category: 'Baseball', fabric: 'Polynix Twill 200GSM', image: FALLBACK_IMGS['Baseball'] },
+            { sku: 'AZ-CMP-001', name: 'Long Sleeve Compression Top', category: 'Compression Wear', fabric: 'Spandex Blend 180GSM', image: FALLBACK_IMGS['Compression'] },
+            { sku: 'AZ-STR-001', name: 'Heavyweight Pullover Hoodie', category: 'Streetwear', fabric: 'Fleece 300GSM', image: FALLBACK_IMGS['Streetwear'] },
+            { sku: 'AZ-STR-002', name: 'Custom Team Tracksuit', category: 'Streetwear', fabric: 'Polyester Tricot 220GSM', image: FALLBACK_IMGS['Streetwear'] },
+        ];
+
+        async function initCatalog() {
+            try {
+                // Try fetching from Google Sheets
+                const response = await fetch(GOOGLE_SHEET_WEBHOOK_URL + "?action=getData");
+                if(!response.ok) throw new Error("Network response was not ok");
+                
+                const data = await response.json();
+                
+                // Assuming data.products exists based on previous codebase context
+                if (data && data.products && data.products.length > 0) {
+                    PRODUCTS = data.products.map((row, idx) => ({
+                        sku: row.SKU || `AZ-PROD-${idx+1}`,
+                        name: row.ProductName || row['Product Name'] || 'Sublimated Garment',
+                        category: row.Sport || row.Category || 'Other',
+                        fabric: row.Fabric || 'Micro Interlock',
+                        image: row.Image1 || row['Image 1'] || FALLBACK_IMGS['Default']
+                    }));
+                    document.getElementById('syncStatusBadge').innerHTML = '<span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>Live Synced';
+                } else {
+                    throw new Error("No products found in sheet");
+                }
+            } catch (error) {
+                console.warn("Using local fallback data due to fetch error:", error);
+                PRODUCTS = LOCAL_FALLBACK_PRODUCTS;
+                document.getElementById('syncStatusBadge').innerHTML = '<span class="h-2 w-2 rounded-full bg-gray-500"></span> Local Mode';
+                document.getElementById('syncStatusBadge').className = 'bg-navy-800 border border-navy-700 px-4 py-2 rounded text-xs font-bold uppercase tracking-wider text-gray-400 flex items-center gap-2';
+            }
+
+            renderCatalog(PRODUCTS);
+        }
+
+        function renderCatalog(items) {
+            const grid = document.getElementById('dynamicCatalogGrid');
+            if (!items || items.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500 font-medium">No products match your criteria.</div>`;
+                return;
+            }
+
+            grid.innerHTML = items.map(p => `
+                <div class="group bg-navy-800 rounded-xl border border-navy-700 overflow-hidden hover:border-gold-500 transition-colors duration-300 flex flex-col h-full">
+                    <div class="relative aspect-[4/5] bg-navy-900 overflow-hidden">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" onerror="this.src='${FALLBACK_IMGS['Default']}'">
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-navy-900/80 backdrop-blur text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">${p.category}</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="text-[10px] text-gold-500 uppercase tracking-widest font-bold mb-1">${p.sku}</div>
+                        <h3 class="text-white font-heading text-lg font-bold leading-tight mb-2 line-clamp-2">${p.name}</h3>
+                        <p class="text-xs text-gray-400 mb-4 mt-auto">Fabric: ${p.fabric}</p>
+                        <a href="#rfq" onclick="prefillRFQ('${p.name}', '${p.category}')" class="w-full block text-center bg-navy-700 text-white text-sm font-bold uppercase tracking-wider py-2.5 rounded hover:bg-gold-500 hover:text-navy-900 transition-colors">
+                            Inquire Now
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Search & Filter Logic
+        document.getElementById('catalogSearch').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = PRODUCTS.filter(p => 
+                p.name.toLowerCase().includes(term) || 
+                p.sku.toLowerCase().includes(term) || 
+                p.fabric.toLowerCase().includes(term)
+            );
+            renderCatalog(filtered);
+            
+            // Reset filter buttons visually
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-gold-500', 'text-navy-900', 'active');
+                btn.classList.add('bg-navy-700', 'text-gray-300');
+            });
+            document.querySelector('.filter-btn[data-filter="all"]').classList.add('bg-gold-500', 'text-navy-900', 'active');
+            document.querySelector('.filter-btn[data-filter="all"]').classList.remove('bg-navy-700', 'text-gray-300');
+        });
+
+        // Make filterCategory globally available for the top grid links
+        window.filterCatalog = function(cat) {
+            // Scroll to catalog
+            document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});
+            
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if(btn.dataset.filter === cat.toLowerCase()) {
+                    btn.click();
+                }
+            });
+        };
+
+        document.getElementById('catalogFilters').addEventListener('click', (e) => {
+            if(e.target.classList.contains('filter-btn')) {
+                // Update Button Styles
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('bg-gold-500', 'text-navy-900', 'active');
+                    btn.classList.add('bg-navy-700', 'text-gray-300');
+                });
+                e.target.classList.remove('bg-navy-700', 'text-gray-300');
+                e.target.classList.add('bg-gold-500', 'text-navy-900', 'active');
+
+                // Filter Data
+                const filter = e.target.dataset.filter;
+                document.getElementById('catalogSearch').value = ''; // clear search
+
+                if(filter === 'all') {
+                    renderCatalog(PRODUCTS);
+                } else {
+                    const filtered = PRODUCTS.filter(p => p.category.toLowerCase().includes(filter));
+                    renderCatalog(filtered);
+                }
+            }
+        });
+
+        // Prefill RFQ from Catalog
+        window.prefillRFQ = function(productName, category) {
+            const select = document.getElementById('rfqCategory');
+            // Try to set category if it matches
+            for(let i=0; i<select.options.length; i++) {
+                if(select.options[i].text.toLowerCase().includes(category.toLowerCase())) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+            document.getElementById('rfqDetails').value = `I am interested in quoting the following product:\n\nProduct: ${productName}\n\nMy Requirements:\n`;
+        };
+
+        // --- RFQ Form Submission (FormSubmit + WhatsApp Redirect fallback) ---
+        const OWNER_EMAIL = "wajidali2657678@gmail.com";
+        const WHATSAPP_NUMBER = "923250043448";
+
+        async function handleRFQSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('rfqSubmitBtn');
+            const status = document.getElementById('rfqStatus');
+            
+            btn.disabled = true;
+            btn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-navy-900 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg> Processing...
+            `;
+
+            // Collect Data
+            const name = document.getElementById('rfqName').value;
+            const company = document.getElementById('rfqCompany').value || 'N/A';
+            const email = document.getElementById('rfqEmail').value;
+            const phone = document.getElementById('rfqPhone').value;
+            const category = document.getElementById('rfqCategory').value;
+            const qty = document.getElementById('rfqQty').value || 'TBD';
+            const details = document.getElementById('rfqDetails').value;
+            
+            const formData = new FormData();
+            formData.append("Name", name);
+            formData.append("Company", company);
+            formData.append("Email", email);
+            formData.append("Phone_WhatsApp", phone);
+            formData.append("Category", category);
+            formData.append("Quantity", qty);
+            formData.append("Project_Details", details);
+            // Note: FormSubmit.co handles file uploads if the input has a name attribute. 
+            // We'll append the file if it exists.
+            const fileInput = document.getElementById('rfqFile');
+            if(fileInput.files.length > 0) {
+                formData.append("Attachment", fileInput.files[0]);
+            }
+
+            try {
+                // Post to FormSubmit
+                await fetch(`https://formsubmit.co/ajax/${OWNER_EMAIL}`, {
+                    method: "POST",
+                    body: formData
+                });
+
+                // Show Success
+                status.classList.remove('hidden', 'text-red-500');
+                status.classList.add('text-green-400');
+                status.innerHTML = `✅ Quote Request Submitted Successfully! We will contact you shortly.`;
+                e.target.reset();
+
+                // Optional: Prepare WhatsApp link for immediate chat
+                const waText = `Hello Azan Impex, I just submitted an RFQ on your website.\n\n*Name:* ${name}\n*Company:* ${company}\n*Category:* ${category}\n*Qty:* ${qty}\n*Details:* ${details}`;
+                setTimeout(() => {
+                    if(confirm("Your request was sent. Would you also like to message us on WhatsApp instantly?")) {
+                        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`, '_blank');
+                    }
+                }, 1000);
+
+            } catch (error) {
+                status.classList.remove('hidden', 'text-green-400');
+                status.classList.add('text-red-500');
+                status.innerHTML = `❌ Error submitting request. Please email us directly or use WhatsApp.`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `Submit Quote Request <svg class="w-4 h-4 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>`;
+            }
+        }
+
+        // Initialize Catalog on load
+        document.addEventListener('DOMContentLoaded', initCatalog);
+
+    </script>
 </body>
 </html>
