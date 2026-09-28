@@ -1,0 +1,2 @@
+sku,name,category,product_type,fabric,gsm,sizes,stock_by_size,main_image,images,videos,description,active
+AZ-001,Example Product,Sublimation,T-Shirt,Polyester,190,"XS|S|M|L|XL","XS:10|S:20|M:30|L:30|XL:20",https://example.com/main.jpg,"https://example.com/1.jpg|https://example.com/2.jpg","https://example.com/1.mp4|https://example.com/2.mp4",Replace with your genuine product data,true

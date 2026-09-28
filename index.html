@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AZAN IMPEX — Apparel & Fabric Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0d10;--muted:#667085;--line:#e7e9ee;--bg:#f7f8fa;--card:#fff;--accent:#111827}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.top{background:#0b0d10;color:#fff;text-align:center;font-size:12px;font-weight:700;padding:9px}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}.nav{max-width:1450px;margin:auto;padding:16px 22px;display:flex;gap:20px;align-items:center}
+.logo{font-size:21px;font-weight:800;white-space:nowrap}.logo span{font-size:11px;background:#111;color:#fff;border-radius:4px;padding:4px 7px;margin-left:5px}
+.search{flex:1;max-width:620px;margin:auto}.search input{width:100%;padding:13px 18px;border:1px solid var(--line);border-radius:28px;background:#f5f6f8;outline:0}.cart{background:#111;color:#fff;border:0;border-radius:24px;padding:12px 18px;font-weight:700;cursor:pointer}
+.layout{max-width:1450px;margin:25px auto;padding:0 22px;display:grid;grid-template-columns:245px 1fr;gap:26px}.filters{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;height:max-content;position:sticky;top:100px}.filter h4{margin:0 0 10px;font-size:12px;text-transform:uppercase}.filter{padding:0 0 18px;margin-bottom:18px;border-bottom:1px solid var(--line)}.filter:last-child{border:0}.filter label{display:block;font-size:13px;margin:8px 0;color:#344054;cursor:pointer}.hero{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;margin-bottom:18px}.hero h1{font-size:30px;margin:0 0 8px}.hero p{color:var(--muted);margin:0}.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.count{font-size:13px;color:var(--muted)}select{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}.media{height:285px;background:#eef0f3;position:relative}.media img{width:100%;height:100%;object-fit:cover}.badges{position:absolute;left:10px;top:10px;display:flex;gap:5px;flex-wrap:wrap}.badge{background:#111;color:#fff;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:700}.badge.stock{background:#16803c}.body{padding:14px}.sku{font-size:10px;color:#98a2b3}.title{font-weight:700;font-size:14px;margin:4px 0 8px}.meta{font-size:11px;color:var(--muted);line-height:1.5}.actions{display:flex;gap:8px;margin-top:13px}.actions button{flex:1;padding:10px;border-radius:8px;border:1px solid #111;background:#111;color:#fff;font-weight:700;cursor:pointer}.actions .ghost{background:#fff;color:#111}
+.drawer{position:fixed;right:-480px;top:0;width:450px;max-width:95vw;height:100vh;background:#fff;z-index:100;box-shadow:-12px 0 35px #0002;transition:.25s;padding:22px;display:flex;flex-direction:column}.drawer.open{right:0}.drawerhead{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px}.cartitems{flex:1;overflow:auto}.ci{padding:14px 0;border-bottom:1px solid var(--line)}.sizes{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.sizes input{width:58px;padding:7px;border:1px solid var(--line);border-radius:6px}.close{border:0;background:transparent;font-size:22px;cursor:pointer}
+.modal{display:none;position:fixed;inset:0;background:#000b;z-index:200;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modalbox{background:#fff;border-radius:15px;max-width:700px;width:100%;max-height:90vh;overflow:auto;padding:24px}.modalbox img{width:100%;max-height:420px;object-fit:contain;background:#f4f5f7;border-radius:10px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.formgrid input,.formgrid textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:8px}.full{grid-column:1/-1}.primary{background:#111;color:#fff;border:0;border-radius:8px;padding:12px 16px;font-weight:700;cursor:pointer}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.filters{display:none}.nav{flex-wrap:wrap}.search{order:3;flex-basis:100%}.hero h1{font-size:24px}.drawer{width:100%}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script>
+</head>
+<body>
+<div class="top">AZAN IMPEX FACTORY DIRECT — REAL STOCK • CUSTOM APPAREL • FABRICS</div>
+<header><div class="nav"><div class="logo">AZAN IMPEX <span>CATALOG</span></div><div class="search"><input id="q" placeholder="Search products, SKU, fabric, category..." oninput="render()"></div><button class="cart" onclick="openCart()">🛒 Order Cart <span id="cc">0</span></button></div></header>
+<main class="layout">
+<aside class="filters">
+<div class="filter"><h4>Categories</h4><label><input type=checkbox value="Sublimation" class=cat checked> Sublimation</label><label><input type=checkbox value="Dyed Fabric" class=cat checked> Dyed Fabric</label><label><input type=checkbox value="HTL" class=cat checked> HTL</label><label><input type=checkbox value="Embroidery" class=cat checked> Embroidery</label><label><input type=checkbox value="Logo" class=cat checked> Logo</label></div>
+<div class="filter"><h4>Availability</h4><label><input type=checkbox id=stockOnly> In stock only</label></div>
+<div class="filter"><h4>Product type</h4><label><input type=checkbox class=ptype value="T-Shirt" checked> T-Shirts</label><label><input type=checkbox class=ptype value="Hoodie" checked> Hoodies</label><label><input type=checkbox class=ptype value="Jersey" checked> Jerseys</label><label><input type=checkbox class=ptype value="Polo" checked> Polos</label><label><input type=checkbox class=ptype value="Trouser" checked> Trousers</label></div>
+<div class="filter"><h4>Media</h4><label><input type=checkbox id=videoOnly> Products with video</label></div>
+</aside>
+<section>
+<div class=hero><h1>Custom Apparel & Fabric Catalog</h1><p>Browse real products, specifications, available sizes and stock. Build one order with multiple products and size-wise quantities.</p></div>
+<div class=bar><div class=count><b id=count>0</b> products</div><select id=sort onchange=render()><option value="featured">Featured</option><option value="name">Name A–Z</option><option value="stock">Stock high–low</option></select></div>
+<div id=grid class=grid></div>
+</section></main>
+
+<div id=drawer class=drawer><div class=drawerhead><h3>Order List</h3><button class=close onclick=closeCart()>×</button></div><div id=cartitems class=cartitems></div><button class=primary onclick=orderModal()>Proceed to Order</button></div>
+<div id=productModal class=modal><div class=modalbox id=productBox></div></div>
+<div id=orderModalBox class=modal><div class=modalbox><div style="display:flex;justify-content:space-between"><h2>Place Order</h2><button class=close onclick=closeOrder()>×</button></div><form id=orderForm><div class=formgrid><input required name=name placeholder="Customer name"><input required name=company placeholder="Company"><input required name=email type=email placeholder="Email"><input required name=phone placeholder="WhatsApp / phone"><textarea class=full name=address required placeholder="Delivery address"></textarea><textarea class=full name=notes placeholder="Order notes / customization"></textarea></div><br><button class=primary>Submit Order</button></form></div></div>
+
+<script>
+const demoProducts=[
+{id:"AZ-001",name:"Performance T-Shirt",cat:["Sublimation"],type:"T-Shirt",fabric:"Polyester Single Jersey",gsm:"190 GSM",sizes:["XS","S","M","L","XL","2XL","3XL","4XL"],stock:120,image:"https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=900",videos:[]},
+{id:"AZ-002",name:"Athletic Hoodie",cat:["Sublimation"],type:"Hoodie",fabric:"Polyester / Spandex",gsm:"250 GSM",sizes:["XS","S","M","L","XL","2XL","3XL","4XL"],stock:80,image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900",videos:[]},
+{id:"AZ-003",name:"Sports Baseball Jersey",cat:["Sublimation","HTL"],type:"Jersey",fabric:"Recycled Polyester",gsm:"230 GSM",sizes:["XS","S","M","L","XL","2XL","3XL","4XL","5XL"],stock:65,image:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=900",videos:[]},
+{id:"AZ-004",name:"Performance Polo",cat:["Sublimation","Embroidery"],type:"Polo",fabric:"Polyester Pique",gsm:"165 GSM",sizes:["S","M","L","XL","2XL","3XL"],stock:55,image:"https://images.unsplash.com/photo-1625910513413-5fc45f3f7a9c?w=900",videos:[]},
+{id:"AZ-005",name:"Dyed Fabric — Custom Shade",cat:["Dyed Fabric"],type:"T-Shirt",fabric:"Polyester",gsm:"180 GSM",sizes:["S","M","L","XL"],stock:400,image:"https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900",videos:[]},
+{id:"AZ-006",name:"HTL Transfer Service",cat:["HTL"],type:"T-Shirt",fabric:"Customer Supplied",gsm:"—",sizes:["Custom"],stock:999,image:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900",videos:[]},
+{id:"AZ-007",name:"Direct Embroidery Service",cat:["Embroidery"],type:"Polo",fabric:"Customer Selected",gsm:"—",sizes:["Custom"],stock:999,image:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=900",videos:[]},
+{id:"AZ-008",name:"Custom Logo / Label",cat:["Logo"],type:"T-Shirt",fabric:"Woven / Printed",gsm:"—",sizes:["Custom"],stock:5000,image:"https://images.unsplash.com/photo-1562157873-818bc0726f68?w=900",videos:[]}
+];
+const norm=p=>{const b=p.stockBy||(p.sizes||[]).reduce((a,s)=>(a[s]=Math.floor((p.stock||0)/Math.max(1,p.sizes.length)),a),{});return {...p,stockBy:b,stock:Object.values(b).reduce((a,x)=>a+x,0)}};
+let products=demoProducts.map(norm);
+async function load(){if(!window.AZ||AZ.url.includes("PASTE"))return;window.sbc=window.sbc||supabase.createClient(AZ.url,AZ.key);
+ const{data,error}=await sbc.from("products").select("*").eq("active",true).order("created_at",{ascending:false});if(error)return console.error(error);
+ products=data.map(r=>norm({id:r.sku,name:r.name,cat:r.category||[],type:r.product_type,fabric:r.fabric||"",gsm:r.gsm?r.gsm+" GSM":"—",sizes:r.sizes||[],stockBy:r.stock_by_size||{},image:r.main_image||(r.images||[])[0]||"",images:r.images||[],videos:r.videos||[]}));
+ cart=cart.filter(c=>products.some(p=>p.id===c.id));render();save()}
+let cart=JSON.parse(localStorage.getItem("az_cart")||"[]");
+document.querySelectorAll(".cat,.ptype,#stockOnly,#videoOnly").forEach(x=>x.addEventListener("change",render));
+function save(){localStorage.setItem("az_cart",JSON.stringify(cart));document.getElementById("cc").textContent=cart.length}
+function render(){
+ let q=document.getElementById("q").value.toLowerCase(), cats=[...document.querySelectorAll(".cat:checked")].map(x=>x.value), types=[...document.querySelectorAll(".ptype:checked")].map(x=>x.value), stock=document.getElementById("stockOnly").checked, vo=document.getElementById("videoOnly").checked;
+ let a=products.filter(p=>(!q||[p.id,p.name,p.cat.join(" "),p.fabric].join(" ").toLowerCase().includes(q))&&p.cat.some(x=>cats.includes(x))&&types.includes(p.type)&&(stock?p.stock>0:true)&&(vo?p.videos?.length:true));
+ if(document.getElementById("sort").value==="name")a.sort((x,y)=>x.name.localeCompare(y.name)); if(document.getElementById("sort").value==="stock")a.sort((x,y)=>y.stock-x.stock);
+ document.getElementById("count").textContent=a.length;
+ document.getElementById("grid").innerHTML=a.map(p=>`<article class=card><div class=media><img src="${p.image}" loading=lazy><div class=badges><span class=badge>${p.id}</span><span class="badge stock">${p.stock>0?"IN STOCK":"OUT OF STOCK"}</span></div></div><div class=body><div class=sku>${p.cat.join(" • ")}</div><div class=title>${p.name}</div><div class=meta>${p.fabric}<br>${p.gsm} • ${p.sizes.join(", ")}</div><div class=actions><button class=ghost onclick='view("${p.id}")'>Details</button><button onclick='add("${p.id}")'>Add</button></div></div></article>`).join("");
+}
+function add(id){let p=products.find(x=>x.id===id);let old=cart.find(x=>x.id===id);if(!old)cart.push({id,qty:{[p.sizes.find(s=>p.stockBy[s]>0)||p.sizes[0]]:1}});save();openCart()}
+function view(id){let p=products.find(x=>x.id===id);document.getElementById("productBox").innerHTML=`<button class=close style=float:right onclick=closeProduct()>×</button><img src="${p.image}">${(p.images||[]).slice(1).map(u=>`<img src="${u}" style="margin-top:8px">`).join("")}${(p.videos||[]).map(u=>`<video src="${u}" controls style="width:100%;margin-top:8px;border-radius:10px"></video>`).join("")}<h2>${p.name}</h2><p>${p.fabric} • ${p.gsm}</p><p><b>SKU:</b> ${p.id}</p><p><b>Categories:</b> ${p.cat.join(", ")}</p><p><b>Available sizes:</b> ${p.sizes.join(", ")}</p><p><b>Stock by size:</b> ${p.sizes.map(s=>s+": "+(p.stockBy[s]||0)).join(" • ")}</p><button class=primary onclick='add("${p.id}");closeProduct()'>Add to Order</button>`;document.getElementById("productModal").classList.add("show")}
+function closeProduct(){document.getElementById("productModal").classList.remove("show")}
+function openCart(){document.getElementById("drawer").classList.add("open");document.getElementById("cartitems").innerHTML=cart.length?cart.map((c,i)=>{let p=products.find(x=>x.id===c.id);return `<div class=ci><b>${p.name}</b><div class=meta>${p.id} • stock ${p.stock}</div><div class=sizes>${p.sizes.map(s=>`<label>${s}<input type=number min=0 max="${p.stockBy[s]||0}" value="${c.qty[s]||0}" onchange='setQty(${i},"${s}",this.value)'></label>`).join("")}</div><button style="margin-top:8px" onclick='remove(${i})'>Remove</button></div>`}).join(""):"<p>Your order list is empty.</p>"}
+function closeCart(){document.getElementById("drawer").classList.remove("open")}
+function setQty(i,s,v){cart[i].qty[s]=Math.min(products.find(x=>x.id===cart[i].id).stockBy[s]||0,Math.max(0,Number(v)||0));save()}
+function remove(i){cart.splice(i,1);save();openCart()}
+function orderModal(){if(!cart.length)return alert("Add at least one product.");document.getElementById("orderModalBox").classList.add("show")}
+function closeOrder(){document.getElementById("orderModalBox").classList.remove("show")}
+document.getElementById("orderForm").onsubmit=async e=>{e.preventDefault();const btn=e.target.querySelector("button"),cust=Object.fromEntries(new FormData(e.target));
+ const items=cart.map(c=>({sku:c.id,name:products.find(p=>p.id===c.id)?.name,qty:Object.fromEntries(Object.entries(c.qty).filter(([,q])=>q>0))})).filter(i=>Object.keys(i.qty).length);
+ if(!items.length)return alert("Please enter a quantity for at least one size.");
+ if(!window.sbc)return alert("Store is not connected to the database yet.");
+ btn.disabled=true;const{data,error}=await sbc.rpc("place_order",{cust,items});btn.disabled=false;if(error)return alert(error.message);
+ fetch("/api/notify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({order_no:data})}).catch(()=>{});
+ alert("Order received: "+data);cart=[];save();e.target.reset();closeOrder();closeCart();load()};
+render();save();load();
+</script>
+</body></html>

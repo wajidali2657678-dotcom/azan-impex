@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>AZAN IMPEX — Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script>
+<style>body{font-family:Inter,Arial;margin:0;background:#f6f7f9;color:#101828}header{background:#111;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}.wrap{max-width:1300px;margin:22px auto;padding:0 16px}.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}button{padding:9px 14px;border:1px solid #ddd;background:#fff;border-radius:8px;cursor:pointer}.panel{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;margin-bottom:16px;overflow:auto}input,select,textarea{padding:9px;border:1px solid #ddd;border-radius:7px;width:100%;box-sizing:border-box;margin:4px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.primary{background:#111;color:#fff}.danger{background:#fee2e2;color:#991b1b}table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid #eee;text-align:left;font-size:13px;vertical-align:top}.hide{display:none}small{color:#667085}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style></head><body>
+<header><b>AZAN IMPEX — ADMIN</b><button id=out class=hide onclick="sb.auth.signOut().then(()=>location.reload())">Logout</button></header>
+<div class=wrap>
+<section id=login class=panel style="max-width:380px"><h2>Admin Login</h2><input id=em type=email placeholder=Email><input id=pw type=password placeholder=Password><button class=primary onclick=login()>Login</button></section>
+<div id=app class=hide>
+<div class=tabs><button onclick="tab('products')">Products / Stock</button><button onclick="tab('orders')">Orders</button><button onclick=exportCSV()>Export Excel (CSV)</button><span id=stats style="align-self:center"></span></div>
+<section id=products class=panel><h2 id=ftitle>Add / Edit Product</h2><div class=grid>
+<input id=f_sku placeholder="SKU (unique) *"><input id=f_name placeholder="Product name *"><input id=f_cat placeholder="Categories: Sublimation, HTL, Embroidery, Logo, Dyed Fabric">
+<input id=f_type placeholder="Type: T-Shirt, Hoodie, Jersey, Polo, Trouser"><input id=f_fabric placeholder=Fabric><input id=f_gsm placeholder="GSM (number)">
+<input id=f_stock class=full placeholder="Size-wise stock: XS:10, S:20, M:30, L:30, XL:20" style="grid-column:1/-1"></div>
+<textarea id=f_desc placeholder=Description></textarea>
+<div class=grid><div><small>Image URLs (comma separated; first = main). Remove a URL to delete an image.</small><input id=f_imgs><small>Upload images</small><input id=f_imgf type=file accept="image/*" multiple></div>
+<div><small>Video URLs (comma separated)</small><input id=f_vids><small>Upload videos</small><input id=f_vidf type=file accept="video/*" multiple></div>
+<div><label><input type=checkbox id=f_active checked style="width:auto"> Visible on website (untick = Hide/Exclude)</label></div></div><br>
+<button class=primary id=savebtn onclick=saveP()>Save Product</button> <button onclick=clearForm()>Clear</button>
+<h3>Catalog</h3><table><thead><tr><th>SKU</th><th>Name</th><th>Category</th><th>Stock by size</th><th>Media</th><th>Status</th><th></th></tr></thead><tbody id=ptable></tbody></table></section>
+<section id=orders class="panel hide"><h2>Orders</h2><table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Status</th><th>Created</th></tr></thead><tbody id=otable></tbody></table></section>
+</div></div>
+<script>
+const $=id=>document.getElementById(id),sb=supabase.createClient(AZ.url,AZ.key);let P=[],O=[];
+const list=s=>s.split(",").map(x=>x.trim()).filter(Boolean),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sumItems=o=>o.items.map(i=>i.sku+" ("+Object.entries(i.qty).filter(([,q])=>q>0).map(([s,q])=>s+"×"+q).join(", ")+")").join("; ");
+async function login(){const{error}=await sb.auth.signInWithPassword({email:em.value.trim(),password:pw.value});if(error)return alert(error.message);init()}
+async function init(){const{data:{session}}=await sb.auth.getSession();if(!session)return;
+ if(session.user.email!==AZ.admin){await sb.auth.signOut();return alert("This account is not authorized.")}
+ $("login").classList.add("hide");$("app").classList.remove("hide");$("out").classList.remove("hide");load()}
+async function load(){const a=await sb.from("products").select("*").order("created_at",{ascending:false}),b=await sb.from("orders").select("*").order("created_at",{ascending:false});
+ if(a.error||b.error)return alert((a.error||b.error).message);P=a.data;O=b.data;draw()}
+function tab(t){["products","orders"].forEach(x=>$(x).classList.toggle("hide",x!==t))}
+function draw(){$("stats").innerHTML=`<b>${P.length}</b> products | <b>${O.length}</b> orders`;
+ $("ptable").innerHTML=P.map((p,i)=>`<tr><td>${esc(p.sku)}</td><td>${esc(p.name)}</td><td>${esc((p.category||[]).join(", "))}</td><td>${Object.entries(p.stock_by_size||{}).map(([s,q])=>s+":"+q).join(" ")}</td><td>${(p.images||[]).length} img / ${(p.videos||[]).length} vid</td><td>${p.active?"Visible":"Hidden"}</td>
+ <td><button onclick=editP(${i})>Edit</button> <button onclick=toggleP(${i})>${p.active?"Hide":"Show"}</button> <button class=danger onclick=delP(${i})>Delete</button></td></tr>`).join("");
+ const st=["Received","Confirmed","In Production","Ready","Shipped","Completed","Cancelled"];
+ $("otable").innerHTML=O.map((o,i)=>{let ph=o.phone.replace(/\D/g,"");if(ph.startsWith("0"))ph="92"+ph.slice(1);
+ return `<tr><td>${esc(o.order_no)}</td><td>${esc(o.customer_name)}<br>${esc(o.company)}<br>${esc(o.email)}<br><a href="https://wa.me/${ph}" target=_blank>${esc(o.phone)} (WhatsApp)</a><br><small>${esc(o.address)}</small></td><td>${esc(sumItems(o))}<br><small>${esc(o.notes)}</small></td>
+ <td><select onchange="setStatus(${i},this.value)">${st.map(s=>`<option ${s===o.status?"selected":""}>${s}</option>`).join("")}</select></td><td>${new Date(o.created_at).toLocaleString()}</td></tr>`}).join("")}
+async function up(files,kind){const out=[];for(const f of files){const path=`${kind}/${Date.now()}-${f.name.replace(/[^\w.-]/g,"_")}`;const{error}=await sb.storage.from("media").upload(path,f);if(error){alert(error.message);continue}out.push(sb.storage.from("media").getPublicUrl(path).data.publicUrl)}return out}
+async function saveP(){const sku=f_sku.value.trim(),name=f_name.value.trim();if(!sku||!name)return alert("SKU and name are required");
+ const stock={};f_stock.value.split(/[,|]/).forEach(x=>{const[k,v]=x.split(":");if(k&&k.trim())stock[k.trim()]=Math.max(0,parseInt(v)||0)});
+ savebtn.disabled=true;savebtn.textContent="Saving...";
+ const imgs=[...list(f_imgs.value),...await up(f_imgf.files,"images")],vids=[...list(f_vids.value),...await up(f_vidf.files,"videos")];
+ const{error}=await sb.from("products").upsert({sku,name,category:list(f_cat.value),product_type:f_type.value.trim(),fabric:f_fabric.value.trim(),gsm:f_gsm.value.trim(),description:f_desc.value,sizes:Object.keys(stock),stock_by_size:stock,main_image:imgs[0]||null,images:imgs,videos:vids,active:f_active.checked,updated_at:new Date().toISOString()},{onConflict:"sku"});
+ savebtn.disabled=false;savebtn.textContent="Save Product";if(error)return alert(error.message);clearForm();load()}
+function clearForm(){document.querySelectorAll("#products input:not([type=checkbox]),#products textarea").forEach(x=>x.value="");f_active.checked=true;$("ftitle").textContent="Add / Edit Product"}
+function editP(i){const p=P[i];f_sku.value=p.sku;f_name.value=p.name;f_cat.value=(p.category||[]).join(", ");f_type.value=p.product_type||"";f_fabric.value=p.fabric||"";f_gsm.value=p.gsm||"";f_desc.value=p.description||"";
+ f_stock.value=Object.entries(p.stock_by_size||{}).map(([s,q])=>s+":"+q).join(", ");f_imgs.value=(p.images||[]).join(", ");f_vids.value=(p.videos||[]).join(", ");f_active.checked=p.active;$("ftitle").textContent="Editing "+p.sku;scrollTo(0,0)}
+async function toggleP(i){const{error}=await sb.from("products").update({active:!P[i].active}).eq("id",P[i].id);if(error)return alert(error.message);load()}
+async function delP(i){if(!confirm("Delete "+P[i].sku+" permanently?"))return;const{error}=await sb.from("products").delete().eq("id",P[i].id);if(error)return alert(error.message);load()}
+async function setStatus(i,s){const{error}=await sb.from("orders").update({status:s,updated_at:new Date().toISOString()}).eq("id",O[i].id);if(error)alert(error.message)}
+function exportCSV(){const rows=[["Order No","Name","Company","Email","Phone","Address","Status","Created","Items","Notes"],...O.map(o=>[o.order_no,o.customer_name,o.company,o.email,o.phone,o.address,o.status,o.created_at,sumItems(o),o.notes])];
+ const csv="\ufeff"+rows.map(r=>r.map(x=>`"${String(x??"").replaceAll('"','""')}"`).join(",")).join("\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="azan-orders.csv";a.click()}
+init();
+</script></body></html>
