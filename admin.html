@@ -1,55 +1,307 @@
-<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>AZAN IMPEX — Admin</title>
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>AZAN IMPEX — Admin Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script>
-<style>body{font-family:Inter,Arial;margin:0;background:#f6f7f9;color:#101828}header{background:#111;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}.wrap{max-width:1300px;margin:22px auto;padding:0 16px}.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}button{padding:9px 14px;border:1px solid #ddd;background:#fff;border-radius:8px;cursor:pointer}.panel{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;margin-bottom:16px;overflow:auto}input,select,textarea{padding:9px;border:1px solid #ddd;border-radius:7px;width:100%;box-sizing:border-box;margin:4px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.primary{background:#111;color:#fff}.danger{background:#fee2e2;color:#991b1b}table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid #eee;text-align:left;font-size:13px;vertical-align:top}.hide{display:none}small{color:#667085}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style></head><body>
+<style>body{font-family:Inter,Arial;margin:0;background:#f6f7f9;color:#101828}header{background:#111;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}.wrap{max-width:1400px;margin:22px auto;padding:0 16px}.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}button{padding:9px 14px;border:1px solid #ddd;background:#fff;border-radius:8px;cursor:pointer;font-size:13px}.panel{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;margin-bottom:16px;overflow:auto}input,select,textarea{padding:9px;border:1px solid #ddd;border-radius:7px;width:100%;box-sizing:border-box;margin:4px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.primary{background:#111;color:#fff}.danger{background:#fee2e2;color:#991b1b}table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid #eee;text-align:left;font-size:13px;vertical-align:top}.hide{display:none}small{color:#667085}.img-preview{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.img-preview img{width:60px;height:60px;object-fit:cover;border-radius:6px;border:1px solid #e5e7eb}.video-preview video{width:160px;height:90px;object-fit:cover;border-radius:6px;border:1px solid #e5e7eb}.field-hint{font-size:11px;color:#98a2b3;margin:0 0 6px;display:block}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.grid{grid-template-columns:1fr}}</style></head><body>
 <header><b>AZAN IMPEX — ADMIN</b><button id=out class=hide onclick="sb.auth.signOut().then(()=>location.reload())">Logout</button></header>
 <div class=wrap>
 <section id=login class=panel style="max-width:380px"><h2>Admin Login</h2><input id=em type=email placeholder=Email><input id=pw type=password placeholder=Password><button class=primary onclick=login()>Login</button></section>
 <div id=app class=hide>
-<div class=tabs><button onclick="tab('products')">Products / Stock</button><button onclick="tab('orders')">Orders</button><button onclick=exportCSV()>Export Excel (CSV)</button><span id=stats style="align-self:center"></span></div>
-<section id=products class=panel><h2 id=ftitle>Add / Edit Product</h2><div class=grid>
-<input id=f_sku placeholder="SKU (unique) *"><input id=f_name placeholder="Product name *"><input id=f_cat placeholder="Categories: Sublimation, HTL, Embroidery, Logo, Dyed Fabric">
-<input id=f_type placeholder="Type: T-Shirt, Hoodie, Jersey, Polo, Trouser"><input id=f_fabric placeholder=Fabric><input id=f_gsm placeholder="GSM (number)">
-<input id=f_stock class=full placeholder="Size-wise stock: XS:10, S:20, M:30, L:30, XL:20" style="grid-column:1/-1"></div>
-<textarea id=f_desc placeholder=Description></textarea>
-<div class=grid><div><small>Image URLs (comma separated; first = main). Remove a URL to delete an image.</small><input id=f_imgs><small>Upload images</small><input id=f_imgf type=file accept="image/*" multiple></div>
-<div><small>Video URLs (comma separated)</small><input id=f_vids><small>Upload videos</small><input id=f_vidf type=file accept="video/*" multiple></div>
-<div><label><input type=checkbox id=f_active checked style="width:auto"> Visible on website (untick = Hide/Exclude)</label></div></div><br>
-<button class=primary id=savebtn onclick=saveP()>Save Product</button> <button onclick=clearForm()>Clear</button>
-<h3>Catalog</h3><table><thead><tr><th>SKU</th><th>Name</th><th>Category</th><th>Stock by size</th><th>Media</th><th>Status</th><th></th></tr></thead><tbody id=ptable></tbody></table></section>
+<div class=tabs><button onclick="tab('products')">Products / Stock</button><button onclick="tab('orders')">Orders</button><button onclick=exportCSV()>Export Excel (CSV)</button><button onclick="quickAddSample()" style="background:#eff6ff;color:#0958d9;border-color:#bfdbfe">+ Quick Add Sample</button><span id=stats style="align-self:center"></span></div>
+<section id=products class=panel>
+<h2 id=ftitle>Add / Edit Product</h2>
+<div class=grid>
+  <input id=f_sku placeholder="SKU (unique) *"><input id=f_name placeholder="Product name *"><input id=f_cat placeholder="Categories: Sublimation, HTL, Embroidery, Logo, Dyed Fabric">
+  <input id=f_type placeholder="Type: T-Shirt, Hoodie, Jersey, Polo, Trouser, Fabric, Service"><input id=f_fabric placeholder=Fabric><input id=f_gsm placeholder="GSM (number)">
+  <input id=f_stock class=full placeholder="Size-wise stock: XS:10, S:20, M:30, L:30, XL:20" style="grid-column:1/-1">
+</div>
+<textarea id=f_desc placeholder=Description class=full></textarea>
+
+<div class=grid style="margin-top:12px">
+  <div style="grid-column:1/-1">
+    <small class=field-hint>⚠️ MINIMUM 4 IMAGES REQUIRED per product. First image = main thumbnail. "Coming Soon" placeholder used if missing.</small>
+    <input id=f_imgs placeholder="Image URLs (comma separated) - min 4 URLs recommended"><small class=field-hint>Upload images (auto-upload to Supabase Storage)</small><input id=f_imgf type=file accept="image/*" multiple>
+    <div class="img-preview" id=imgPreview></div>
+  </div>
+  <div style="grid-column:1/-1">
+    <small class=field-hint>Manufacturing videos (UHD preferred). Add real production videos for each product.</small>
+    <input id=f_vids placeholder="Video URLs (comma separated) - MP4/WebM"><small class=field-hint>Upload videos (auto-upload to Supabase Storage)</small><input id=f_vidf type=file accept="video/*" multiple>
+    <div class="video-preview" id=vidPreview></div>
+  </div>
+</div>
+
+<div style="margin-top:12px"><label><input type=checkbox id=f_active checked style="width:auto;margin-right:8px"> Visible on website (untick = Hide/Exclude from catalog)</label></div>
+<br><button class=primary id=savebtn onclick=saveP()>Save Product</button> <button onclick=clearForm()>Clear Form</button>
+
+<h3 style="margin-top:24px">Catalog (<b id=catCount>0</b> products)</h3>
+<table><thead><tr><th>SKU</th><th>Name</th><th>Category</th><th>Type</th><th>Stock by Size</th><th>Media</th><th>Status</th><th>Actions</th></tr></thead><tbody id=ptable></tbody></table>
+</section>
+
 <section id=orders class="panel hide"><h2>Orders</h2><table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Status</th><th>Created</th></tr></thead><tbody id=otable></tbody></table></section>
 </div></div>
+
 <script>
-const $=id=>document.getElementById(id),sb=supabase.createClient(AZ.url,AZ.key);let P=[],O=[];
-const list=s=>s.split(",").map(x=>x.trim()).filter(Boolean),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=id=>document.getElementById(id),sb=supabase.createClient(AZ.url,AZ.key);
+let P=[],O=[];
+const list=s=>s.split(",").map(x=>x.trim()).filter(Boolean);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&","<":"<",">":">",'"':"""}[c]));
 const sumItems=o=>o.items.map(i=>i.sku+" ("+Object.entries(i.qty).filter(([,q])=>q>0).map(([s,q])=>s+"×"+q).join(", ")+")").join("; ");
-async function login(){const{error}=await sb.auth.signInWithPassword({email:em.value.trim(),password:pw.value});if(error)return alert(error.message);init()}
-async function init(){const{data:{session}}=await sb.auth.getSession();if(!session)return;
- if(session.user.email!==AZ.admin){await sb.auth.signOut();return alert("This account is not authorized.")}
- $("login").classList.add("hide");$("app").classList.remove("hide");$("out").classList.remove("hide");load()}
-async function load(){const a=await sb.from("products").select("*").order("created_at",{ascending:false}),b=await sb.from("orders").select("*").order("created_at",{ascending:false});
- if(a.error||b.error)return alert((a.error||b.error).message);P=a.data;O=b.data;draw()}
+
+// Image validation - ensure 4+ images
+function validateImages(urls){
+  const valid = urls.filter(u=>u && (u.startsWith("http") || u.startsWith("data:")));
+  return valid.length >= 4;
+}
+
+async function login(){
+  const{error}=await sb.auth.signInWithPassword({email:em.value.trim(),password:pw.value});
+  if(error) return alert(error.message);
+  init();
+}
+
+async function init(){
+  const{data:{session}}=await sb.auth.getSession();
+  if(!session) return;
+  if(session.user.email!==AZ.admin){await sb.auth.signOut();return alert("This account is not authorized.")}
+  $("login").classList.add("hide");$("app").classList.remove("hide");$("out").classList.remove("hide");load();
+}
+
+async function load(){
+  const a=await sb.from("products").select("*").order("created_at",{ascending:false});
+  const b=await sb.from("orders").select("*").order("created_at",{ascending:false});
+  if(a.error||b.error) return alert((a.error||b.error).message);
+  P=a.data;O=b.data;draw();
+}
+
+// ========== QUICK ADD SAMPLE PRODUCTS ==========
+const sampleProducts = [
+  {
+    sku: 'SLM-001',
+    name: 'Premium Performance T-Shirt',
+    cat: ['Sublimation'],
+    type: 'T-Shirt',
+    fabric: 'Polyester Single Jersey',
+    gsm: '190 GSM',
+    desc: 'High-quality sublimation print with moisture-wicking performance',
+    stock: 'XS:12, S:25, M:35, L:32, XL:28, 2XL:18, 3XL:10',
+    images: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=900,https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900,https://images.unsplash.com/photo-1562157873-818bc0726f68?w=900,https://images.unsplash.com/photo-1625910513413-5fc45f3f7a9c?w=900',
+    videos: 'https://cdn.pixabay.com/video/2023/06/15/166927-832821246_tiny.mp4,https://cdn.pixabay.com/video/2023/04/28/159442-818635632_tiny.mp4'
+  },
+  {
+    sku: 'FAB-001',
+    name: 'Custom Dyed Polyester Fabric',
+    cat: ['Dyed Fabric'],
+    type: 'Fabric',
+    fabric: '100% Polyester',
+    gsm: '180 GSM',
+    desc: 'Premium custom dyed fabrics with wide shade range',
+    stock: 'Roll 50m:35, Roll 100m:22, Roll 200m:8',
+    images: 'https://images.unsplash.com/photo-1521572169361-278092910926?w=900,https://images.unsplash.com/photo-1567945692885-dcc54d4847a6?w=900,https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900,https://images.unsplash.com/photo-1562157873-818bc0726f68?w=900',
+    videos: 'https://cdn.pixabay.com/video/2023/06/15/166927-832821246_tiny.mp4'
+  },
+  {
+    sku: 'SRV-001',
+    name: 'HTL Transfer Service',
+    cat: ['HTL'],
+    type: 'Service',
+    fabric: 'Customer Supplied',
+    gsm: '—',
+    desc: 'Professional high temperature transfer service',
+    stock: 'Custom:999',
+    images: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=900,https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600,https://images.unsplash.com/photo-1625910513413-5fc45f3f7a9c?w=600,https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600',
+    videos: 'https://cdn.pixabay.com/video/2023/04/28/159442-818635632_tiny.mp4'
+  }
+];
+
+// ========== QUICK ADD SAMPLE PRODUCTS ==========
+async function quickAddSample(){
+  if(confirm('Add sample products to your inventory? This will create 3 products with real stock and media.')){
+    savebtn.disabled=true;savebtn.textContent="Adding...";
+    for(const sample of sampleProducts){
+      const imgs = sample.images.split(',').map(s=>s.trim());
+      const vids = sample.videos.split(',').map(s=>s.trim());
+      await sb.from("products").insert({
+        sku: sample.sku,
+        name: sample.name,
+        category: sample.cat,
+        product_type: sample.type,
+        fabric: sample.fabric,
+        gsm: sample.gsm,
+        description: sample.desc,
+        sizes: ['XS','S','M','L','XL','2XL','3XL'],
+        stock_by_size: sample.cat.includes('Fabric') ? {
+          'Roll 50m': 35,
+          'Roll 100m': 22,
+          'Roll 200m': 8
+        } : {
+          'XS': 12, 'S': 25, 'M': 35, 'L': 32, 'XL': 28, '2XL': 18, '3XL': 10
+        },
+        main_image: imgs[0],
+        images: imgs,
+        videos: vids,
+        active: true,
+        updated_at: new Date().toISOString()
+      });
+    }
+    clearForm();
+    load();
+    savebtn.disabled=false;savebtn.textContent="Save Product";
+    alert('Sample products added!');
+  }
+}
+
+// ========== QUICK ADD SAMPLE PRODUCTS ==========
+async function quickAddSample(){
+  if(confirm('Add sample products to your inventory? This will create 3 products with real stock and media.')){
+    savebtn.disabled=true;savebtn.textContent="Adding...";
+    for(const sample of sampleProducts){
+      const imgs = sample.images.split(',').map(s=>s.trim());
+      const vids = sample.videos.split(',').map(s=>s.trim());
+      await sb.from("products").insert({
+        sku: sample.sku,
+        name: sample.name,
+        category: sample.cat,
+        product_type: sample.type,
+        fabric: sample.fabric,
+        gsm: sample.gsm,
+        description: sample.desc,
+        sizes: ['XS','S','M','L','XL','2XL','3XL'],
+        stock_by_size: sample.cat.includes('Fabric') ? {
+          'Roll 50m': 35,
+          'Roll 100m': 22,
+          'Roll 200m': 8
+        } : {
+          'XS': 12, 'S': 25, 'M': 35, 'L': 32, 'XL': 28, '2XL': 18, '3XL': 10
+        },
+        main_image: imgs[0],
+        images: imgs,
+        videos: vids,
+        active: true,
+        updated_at: new Date().toISOString()
+      });
+    }
+    clearForm();
+    load();
+    savebtn.disabled=false;savebtn.textContent="Save Product";
+    alert('Sample products added!');
+  }
+}
+
 function tab(t){["products","orders"].forEach(x=>$(x).classList.toggle("hide",x!==t))}
-function draw(){$("stats").innerHTML=`<b>${P.length}</b> products | <b>${O.length}</b> orders`;
- $("ptable").innerHTML=P.map((p,i)=>`<tr><td>${esc(p.sku)}</td><td>${esc(p.name)}</td><td>${esc((p.category||[]).join(", "))}</td><td>${Object.entries(p.stock_by_size||{}).map(([s,q])=>s+":"+q).join(" ")}</td><td>${(p.images||[]).length} img / ${(p.videos||[]).length} vid</td><td>${p.active?"Visible":"Hidden"}</td>
- <td><button onclick=editP(${i})>Edit</button> <button onclick=toggleP(${i})>${p.active?"Hide":"Show"}</button> <button class=danger onclick=delP(${i})>Delete</button></td></tr>`).join("");
- const st=["Received","Confirmed","In Production","Ready","Shipped","Completed","Cancelled"];
- $("otable").innerHTML=O.map((o,i)=>{let ph=o.phone.replace(/\D/g,"");if(ph.startsWith("0"))ph="92"+ph.slice(1);
- return `<tr><td>${esc(o.order_no)}</td><td>${esc(o.customer_name)}<br>${esc(o.company)}<br>${esc(o.email)}<br><a href="https://wa.me/${ph}" target=_blank>${esc(o.phone)} (WhatsApp)</a><br><small>${esc(o.address)}</small></td><td>${esc(sumItems(o))}<br><small>${esc(o.notes)}</small></td>
- <td><select onchange="setStatus(${i},this.value)">${st.map(s=>`<option ${s===o.status?"selected":""}>${s}</option>`).join("")}</select></td><td>${new Date(o.created_at).toLocaleString()}</td></tr>`}).join("")}
-async function up(files,kind){const out=[];for(const f of files){const path=`${kind}/${Date.now()}-${f.name.replace(/[^\w.-]/g,"_")}`;const{error}=await sb.storage.from("media").upload(path,f);if(error){alert(error.message);continue}out.push(sb.storage.from("media").getPublicUrl(path).data.publicUrl)}return out}
-async function saveP(){const sku=f_sku.value.trim(),name=f_name.value.trim();if(!sku||!name)return alert("SKU and name are required");
- const stock={};f_stock.value.split(/[,|]/).forEach(x=>{const[k,v]=x.split(":");if(k&&k.trim())stock[k.trim()]=Math.max(0,parseInt(v)||0)});
- savebtn.disabled=true;savebtn.textContent="Saving...";
- const imgs=[...list(f_imgs.value),...await up(f_imgf.files,"images")],vids=[...list(f_vids.value),...await up(f_vidf.files,"videos")];
- const{error}=await sb.from("products").upsert({sku,name,category:list(f_cat.value),product_type:f_type.value.trim(),fabric:f_fabric.value.trim(),gsm:f_gsm.value.trim(),description:f_desc.value,sizes:Object.keys(stock),stock_by_size:stock,main_image:imgs[0]||null,images:imgs,videos:vids,active:f_active.checked,updated_at:new Date().toISOString()},{onConflict:"sku"});
- savebtn.disabled=false;savebtn.textContent="Save Product";if(error)return alert(error.message);clearForm();load()}
-function clearForm(){document.querySelectorAll("#products input:not([type=checkbox]),#products textarea").forEach(x=>x.value="");f_active.checked=true;$("ftitle").textContent="Add / Edit Product"}
-function editP(i){const p=P[i];f_sku.value=p.sku;f_name.value=p.name;f_cat.value=(p.category||[]).join(", ");f_type.value=p.product_type||"";f_fabric.value=p.fabric||"";f_gsm.value=p.gsm||"";f_desc.value=p.description||"";
- f_stock.value=Object.entries(p.stock_by_size||{}).map(([s,q])=>s+":"+q).join(", ");f_imgs.value=(p.images||[]).join(", ");f_vids.value=(p.videos||[]).join(", ");f_active.checked=p.active;$("ftitle").textContent="Editing "+p.sku;scrollTo(0,0)}
-async function toggleP(i){const{error}=await sb.from("products").update({active:!P[i].active}).eq("id",P[i].id);if(error)return alert(error.message);load()}
-async function delP(i){if(!confirm("Delete "+P[i].sku+" permanently?"))return;const{error}=await sb.from("products").delete().eq("id",P[i].id);if(error)return alert(error.message);load()}
-async function setStatus(i,s){const{error}=await sb.from("orders").update({status:s,updated_at:new Date().toISOString()}).eq("id",O[i].id);if(error)alert(error.message)}
-function exportCSV(){const rows=[["Order No","Name","Company","Email","Phone","Address","Status","Created","Items","Notes"],...O.map(o=>[o.order_no,o.customer_name,o.company,o.email,o.phone,o.address,o.status,o.created_at,sumItems(o),o.notes])];
- const csv="\ufeff"+rows.map(r=>r.map(x=>`"${String(x??"").replaceAll('"','""')}"`).join(",")).join("\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="azan-orders.csv";a.click()}
+
+function draw(){
+  $("stats").innerHTML=`<b>${P.length}</b> products | <b>${O.length}</b> orders`;
+  $("catCount").textContent = P.length;
+
+  $("ptable").innerHTML=P.map((p,i)=>`<tr>
+    <td>${esc(p.sku)}</td>
+    <td>${esc(p.name)}</td>
+    <td>${esc((p.category||[]).join(", "))}</td>
+    <td>${esc(p.product_type||"")}</td>
+    <td>${Object.entries(p.stock_by_size||{}).map(([s,q])=>`<span style="margin-right:6px"><b>${s}:</b> ${q}</span>`).join("")}</td>
+    <td>${(p.images||[]).length} img ${(p.videos||[]).length>0 ? '<span class="tag" style="background:#eff6ff;color:#0958d9;padding:2px 6px;border-radius:4px;font-size:10px">🎬 '+ (p.videos||[]).length +' video</span>' : ''}</td>
+    <td>${p.active?"<span style=color:#16803c>● Visible</span>":"<span style=color:#cf1322>○ Hidden</span>"}</td>
+    <td><button onclick=editP(${i})>Edit</button> <button onclick=toggleP(${i})>${p.active?"Hide":"Show"}</button> <button class=danger onclick=delP(${i})>Delete</button></td>
+  </tr>`).join("");
+
+  const st=["Received","Confirmed","In Production","Ready","Shipped","Completed","Cancelled"];
+  $("otable").innerHTML=O.map((o,i)=>{let ph=o.phone.replace(/\D/g,"");if(ph.startsWith("0"))ph="92"+ph.slice(1);
+    return `<tr><td>${esc(o.order_no)}</td><td>${esc(o.customer_name)}<br>${esc(o.company)}<br>${esc(o.email)}<br><a href="https://wa.me/${ph}" target=_blank>${esc(o.phone)} (WhatsApp)</a><br><small>${esc(o.address)}</small></td><td>${esc(sumItems(o))}<br><small>${esc(o.notes)}</small></td>
+    <td><select onchange="setStatus(${i},this.value)">${st.map(s=>`<option ${s===o.status?"selected":""}>${s}</option>`).join("")}</select></td><td>${new Date(o.created_at).toLocaleString()}</td></tr>`}).join("");
+}
+
+// Upload images/videos to Supabase Storage
+async function up(files,kind){
+  const out=[];
+  for(const f of files){
+    const path=`${kind}/${Date.now()}-${f.name.replace(/[^\w.-]/g,"_")}`;
+    const{error}=await sb.storage.from("media").upload(path,f);
+    if(error){alert(error.message);continue}
+    out.push(sb.storage.from("media").getPublicUrl(path).data.publicUrl);
+  }
+  return out;
+}
+
+function updatePreviews(){
+  const imgs = list($("f_imgs").value);
+  $("imgPreview").innerHTML = imgs.map(u=>`<img src="${u}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22><rect fill=%22%23e5e7eb%22 width=%2260%22 height=%2260%22/><text x=%2230%22 y=%2235%22 text-anchor=%22middle%22 fill=%22%239ca3af%22 font-size=%229%22>COMING SOON</text></svg>'">`).join("");
+  const vids = list($("f_vids").value);
+  $("vidPreview").innerHTML = vids.map(u=>`<video src="${u}" controls style="width:160px;height:90px;border-radius:6px;border:1px solid #e5e7eb"></video>`).join("");
+}
+["f_imgs","f_vids"].forEach(id=>$(id).addEventListener("input",updatePreviews));
+
+async function saveP(){
+  const sku=f_sku.value.trim(),name=f_name.value.trim();
+  if(!sku||!name) return alert("SKU and name are required");
+
+  const stock={};
+  f_stock.value.split(/[,|]/).forEach(x=>{const[k,v]=x.split(":");if(k&&k.trim())stock[k.trim()]=Math.max(0,parseInt(v)||0)});
+
+  // Validate 4+ images
+  const imgs = [...list(f_imgs.value), ...await up(f_imgf.files,"images")];
+  if(imgs.length < 4){
+    if(!confirm(`⚠️ Only ${imgs.length} images provided. Minimum 4 required. "Coming Soon" placeholder will be used for missing images. Continue anyway?`)) return;
+  }
+
+  const vids = [...list(f_vids.value), ...await up(f_vidf.files,"videos")];
+
+  savebtn.disabled=true;savebtn.textContent="Saving...";
+
+  const{error}=await sb.from("products").upsert({
+    sku,name,
+    category:list(f_cat.value),
+    product_type:f_type.value.trim(),
+    fabric:f_fabric.value.trim(),
+    gsm:f_gsm.value.trim(),
+    description:f_desc.value,
+    sizes:Object.keys(stock),
+    stock_by_size:stock,
+    main_image:imgs[0]||null,
+    images:imgs,
+    videos:vids,
+    active:f_active.checked,
+    updated_at:new Date().toISOString()
+  },{onConflict:"sku"});
+
+  savebtn.disabled=false;savebtn.textContent="Save Product";
+  if(error) return alert(error.message);
+  clearForm();load();
+}
+
+function clearForm(){
+  document.querySelectorAll("#products input:not([type=checkbox]),#products textarea").forEach(x=>x.value="");
+  f_active.checked=true;$("ftitle").textContent="Add / Edit Product";
+  $("imgPreview").innerHTML="";$("vidPreview").innerHTML="";
+}
+
+function editP(i){
+  const p=P[i];
+  f_sku.value=p.sku;f_name.value=p.name;f_cat.value=(p.category||[]).join(", ");f_type.value=p.product_type||"";f_fabric.value=p.fabric||"";f_gsm.value=p.gsm||"";f_desc.value=p.description||"";
+  f_stock.value=Object.entries(p.stock_by_size||{}).map(([s,q])=>s+":"+q).join(", ");
+  f_imgs.value=(p.images||[]).join(", ");f_vids.value=(p.videos||[]).join(", ");f_active.checked=p.active;
+  $("ftitle").textContent="Editing "+p.sku;scrollTo(0,0);
+  updatePreviews();
+}
+
+async function toggleP(i){
+  const{error}=await sb.from("products").update({active:!P[i].active}).eq("id",P[i].id);
+  if(error)return alert(error.message);load();
+}
+
+async function delP(i){
+  if(!confirm("Delete "+P[i].sku+" permanently?"))return;
+  const{error}=await sb.from("products").delete().eq("id",P[i].id);
+  if(error)return alert(error.message);load();
+}
+
+async function setStatus(i,s){
+  const{error}=await sb.from("orders").update({status:s,updated_at:new Date().toISOString()}).eq("id",O[i].id);
+  if(error)alert(error.message);
+}
+
+function exportCSV(){
+  const rows=[["Order No","Name","Company","Email","Phone","Address","Status","Created","Items","Notes"],...O.map(o=>[o.order_no,o.customer_name,o.company,o.email,o.phone,o.address,o.status,o.created_at,sumItems(o),o.notes])];
+  const csv="\ufeff"+rows.map(r=>r.map(x=>`"${String(x??"").replaceAll('"','""')}"`).join(",")).join("\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="azan-orders.csv";a.click();
+}
+
 init();
 </script></body></html>
