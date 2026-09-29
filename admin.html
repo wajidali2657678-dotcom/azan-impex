@@ -5,7 +5,7 @@
 <div class=wrap>
 <section id=login class=panel style="max-width:380px"><h2>Admin Login</h2><input id=em type=email placeholder=Email><input id=pw type=password placeholder=Password><button class=primary onclick=login()>Login</button></section>
 <div id=app class=hide>
-<div class=tabs><button onclick="tab('products')">Products / Stock</button><button onclick="tab('orders')">Orders</button><button onclick=exportCSV()>Export Excel (CSV)</button><button onclick="quickAddSample()" style="background:#eff6ff;color:#0958d9;border-color:#bfdbfe">+ Quick Add Sample</button><span id=stats style="align-self:center"></span></div>
+<div class=tabs><button onclick="tab('products')">Products / Stock</button><button onclick="tab('orders')">Orders</button><button onclick=exportCSV()>Export Excel (CSV)</button><span id=stats style="align-self:center"></span></div>
 <section id=products class=panel>
 <h2 id=ftitle>Add / Edit Product</h2>
 <div class=grid>
@@ -42,7 +42,7 @@
 const $=id=>document.getElementById(id),sb=supabase.createClient(AZ.url,AZ.key);
 let P=[],O=[];
 const list=s=>s.split(",").map(x=>x.trim()).filter(Boolean);
-const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&","<":"<",">":">",'"':"""}[c]));
+const esc=s=>String(s??"").replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const sumItems=o=>o.items.map(i=>i.sku+" ("+Object.entries(i.qty).filter(([,q])=>q>0).map(([s,q])=>s+"×"+q).join(", ")+")").join("; ");
 
 // Image validation - ensure 4+ images
